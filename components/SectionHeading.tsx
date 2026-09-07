@@ -23,9 +23,7 @@ export default function SectionHeading({
     <div className={cn("max-w-4xl", align === "center" && "mx-auto text-center", className)}>
       {kicker && (
         <span className={cn("kicker", align === "center" && "justify-center", tone === "light" && "kicker-light")}>
-          <span className="rule" />
           {kicker}
-          {align === "center" && <span className="rule" />}
         </span>
       )}
       <h2

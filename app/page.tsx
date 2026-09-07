@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowDown, MapPin, Home, ShieldCheck, Wallet, TrendingUp } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { developments, getFeaturedProperties } from "@/content/developments";
 import { insights } from "@/content/insights";
 import SectionHeading from "@/components/SectionHeading";
@@ -16,14 +16,6 @@ export const metadata = constructMetadata({
     "Where Luxury Meets Lifestyle. Vinhomes Platinum Living crafts premium homes, secure communities and considered investment opportunities across Lagos — fully-detached duplexes, solar-powered communities and prime terraces.",
   path: "/",
 });
-
-const trustItems = [
-  { Icon: Home, label: "Premium Developments" },
-  { Icon: Home, label: "Modern Homes" },
-  { Icon: ShieldCheck, label: "Secure Communities" },
-  { Icon: Wallet, label: "Flexible Payment Options" },
-  { Icon: TrendingUp, label: "Long-Term Value" },
-];
 
 export default function HomePage() {
   const featured = getFeaturedProperties().slice(0, 3);
@@ -41,66 +33,32 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/45 to-brand-green950/35" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-green950/70 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-green950/85 via-brand-green950/30 to-brand-green950/55" />
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-5 pb-24 text-center sm:px-8">
+        <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-20 text-center sm:px-8">
           <span className="kicker kicker-light justify-center animate-fade-in">
-            <span className="rule" />
             Vinhomes Platinum Living
-            <span className="rule" />
           </span>
           <h1 className="display display-light mt-6 animate-fade-up text-5xl sm:text-6xl lg:text-7xl">
             Where Luxury
             <span className="block font-serif italic text-brand-goldLight">Meets Lifestyle</span>
           </h1>
-          <p className="mt-8 max-w-2xl animate-fade-up font-sans text-lg leading-relaxed text-brand-ivory/85 [animation-delay:150ms]">
+          <p className="mt-8 max-w-xl animate-fade-up font-sans text-lg leading-relaxed text-brand-ivory/85 [animation-delay:150ms]">
             Premium homes and thoughtfully planned communities designed for elegant living,
             secure investment, and lasting value.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 animate-fade-up [animation-delay:300ms]">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 animate-fade-up [animation-delay:300ms]">
             <Link href="/properties" className="btn-gold">
               Explore Properties <ArrowUpRight className="h-4 w-4" />
             </Link>
-            <Link href="/contact" className="btn-outline-light">
-              Speak with an Advisor
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 border-b border-brand-ivory/40 pb-1 font-sans text-[0.72rem] uppercase tracking-[0.2em] text-brand-ivory/90 transition-colors duration-300 hover:border-brand-goldLight hover:text-brand-goldLight"
+            >
+              Speak with an advisor
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
-          </div>
-
-          {/* quick trust chips */}
-          <div className="mt-14 grid w-full max-w-3xl grid-cols-2 gap-px overflow-hidden border border-brand-ivory/15 bg-brand-ivory/10 backdrop-blur-sm animate-fade-in [animation-delay:450ms] sm:grid-cols-4">
-            {["Premium Homes", "Secure Communities", "Flexible Payments", "Long-Term Value"].map((t) => (
-              <div key={t} className="bg-brand-green950/30 px-3 py-3 text-center font-sans text-[0.62rem] uppercase tracking-[0.16em] text-brand-ivory/85">
-                {t}
-              </div>
-            ))}
-          </div>
-
-          {/* scroll indicator */}
-          <div className="mt-14 flex flex-col items-center gap-3 animate-fade-in [animation-delay:700ms]">
-            <span className="scroll-line" />
-            <span className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-brand-ivory/60">
-              Scroll to explore
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================= TRUST STRIP ========================= */}
-      <section className="bg-brand-ivory">
-        <div className="mx-auto max-w-[1440px] px-5 py-7 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-5">
-            {trustItems.map(({ Icon, label }) => (
-              <div key={label} className="flex items-center justify-center gap-3 text-center">
-                <span className="hidden h-px w-4 bg-brand-gold/60 sm:block" />
-                <Icon className="h-5 w-5 shrink-0 text-brand-goldDeep" strokeWidth={1.4} />
-                <span className="font-sans text-[0.72rem] uppercase tracking-[0.16em] text-brand-green900">
-                  {label}
-                </span>
-                <span className="hidden h-px w-4 bg-brand-gold/60 sm:block" />
-              </div>
-            ))}
           </div>
         </div>
       </section>

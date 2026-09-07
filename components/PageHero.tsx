@@ -27,9 +27,8 @@ export default function PageHero({
   return (
     <section className="relative flex min-h-[54vh] items-center overflow-hidden bg-brand-green950 pt-24 text-center lg:min-h-[60vh]">
       <div className="absolute inset-0">
-        <Image src={image} alt="" fill priority sizes="100vw" className="object-cover object-center opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/72 to-brand-green950/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/40 to-brand-green950/80" />
+        <Image src={image} alt="" fill priority sizes="100vw" className="object-cover object-center opacity-45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/60 to-brand-green950/50" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-5 sm:px-8">
@@ -59,11 +58,7 @@ export default function PageHero({
           </nav>
         )}
 
-        <span className="kicker kicker-light justify-center">
-          <span className="rule" />
-          {kicker}
-          <span className="rule" />
-        </span>
+        <span className="kicker kicker-light justify-center">{kicker}</span>
         <h1 className="display display-light mt-6">
           {title}
           {titleAccent ? (

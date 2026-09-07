@@ -22,10 +22,10 @@ body {
 /* ---------- Luxury type helpers ---------- */
 @layer components {
   .kicker {
-    @apply inline-flex items-center gap-3 text-[0.72rem] font-sans tracking-[0.28em] uppercase text-brand-goldDeep;
+    @apply inline-flex items-center gap-3 text-[0.68rem] font-sans tracking-[0.3em] uppercase text-brand-goldDeep;
   }
   .kicker .rule {
-    @apply inline-block h-px w-10 bg-brand-gold/70;
+    display: none; /* minimal: quiet label, no flanking rules */
   }
   .kicker-light {
     @apply text-brand-goldLight;
@@ -204,10 +204,9 @@ body {
   z-index: 0;
 }
 
-/* subtle grain/texture for dark surfaces */
+/* subtle grain/texture for dark surfaces (kept as plain flat surface for a cleaner look) */
 .texture-dark {
-  background-image: radial-gradient(rgba(198, 163, 106, 0.05) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: none;
 }
 
 /* scroll indicator line */
