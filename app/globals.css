@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply bg-brand-paper text-brand-ink font-sans;
+}
+
+/* ---------- Luxury type helpers ---------- */
+@layer components {
+  .kicker {
+    @apply inline-flex items-center gap-3 text-[0.72rem] font-sans tracking-[0.28em] uppercase text-brand-goldDeep;
+  }
+  .kicker .rule {
+    @apply inline-block h-px w-10 bg-brand-gold/70;
+  }
+  .kicker-light {
+    @apply text-brand-goldLight;
+  }
+
+  /* Editorial serif display headline */
+  .display {
+    @apply font-serif font-medium leading-[1.04] tracking-[0.01em] text-brand-green950;
+  }
+  .display-light {
+    @apply text-brand-ivory;
+  }
+  .eyebrow {
+    @apply font-sans uppercase tracking-luxe text-xs;
+  }
+}
+
+/* thin gold divider line */
+.gold-hairline {
+  @apply bg-gradient-to-r from-transparent via-brand-gold to-transparent;
+}
+
+/* ---------- Buttons ---------- */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 font-sans uppercase tracking-[0.18em] text-[0.74rem] transition-all duration-500 ease-luxe select-none;
+  }
+  .btn-gold {
+    @apply btn bg-brand-gold text-brand-green950 hover:bg-brand-goldLight px-9 py-4;
+  }
+  .btn-dark {
+    @apply btn bg-brand-green900 text-brand-ivory hover:bg-brand-green700 px-9 py-4;
+  }
+  .btn-outline {
+    @apply btn border border-brand-green950/40 text-brand-green950 hover:border-brand-gold hover:text-brand-goldDeep px-9 py-4;
+  }
+  .btn-outline-light {
+    @apply btn border border-brand-ivory/50 text-brand-ivory hover:border-brand-goldLight hover:text-brand-goldLight px-9 py-4;
+  }
+  .btn-ghost-link {
+    @apply inline-flex items-center gap-2 uppercase tracking-[0.16em] text-[0.72rem] text-brand-goldDeep hover:text-brand-gold transition-colors duration-500;
+  }
+  .btn-light {
+    @apply btn bg-brand-ivory text-brand-green950 hover:bg-white px-9 py-4;
+  }
+  .link-arrow {
+    @apply inline-flex items-center gap-2 group/link font-sans uppercase tracking-[0.16em] text-[0.72rem] text-brand-green800 hover:text-brand-goldDeep transition-colors duration-500;
+  }
+  .link-arrow .arrow {
+    @apply inline-block transition-transform duration-500 ease-luxe;
+  }
+  .group\/link:hover .arrow {
+    transform: translateX(6px);
+  }
+}
+
+/* ---------- Cards & surfaces ---------- */
+@layer components {
+  .panel {
+    @apply bg-white border border-brand-line;
+  }
+  .status-pill {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-ivory;
+  }
+}
+
+/* ---------- Motion primitives ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* editorial image treatment */
+.img-frame {
+  @apply relative overflow-hidden;
+}
+.img-frame img {
+  @apply transition-transform duration-[1400ms] ease-luxe;
+}
+.img-frame:hover img {
+  transform: scale(1.045);
+}
+
+/* subtle grain/texture for dark surfaces */
+.texture-dark {
+  background-image: radial-gradient(rgba(198, 163, 106, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* scroll indicator line */
+.scroll-line {
+  @apply relative block h-16 w-px overflow-hidden bg-brand-ivory/20;
+}
+.scroll-line::after {
+  content: "";
+  @apply absolute left-0 top-0 h-8 w-px bg-brand-goldLight;
+  animation: scroll-hint 2.2s ease-in-out infinite;
+}
+
+/* Custom slim scrollbar for galleries */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(198, 163, 106, 0.5) transparent;
+}
+
+::selection {
+  background: rgba(198, 163, 106, 0.35);
+  color: #0d241b;
+}
