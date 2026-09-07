@@ -90,7 +90,7 @@ export default function PropertiesView() {
       <section className="relative flex min-h-[44vh] items-end overflow-hidden bg-brand-green950 pt-28">
         <div className="absolute inset-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/images/hero-home.jpg" alt="" className="h-full w-full object-cover opacity-30" />
+          <img src="/media/images/video-hero.jpg" alt="" className="h-full w-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/60 to-brand-green950/30" />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-10 sm:px-8 lg:px-12">

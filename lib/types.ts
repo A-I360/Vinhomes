@@ -146,6 +146,17 @@ export interface Advisor {
   social?: { label: string; url: string }[];
 }
 
+/** Founder / leadership profile. Name & title are CMS-editable (added when supplied). */
+export interface Founder {
+  name?: string;
+  role?: string;
+  title?: string;
+  image?: MediaItem;
+  tagline?: string;
+  message: string[];
+  published?: boolean;
+}
+
 export interface SiteConfig {
   brandName: string;
   brandShort: string;

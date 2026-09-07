@@ -23,7 +23,7 @@ export default function InsightsPage() {
         title="Property thinking,"
         titleAccent="written in plain English"
         lede="Guides and notes to help you buy, invest and live well in Lagos — with clarity, and never a hard sell."
-        image="/media/images/emerald-interior.jpg"
+        image="/media/images/video-interior-1.jpg"
         crumbs={[{ name: "Insights", path: "/insights" }]}
       />
 

@@ -35,7 +35,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const p = getPropertyBySlug(params.slug);
   if (!p) return {};
-  const img = p.gallery?.[0]?.src ?? "/media/images/hero-home.jpg";
+  const img = p.gallery?.[0]?.src ?? "/media/images/video-hero.jpg";
   const meta = constructMetadata({
     title: `${p.name} — ${p.propertyType} in Lagos`,
     description: `${p.name}. ${p.propertyType}${p.location ? ` in ${p.location}` : ""} by Vinhomes Platinum Living. Status: ${p.status}.`,
@@ -71,7 +71,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
   const listingSchema = productSchema({
     name: property.name,
     description: property.description,
-    image: hero?.src ?? "/media/images/hero-home.jpg",
+    image: hero?.src ?? "/media/images/video-hero.jpg",
     url: `${siteConfig.url}/properties/${property.slug}`,
     location: property.location,
     bedrooms: property.bedrooms,
@@ -243,7 +243,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
                   </p>
                 </div>
                 <div className="img-frame relative min-h-[16rem] overflow-hidden bg-brand-green800">
-                  <Image src={dev?.heroMedia?.src ?? hero?.src ?? "/media/images/citadel-community.jpg"} alt={`${dev?.name ?? property.name} location`} fill sizes="(min-width:1024px) 45vw,100vw" className="object-cover" loading="lazy" />
+                  <Image src={dev?.heroMedia?.src ?? hero?.src ?? "/media/images/dev-citadel-1.jpg"} alt={`${dev?.name ?? property.name} location`} fill sizes="(min-width:1024px) 45vw,100vw" className="object-cover" loading="lazy" />
                   <div className="absolute inset-0 flex items-center justify-center bg-brand-green950/30">
                     <div className="bg-brand-ivory/95 px-6 py-4 text-center">
                       <MapPin className="mx-auto h-5 w-5 text-brand-goldDeep" />
@@ -346,7 +346,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
         accent="Private viewings"
         body="We arrange private on-site or video viewings at a time that suits you."
         primary={{ label: "Book a Viewing", href: `/contact?property=${property.slug}` }}
-        image={property.gallery?.[1]?.src ?? dev?.heroMedia?.src ?? "/media/images/emerald-interior.jpg"}
+        image={property.gallery?.[1]?.src ?? dev?.heroMedia?.src ?? "/media/images/video-interior-1.jpg"}
       />
     </>
   );

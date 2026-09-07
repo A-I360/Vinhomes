@@ -16,7 +16,7 @@ export function constructMetadata({
   title,
   description,
   path = "",
-  image = "/media/images/hero-home.jpg",
+  image = "/media/images/video-hero.jpg",
 }: Seo): Metadata {
   const cleanPath = path === "/" ? "" : path;
   const canonical = `${baseUrl}${cleanPath}`;

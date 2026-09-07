@@ -22,7 +22,7 @@ const sections: [string, string][] = [
 export default function TermsPage() {
   return (
     <>
-      <PageHero kicker="Legal" title="Terms & Website Use" lede="A few clear terms for using this website." image="/media/images/hero-home.jpg" crumbs={[{ name: "Terms", path: "/terms" }]} compact />
+      <PageHero kicker="Legal" title="Terms & Website Use" lede="A few clear terms for using this website." image="/media/images/video-hero.jpg" crumbs={[{ name: "Terms", path: "/terms" }]} compact />
       <section className="bg-brand-paper py-20">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <p className="font-sans text-sm text-brand-charcoal/60">Last updated: 1 September 2026</p>

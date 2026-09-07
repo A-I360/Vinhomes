@@ -34,7 +34,7 @@ export default function WhyPage() {
         title="Chosen for the way"
         titleAccent="it makes you feel at home"
         lede="We measure ourselves by one outcome — real people living beautifully, securely and wisely. These are the standards behind every Vinhomes community."
-        image="/media/images/emerald-interior.jpg"
+        image="/media/images/video-interior-1.jpg"
         crumbs={[{ name: "Why Vinhomes", path: "/why-vinhomes" }]}
       />
 
@@ -66,7 +66,7 @@ export default function WhyPage() {
       {/* Built for today / positioned for tomorrow */}
       <section className="relative overflow-hidden bg-brand-green950 py-24 lg:py-32 texture-dark">
         <div className="absolute inset-0 opacity-15">
-          <Image src="/media/images/hero-home.jpg" alt="" fill sizes="100vw" className="object-cover" loading="lazy" />
+          <Image src="/media/images/video-hero.jpg" alt="" fill sizes="100vw" className="object-cover" loading="lazy" />
         </div>
         <div className="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid items-center gap-14 lg:grid-cols-2">
@@ -152,7 +152,7 @@ export default function WhyPage() {
         title="Experience the difference a considered partner makes."
         accent="Talk to an advisor"
         primary={{ label: "Book a Consultation", href: "/contact" }}
-        image="/media/images/capital-loft.jpg"
+        image="/media/images/dev-capital-1.jpg"
       />
     </>
   );

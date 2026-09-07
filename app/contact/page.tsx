@@ -28,7 +28,7 @@ export default function ContactPage() {
         title="Begin the conversation."
         titleAccent="We reply personally."
         lede="Call, message or visit — a Vinhomes advisor is ready to discuss your next home or investment."
-        image="/media/images/citadel-interior.jpg"
+        image="/media/images/dev-citadel-2.jpg"
         crumbs={[{ name: "Contact", path: "/contact" }]}
       />
 

@@ -25,7 +25,7 @@ export default function ServicesPage() {
         title="Advisory, development"
         titleAccent="and investment — in one place"
         lede="From the ground you choose to the day you receive your keys, we guide every step. Discover the ways Vinhomes Platinum Living can serve you."
-        image="/media/images/capital-loft-interior.jpg"
+        image="/media/images/video-interior-2.jpg"
         crumbs={[{ name: "Services", path: "/services" }]}
       />
 
@@ -133,7 +133,7 @@ export default function ServicesPage() {
         accent="Let's find out together"
         body="Tell us about your plans and our advisors will point you in the right direction — no obligation, no pressure."
         primary={{ label: "Start a Conversation", href: "/contact" }}
-        image="/media/images/citadel-interior.jpg"
+        image="/media/images/dev-citadel-2.jpg"
       />
     </>
   );

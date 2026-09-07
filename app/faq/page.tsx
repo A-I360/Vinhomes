@@ -36,7 +36,7 @@ export default function FaqPage() {
         title="Questions, answered"
         titleAccent="clearly and honestly"
         lede="Everything you need to know about our developments, payments and how we work. Can't find an answer? We're one message away."
-        image="/media/images/citadel-community.jpg"
+        image="/media/images/dev-citadel-1.jpg"
         crumbs={[{ name: "FAQ", path: "/faq" }]}
       />
 

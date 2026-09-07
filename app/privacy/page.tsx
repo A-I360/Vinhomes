@@ -23,7 +23,7 @@ const sections: [string, string][] = [
 export default function PrivacyPage() {
   return (
     <>
-      <PageHero kicker="Legal" title="Privacy Policy" lede="How we handle the information you share with us." image="/media/images/citadel-interior.jpg" crumbs={[{ name: "Privacy Policy", path: "/privacy" }]} compact />
+      <PageHero kicker="Legal" title="Privacy Policy" lede="How we handle the information you share with us." image="/media/images/dev-citadel-2.jpg" crumbs={[{ name: "Privacy Policy", path: "/privacy" }]} compact />
       <section className="bg-brand-paper py-20">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <p className="font-sans text-sm text-brand-charcoal/60">Last updated: 1 September 2026</p>

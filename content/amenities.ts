@@ -10,13 +10,11 @@ export const amenities: Amenity[] = [
     id: "swimming-pool",
     label: "Swimming Pool",
     description: "Resort-style swimming pool within the community.",
-    image: { src: "/media/images/home-amenity-pool.jpg", alt: "Community swimming pool", credit: "Conceptual render" },
   },
   {
     id: "gym",
     label: "Fully Fitted Gym",
     description: "On-site fitness suite for residents.",
-    image: { src: "/media/images/amenity-gym.jpg", alt: "Fully fitted residents' gym", credit: "Conceptual render" },
   },
   {
     id: "football-pitch",
@@ -32,7 +30,6 @@ export const amenities: Amenity[] = [
     id: "solar-power",
     label: "Solar-Powered Environment",
     description: "Clean, reliable solar energy throughout the community.",
-    image: { src: "/media/images/amenity-solar.jpg", alt: "Solar panels on a premium roof", credit: "Conceptual render" },
   },
   {
     id: "clean-water",

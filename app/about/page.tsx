@@ -5,6 +5,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTABand from "@/components/CTABand";
+import FounderSection from "@/components/FounderSection";
 import { values } from "@/content/values";
 import { constructMetadata } from "@/lib/seo";
 
@@ -23,7 +24,7 @@ export default function AboutPage() {
         title="More than homes."
         titleAccent="A better way to live."
         lede="A premium real estate brand focused on creating homes and communities that combine elegance, trust, innovation, security, sustainability and genuine customer satisfaction."
-        image="/media/images/hero-home.jpg"
+        image="/media/images/video-hero.jpg"
         crumbs={[{ name: "About", path: "/about" }]}
       />
 
@@ -32,8 +33,8 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
           <Reveal className="img-frame order-2 aspect-[4/5] lg:order-1">
             <Image
-              src="/media/images/citadel-community.jpg"
-              alt="A modern secure community developed by Vinhomes Platinum Living"
+              src="/media/images/dev-citadel-1.jpg"
+              alt="Vinhomes Platinum Living development"
               fill
               sizes="(min-width:1024px) 50vw, 100vw"
               className="object-cover"
@@ -74,7 +75,7 @@ export default function AboutPage() {
       {/* VISION & MISSION */}
       <section className="relative overflow-hidden bg-brand-green950 py-24 lg:py-28 texture-dark">
         <div className="absolute inset-0 opacity-[0.16]">
-          <Image src="/media/images/emerald-duplex.jpg" alt="" fill sizes="100vw" className="object-cover" loading="lazy" />
+          <Image src="/media/images/dev-emerald-1.jpg" alt="" fill sizes="100vw" className="object-cover" loading="lazy" />
         </div>
         <div className="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-2">
@@ -174,12 +175,14 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <FounderSection />
+
       <CTABand
         title="Experience the Vinhomes difference for yourself."
         accent="Meet our advisors"
         body="Discover who we are by seeing what we build. Book a private consultation or visit our Lagos office."
         primary={{ label: "Get in Touch", href: "/contact" }}
-        image="/media/images/capital-loft-interior.jpg"
+        image="/media/images/video-interior-2.jpg"
       />
     </>
   );

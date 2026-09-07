@@ -7,7 +7,7 @@ export default function CTABand({
   accent = "Book a private consultation",
   body,
   primary = { label: "Book a Consultation", href: "/contact" },
-  image = "/media/images/emerald-interior.jpg",
+  image = "/media/images/video-interior-1.jpg",
 }: {
   title?: string;
   accent?: string;

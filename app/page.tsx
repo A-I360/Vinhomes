@@ -34,8 +34,8 @@ export default function HomePage() {
       <section className="relative flex min-h-screen items-end overflow-hidden bg-brand-green950">
         <div className="absolute inset-0">
           <Image
-            src="/media/images/hero-home.jpg"
-            alt="Aerial view of an exclusive modern Vinhomes community in Lagos at dusk"
+            src="/media/images/video-hero.jpg"
+            alt="Vinhomes Platinum Living residential development"
             fill
             priority
             sizes="100vw"
@@ -127,8 +127,8 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-[1440px] lg:grid-cols-2">
           <div className="relative min-h-[24rem] lg:min-h-[34rem]">
             <Image
-              src="/media/images/emerald-interior.jpg"
-              alt="Refined living space inside a Vinhomes residence"
+              src="/media/images/video-interior-1.jpg"
+              alt="A Vinhomes Platinum Living residence"
               fill
               sizes="(min-width:1024px) 50vw, 100vw"
               className="object-cover"
@@ -179,14 +179,14 @@ export default function HomePage() {
             kicker="The Vinhomes Standard"
             title="Considered amenities,"
             accent="quietly elevating every day"
-            lede="From a resort-style pool to clean solar energy, the amenities in our communities are chosen to enrich real daily life — never as decoration."
+            lede="From a resort-style pool and fully fitted gym to solar-powered living and clean water, the amenities in our communities are chosen to enrich real daily life — never as decoration."
           />
 
           <div className="mt-14 grid gap-5 sm:grid-cols-3">
             {[
-              { src: "/media/images/home-amenity-pool.jpg", alt: "Resort-style swimming pool within a Vinhomes community", label: "Resort-style pool" },
-              { src: "/media/images/amenity-gym.jpg", alt: "Fully fitted residents' gym", label: "Fully fitted gym" },
-              { src: "/media/images/amenity-solar.jpg", alt: "Solar energy powering the community", label: "Solar-powered" },
+              { src: "/media/images/dev-citadel-1.jpg", alt: "A planned, secure Vinhomes community", label: "Secure communities" },
+              { src: "/media/images/video-landscape-1.jpg", alt: "Communal outdoor surroundings at a Vinhomes development", label: "Planned surroundings" },
+              { src: "/media/images/dev-emerald-1.jpg", alt: "Residences built to the Vinhomes standard", label: "The Vinhomes standard" },
             ].map((a, i) => (
               <Reveal key={a.src} delay={i * 120} className="img-frame relative aspect-[4/5]">
                 <Image src={a.src} alt={a.alt} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" loading="lazy" />
@@ -246,7 +246,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-brand-green950 py-24 lg:py-32">
         <div className="absolute inset-0 opacity-25">
           <Image
-            src="/media/images/citadel-community.jpg"
+            src="/media/images/dev-citadel-1.jpg"
             alt=""
             fill
             sizes="100vw"
@@ -325,15 +325,15 @@ export default function HomePage() {
           </div>
           <Reveal className="img-frame relative aspect-[4/5]">
             <Image
-              src="/media/images/capital-loft.jpg"
-              alt="Capital Loft terrace development"
+              src="/media/images/dev-capital-1.jpg"
+              alt="A Vinhomes Platinum Living investment development"
               fill
               sizes="(min-width:1024px) 50vw, 100vw"
               className="object-cover"
               loading="lazy"
             />
             <span className="absolute left-5 top-5 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-goldLight backdrop-blur-sm">
-              Artist impression
+              Vinhomes development
             </span>
           </Reveal>
         </div>

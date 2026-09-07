@@ -44,19 +44,19 @@ const formats = [
     name: "Capital Loft",
     role: "Investment-focused",
     note: "Prime, future-ready terraces with flexible outright or structured purchase. 3 Bedroom Terrace and 2 Bedroom Terrace with BQ.",
-    img: "/media/images/capital-loft.jpg",
+    img: "/media/images/dev-capital-1.jpg",
   },
   {
     name: "Citadel Oasis",
     role: "Residential community",
     note: "Secure, solar-powered homes opposite CharterHouse School, Abraham Adesanya Road — 40% deposit, balance over 8 months.",
-    img: "/media/images/citadel-community.jpg",
+    img: "/media/images/dev-citadel-1.jpg",
   },
   {
     name: "The Emerald",
     role: "Fully-detached duplexes",
     note: "Premium fully-detached residences in 2, 3 and 4 bedroom formats within a modern development.",
-    img: "/media/images/emerald-duplex.jpg",
+    img: "/media/images/dev-emerald-1.jpg",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function InvestmentPage() {
         title="Invest in space."
         titleAccent="Build lasting value."
         lede="Considered opportunities in prime Lagos real estate — positioned on location, built on quality, and entered on terms that work for you."
-        image="/media/images/capital-loft.jpg"
+        image="/media/images/dev-capital-1.jpg"
         crumbs={[{ name: "Investment", path: "/investment" }]}
       />
 
@@ -170,7 +170,7 @@ export default function InvestmentPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal className="img-frame relative order-2 aspect-[4/5] lg:order-1">
-              <Image src="/media/images/amenity-solar.jpg" alt="Sustainable infrastructure in a Vinhomes community" fill sizes="(min-width:1024px) 50vw,100vw" className="object-cover" loading="lazy" />
+              <Image src="/media/images/video-landscape-2.jpg" alt="Sustainable infrastructure in a Vinhomes community" fill sizes="(min-width:1024px) 50vw,100vw" className="object-cover" loading="lazy" />
             </Reveal>
             <div className="order-1 lg:order-2">
               <SectionHeading
