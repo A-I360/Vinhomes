@@ -20,22 +20,24 @@ export default function InsightCard({ post }: { post: Insight }) {
           />
         </div>
       </Link>
-      <div className="mt-5 flex items-center gap-3 font-sans text-[0.66rem] uppercase tracking-[0.18em] text-brand-goldDeep">
+      <div className="mt-5 flex items-center justify-center gap-2.5 font-sans text-[0.66rem] uppercase tracking-[0.16em] text-brand-goldDeep">
         <span>{post.category}</span>
-        <span className="h-px w-5 bg-brand-gold/50" />
+        <span className="h-px w-4 bg-brand-gold/50" />
         <span className="text-brand-charcoal/55 normal-case tracking-normal">{formatDate(post.publishDate)}</span>
       </div>
-      <h3 className="mt-3 font-serif text-xl leading-snug text-brand-green900">
+      <h3 className="mt-3 text-center font-serif text-xl leading-snug text-brand-green900">
         <Link href={`/insights/${post.slug}`} className="transition-colors hover:text-brand-goldDeep">
           {post.title}
         </Link>
       </h3>
-      <p className="mt-3 line-clamp-3 font-sans text-sm leading-relaxed text-brand-charcoal/70">
+      <p className="mx-auto mt-3 max-w-md text-center font-sans text-sm leading-relaxed text-brand-charcoal/70">
         {post.excerpt}
       </p>
-      <Link href={`/insights/${post.slug}`} className="link-arrow mt-5">
-        Read article <ArrowRight className="arrow h-4 w-4" />
-      </Link>
+      <div className="mt-5 flex justify-center">
+        <Link href={`/insights/${post.slug}`} className="link-arrow">
+          Read article <ArrowRight className="arrow h-4 w-4" />
+        </Link>
+      </div>
     </article>
   );
 }

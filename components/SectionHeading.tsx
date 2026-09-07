@@ -5,7 +5,7 @@ export default function SectionHeading({
   title,
   accent,
   lede,
-  align = "left",
+  align = "center",
   tone = "dark",
   className,
   id,
@@ -20,13 +20,7 @@ export default function SectionHeading({
   id?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "max-w-3xl",
-        align === "center" && "mx-auto text-center",
-        className
-      )}
-    >
+    <div className={cn("max-w-4xl", align === "center" && "mx-auto text-center", className)}>
       {kicker && (
         <span className={cn("kicker", align === "center" && "justify-center", tone === "light" && "kicker-light")}>
           <span className="rule" />
@@ -36,10 +30,7 @@ export default function SectionHeading({
       )}
       <h2
         id={id}
-        className={cn(
-          "display mt-4",
-          tone === "light" ? "display-light" : "text-brand-green950"
-        )}
+        className={cn("display mt-4", tone === "light" ? "display-light" : "text-brand-green950")}
       >
         {title}
         {accent ? (
@@ -51,9 +42,8 @@ export default function SectionHeading({
       {lede && (
         <p
           className={cn(
-            "mt-5 font-sans leading-relaxed",
-            align === "center" && "mx-auto",
-            tone === "light" ? "text-brand-ivory/75" : "text-brand-charcoal/75"
+            "mx-auto mt-5 max-w-2xl font-sans leading-relaxed sm:text-lg",
+            tone === "light" ? "text-brand-ivory/75" : "text-brand-charcoal/70"
           )}
         >
           {lede}

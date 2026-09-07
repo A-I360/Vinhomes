@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export interface Crumb {
   name: string;
@@ -24,24 +25,17 @@ export default function PageHero({
   compact?: boolean;
 }) {
   return (
-    <section className="relative flex min-h-[52vh] items-end overflow-hidden bg-brand-green950 pt-28 lg:min-h-[58vh]">
+    <section className="relative flex min-h-[54vh] items-center overflow-hidden bg-brand-green950 pt-24 text-center lg:min-h-[60vh]">
       <div className="absolute inset-0">
-        <Image
-          src={image}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center opacity-35"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/70 to-brand-green950/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-green950/85 to-transparent" />
+        <Image src={image} alt="" fill priority sizes="100vw" className="object-cover object-center opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/72 to-brand-green950/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/40 to-brand-green950/80" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-12 sm:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-5 sm:px-8">
         {crumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-5">
-            <ol className="flex flex-wrap items-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.16em] text-brand-ivory/60">
+          <nav aria-label="Breadcrumb" className="mb-7 flex justify-center">
+            <ol className="flex flex-wrap items-center justify-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-brand-ivory/65">
               <li>
                 <Link href="/" className="transition-colors hover:text-brand-goldLight">
                   Home
@@ -65,18 +59,19 @@ export default function PageHero({
           </nav>
         )}
 
-        <span className="kicker kicker-light">
+        <span className="kicker kicker-light justify-center">
           <span className="rule" />
           {kicker}
+          <span className="rule" />
         </span>
-        <h1 className="display display-light mt-5 max-w-5xl">
+        <h1 className="display display-light mt-6">
           {title}
           {titleAccent ? (
             <span className="block font-serif italic text-brand-goldLight">{titleAccent}</span>
           ) : null}
         </h1>
         {lede && (
-          <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-brand-ivory/75 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl font-sans text-base leading-relaxed text-brand-ivory/80 sm:text-lg">
             {lede}
           </p>
         )}

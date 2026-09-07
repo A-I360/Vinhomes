@@ -31,19 +31,14 @@ export default function ServicesPage() {
 
       <section className="bg-brand-paper py-24 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <SectionHeading
-              kicker="What we offer"
-              title="Services built around"
-              accent="how you want to live and invest"
-            />
-            <p className="max-w-sm font-sans text-sm leading-relaxed text-brand-charcoal/70 lg:text-right">
-              A single, trusted partner for acquiring, developing and investing in prime Lagos
-              real estate — served with the discretion of a private consultancy.
-            </p>
-          </div>
+          <SectionHeading
+            kicker="What we offer"
+            title="Services built around"
+            accent="how you want to live and invest"
+            lede="A single, trusted partner for acquiring, developing and investing in prime Lagos real estate — served with the discretion of a private consultancy."
+          />
 
-          <div className="mt-14 space-y-14 lg:space-y-20">
+          <div className="mt-16 space-y-14 lg:space-y-24">
             {active.map((s, i) => {
               const flip = i % 2 === 1;
               return (
@@ -64,27 +59,29 @@ export default function ServicesPage() {
                         </span>
                       )}
                     </div>
-                    <div className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
-                      <span className="kicker">
-                        <span className="rule" /> 0{i + 1}
+                    <div className={`flex flex-col items-center text-center lg:col-span-5 lg:items-start lg:text-left ${flip ? "lg:order-1 lg:items-end lg:text-right" : ""}`}>
+                      <span className="kicker justify-center lg:justify-start">
+                        <span className="rule" /> 0{i + 1} {flip ? <span className="rule" /> : null}
                       </span>
                       <h2 className="display mt-4 text-2xl sm:text-3xl lg:text-[2rem]">{s.title}</h2>
                       <p className="mt-4 font-sans text-base leading-relaxed text-brand-charcoal/75">
                         {s.description}
                       </p>
                       {s.features && (
-                        <ul className="mt-5 space-y-2.5 font-sans text-sm text-brand-charcoal/80">
+                        <ul className={`mt-5 space-y-2.5 font-sans text-sm text-brand-charcoal/80 ${flip ? "" : "text-left"}`}>
                           {s.features.map((f) => (
-                            <li key={f} className="flex items-start gap-2.5">
+                            <li key={f} className={`flex items-start gap-2.5 ${flip ? "lg:flex-row-reverse" : ""}`}>
                               <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-goldDeep" />
-                              {f}
+                              <span>{f}</span>
                             </li>
                           ))}
                         </ul>
                       )}
-                      <Link href={`/contact?service=${s.id}`} className="link-arrow mt-7">
-                        Learn More <ArrowUpRight className="arrow h-4 w-4" />
-                      </Link>
+                      <div className="mt-7">
+                        <Link href={`/contact?service=${s.id}`} className="link-arrow">
+                          Learn More <ArrowUpRight className="arrow h-4 w-4" />
+                        </Link>
+                      </div>
                     </div>
                   </article>
                 </Reveal>
@@ -112,10 +109,10 @@ export default function ServicesPage() {
               ["04", "Receive", "Considered handover and an ongoing advisory relationship."],
             ].map(([n, t, d], i) => (
               <Reveal as="li" key={n} delay={i * 100}>
-                <div className="border-t border-brand-gold/40 pt-5">
+                <div className="border-t border-brand-gold/40 pt-5 text-center">
                   <span className="font-serif text-3xl text-brand-gold">{n}</span>
                   <h3 className="mt-3 font-serif text-xl text-brand-ivory">{t}</h3>
-                  <p className="mt-2 font-sans text-sm leading-relaxed text-brand-ivory/70">{d}</p>
+                  <p className="mx-auto mt-2 max-w-xs font-sans text-sm leading-relaxed text-brand-ivory/70">{d}</p>
                 </div>
               </Reveal>
             ))}

@@ -13,11 +13,24 @@ export default function FounderSection() {
       <div className="pointer-events-none absolute right-0 top-0 select-none font-serif italic leading-none text-brand-line/60" aria-hidden>
         Leadership
       </div>
-      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-12">
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <span className="kicker justify-center">
+            <span className="rule" /> Leadership <span className="rule" />
+          </span>
+          <h2 className="display mt-4 text-3xl sm:text-4xl lg:text-5xl">
+            The vision behind
+            <span className="block font-serif italic text-brand-goldDeep">Vinhomes Platinum Living</span>
+          </h2>
+          {founder.tagline && (
+            <p className="mt-5 font-serif text-xl italic text-brand-green700">{founder.tagline}</p>
+          )}
+        </div>
+
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Portrait */}
           <Reveal className="lg:col-span-5">
-            <div className="relative mx-auto max-w-md">
+            <div className="relative mx-auto max-w-sm">
               <span className="absolute -left-4 -top-4 h-full w-full border border-brand-gold/40" aria-hidden />
               <div className="img-frame relative aspect-[4/5]">
                 <Image
@@ -30,46 +43,35 @@ export default function FounderSection() {
                 />
               </div>
               {/* caption */}
-              <div className="mt-5 flex items-baseline justify-between border-t border-brand-line pt-4">
-                <div>
-                  {founder.name ? (
-                    <p className="font-serif text-2xl text-brand-green900">{founder.name}</p>
-                  ) : null}
-                  <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brand-goldDeep">
-                    {founder.title || founder.role || "Leadership"}
-                    {founder.name ? "" : " — Vinhomes Platinum Living"}
-                  </p>
-                </div>
-                {founder.name ? null : (
-                  <p className="hidden text-right font-sans text-[0.6rem] leading-relaxed text-brand-charcoal/50 sm:block">
-                    Leadership profile
-                  </p>
-                )}
+              <div className="mt-5 border-t border-brand-line pt-4 text-center">
+                {founder.name ? (
+                  <p className="font-serif text-2xl text-brand-green900">{founder.name}</p>
+                ) : null}
+                <p className="mt-1 font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brand-goldDeep">
+                  {founder.title || founder.role || "Leadership"}
+                  {founder.name ? "" : " — Vinhomes Platinum Living"}
+                </p>
               </div>
             </div>
           </Reveal>
 
           {/* Copy */}
           <div className="lg:col-span-7">
-            <span className="kicker">
-              <span className="rule" /> Leadership
-            </span>
-            <h2 className="display mt-4 text-3xl sm:text-4xl lg:text-5xl">
-              The vision behind
-              <span className="block font-serif italic text-brand-goldDeep">Vinhomes Platinum Living</span>
-            </h2>
-            {founder.tagline && (
-              <p className="mt-5 font-serif text-xl italic text-brand-green700">{founder.tagline}</p>
-            )}
-            <div className="mt-6 h-px w-16 gold-hairline" />
-            <div className="mt-6 space-y-5">
+            <div className="space-y-5 text-center lg:text-left">
               {founder.message.map((m, i) => (
-                <p key={i} className="max-w-2xl font-sans text-[1.02rem] leading-[1.85] text-brand-charcoal/80">
+                <p
+                  key={i}
+                  className={
+                    i === 0
+                      ? "mx-auto max-w-2xl font-serif text-2xl italic leading-[1.6] text-brand-green800 sm:text-[1.7rem]"
+                      : "mx-auto max-w-2xl font-sans text-[1.02rem] leading-[1.85] text-brand-charcoal/80"
+                  }
+                >
                   {m}
                 </p>
               ))}
             </div>
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap justify-center gap-4 lg:justify-start">
               <Link href="/about" className="btn-dark">Discover our values <ArrowUpRight className="h-4 w-4" /></Link>
               <Link href="/contact" className="btn-outline">Meet the team</Link>
             </div>

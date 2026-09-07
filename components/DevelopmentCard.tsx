@@ -25,7 +25,7 @@ export default function DevelopmentCard({ d }: { d: Development }) {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/35 to-transparent" />
       </div>
 
-      <div className="relative z-10 p-7 sm:p-9">
+      <div className="relative z-10 flex flex-col items-center p-7 text-center sm:p-9">
         <span className="status-pill bg-brand-gold/90 text-brand-green950">
           <span className="h-1.5 w-1.5 rounded-full bg-current" />
           {d.status}
@@ -33,12 +33,12 @@ export default function DevelopmentCard({ d }: { d: Development }) {
         <h3 className="mt-4 font-serif text-3xl leading-tight text-brand-ivory sm:text-4xl">
           {d.name}
         </h3>
-        <p className="mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-ivory/80">
+        <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-brand-ivory/85">
           {d.tagline}
         </p>
 
         {d.propertyTypes.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-1.5">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">
             {d.propertyTypes.map((t) => (
               <span
                 key={t}
@@ -50,10 +50,10 @@ export default function DevelopmentCard({ d }: { d: Development }) {
           </div>
         )}
 
-        <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={`/properties?dev=${d.slug}`}
-            className="btn-light group/btn px-7 py-3 text-[0.68rem]"
+            className="btn-light group/btn px-6 py-3 text-[0.66rem]"
           >
             Explore {d.name}
             <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
@@ -62,7 +62,7 @@ export default function DevelopmentCard({ d }: { d: Development }) {
             href={whatsappLink(enquire)}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline-light px-7 py-3 text-[0.68rem]"
+            className="btn-outline-light px-6 py-3 text-[0.66rem]"
           >
             Enquire
           </a>

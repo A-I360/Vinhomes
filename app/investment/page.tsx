@@ -81,15 +81,15 @@ export default function InvestmentPage() {
             accent="from a lasting asset"
             lede="We guide you through the four forces that shape real estate value — so you invest with context, not guesswork."
           />
-          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
+          <div className="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2">
             {pillars.map(({ Icon, t, d }, i) => (
               <Reveal key={t} delay={(i % 2) * 100}>
-                <div className="border-t-2 border-brand-gold/40 pt-6">
+                <div className="flex flex-col items-center border-t-2 border-brand-gold/40 pt-6 text-center">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-green900 text-brand-goldLight">
                     <Icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>
                   <h2 className="mt-5 font-serif text-2xl text-brand-green900">{t}</h2>
-                  <p className="mt-3 font-sans leading-relaxed text-brand-charcoal/75">{d}</p>
+                  <p className="mx-auto mt-3 max-w-md font-sans leading-relaxed text-brand-charcoal/75">{d}</p>
                 </div>
               </Reveal>
             ))}
@@ -115,7 +115,7 @@ export default function InvestmentPage() {
                       {f.role}
                     </span>
                   </div>
-                  <div className="flex flex-1 flex-col p-6">
+                  <div className="flex flex-1 flex-col items-center p-6 text-center">
                     <h3 className="font-serif text-2xl text-brand-green900">{f.name}</h3>
                     <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-brand-charcoal/75">{f.note}</p>
                     <Link href={`/properties?dev=${f.name.toLowerCase().replaceAll(" ", "-")}`} className="link-arrow mt-6">
@@ -133,13 +133,13 @@ export default function InvestmentPage() {
       <section className="bg-brand-green950 py-20 texture-dark">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4">
-              <span className="kicker kicker-light"><span className="rule" /> Read the fine print</span>
+            <div className="flex flex-col items-center justify-center text-center lg:col-span-4">
+              <span className="kicker kicker-light justify-center"><span className="rule" /> Read the fine print <span className="rule" /></span>
               <h2 className="display display-light mt-4 text-3xl sm:text-4xl">We separate fact from potential.</h2>
             </div>
             <div className="lg:col-span-8">
               <div className="overflow-hidden border border-brand-ivory/15 bg-brand-green900/30 backdrop-blur-sm">
-                <div className="grid divide-y divide-brand-ivory/10 font-sans text-sm sm:divide-y-0 sm:grid-cols-3 sm:divide-x">
+                <div className="grid divide-y divide-brand-ivory/10 text-center font-sans text-sm sm:divide-y-0 sm:grid-cols-3 sm:divide-x">
                   {[
                     ["Fact", "Confirmed property details — location, configuration, amenities, published payment structures and status as entered in our records."],
                     ["Positioning", "How we frame a development's appeal and character — for example 'prime location' or 'future-ready community.'"],
@@ -147,13 +147,13 @@ export default function InvestmentPage() {
                   ].map(([t, d]) => (
                     <div key={t} className="p-6">
                       <p className="font-serif text-lg text-brand-goldLight">{t}</p>
-                      <p className="mt-2 leading-relaxed text-brand-ivory/75">{d}</p>
+                      <p className="mx-auto mt-2 max-w-xs leading-relaxed text-brand-ivory/75">{d}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="mt-6 flex gap-3 border-l-2 border-brand-gold bg-brand-green900/40 p-5">
-                <Info className="mt-0.5 h-5 w-5 shrink-0 text-brand-gold" />
+              <div className="mt-6 flex items-center justify-center gap-3 border border-brand-gold bg-brand-green900/40 p-5 text-center">
+                <Info className="h-5 w-5 shrink-0 text-brand-gold" />
                 <p className="font-sans text-sm leading-relaxed text-brand-ivory/85">
                   Property values and investment returns are subject to market conditions and
                   individual circumstances. Always obtain current figures and legal advice before
@@ -172,24 +172,22 @@ export default function InvestmentPage() {
             <Reveal className="img-frame relative order-2 aspect-[4/5] lg:order-1">
               <Image src="/media/images/video-landscape-2.jpg" alt="Sustainable infrastructure in a Vinhomes community" fill sizes="(min-width:1024px) 50vw,100vw" className="object-cover" loading="lazy" />
             </Reveal>
-            <div className="order-1 lg:order-2">
+            <div className="order-1 flex flex-col items-center lg:order-2">
               <SectionHeading
                 kicker="Flexible entry"
                 title="Payment structures"
                 accent="that fit your plan"
               />
-              <ul className="mt-8 space-y-5">
+              <ul className="mt-8 w-full max-w-lg space-y-6 text-center">
                 {developments.flatMap((d) =>
                   (d.paymentPlans ?? []).map((pp) => (
-                    <li key={`${d.slug}-${pp.label}`} className="flex gap-5 border-b border-brand-line pb-5">
-                      <span className="mt-1 h-2 w-2 shrink-0 rotate-45 bg-brand-gold" />
-                      <div>
-                        <p className="font-serif text-lg text-brand-green900">{d.name}</p>
-                        <p className="mt-1 font-sans text-sm leading-relaxed text-brand-charcoal/75">
-                          {pp.label}. {pp.initialDeposit ? `${pp.initialDeposit}` : ""}{" "}
-                          {pp.installmentDuration ? `${pp.installmentDuration}.` : ""} {pp.note}
-                        </p>
-                      </div>
+                    <li key={`${d.slug}-${pp.label}`} className="border-b border-brand-line pb-5">
+                      <span className="mx-auto mb-3 block h-2 w-2 rotate-45 bg-brand-gold" />
+                      <p className="font-serif text-xl text-brand-green900">{d.name}</p>
+                      <p className="mx-auto mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-charcoal/75">
+                        {pp.label}. {pp.initialDeposit ? `${pp.initialDeposit}` : ""}{" "}
+                        {pp.installmentDuration ? `${pp.installmentDuration}.` : ""} {pp.note}
+                      </p>
                     </li>
                   ))
                 )}
@@ -198,7 +196,7 @@ export default function InvestmentPage() {
                 href={whatsappLink("Hi Vinhomes Platinum Living, I'd like to understand the payment structures available for investment.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-dark mt-8"
+                className="btn-dark mt-9"
               >
                 Ask about payment plans <ArrowRight className="h-4 w-4" />
               </a>
@@ -211,17 +209,17 @@ export default function InvestmentPage() {
       <section className="bg-brand-ivory py-24 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
+            <div className="flex flex-col items-center text-center">
               <SectionHeading
                 kicker="Investment Enquiry"
                 title="Discuss an opportunity"
                 accent="with a senior advisor"
                 lede="Share your objectives — budget, timeline and the kind of asset you have in mind. We will respond with a considered, factual overview of what fits."
               />
-              <ul className="mt-8 space-y-4 font-sans text-sm text-brand-charcoal/80">
-                <li className="flex items-start gap-3"><span className="mt-2 h-1 w-1 rotate-45 bg-brand-gold" /> One-to-one, no-pressure guidance</li>
-                <li className="flex items-start gap-3"><span className="mt-2 h-1 w-1 rotate-45 bg-brand-gold" /> Current pricing &amp; terms in writing</li>
-                <li className="flex items-start gap-3"><span className="mt-2 h-1 w-1 rotate-45 bg-brand-gold" /> Private on-site or virtual reviews</li>
+              <ul className="mt-8 space-y-3 font-sans text-sm text-brand-charcoal/80">
+                <li className="inline-flex items-center gap-3"><span className="h-1.5 w-1.5 rotate-45 bg-brand-gold" /> One-to-one, no-pressure guidance</li>
+                <li className="inline-flex items-center gap-3"><span className="h-1.5 w-1.5 rotate-45 bg-brand-gold" /> Current pricing &amp; terms in writing</li>
+                <li className="inline-flex items-center gap-3"><span className="h-1.5 w-1.5 rotate-45 bg-brand-gold" /> Private on-site or virtual reviews</li>
               </ul>
             </div>
             <Reveal className="panel p-6 sm:p-8">

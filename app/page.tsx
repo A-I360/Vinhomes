@@ -45,34 +45,42 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-brand-green950/70 via-transparent to-transparent" />
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col px-5 pb-20 sm:px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <span className="kicker kicker-light animate-fade-in">
-              <span className="rule" />
-              Vinhomes Platinum Living
-            </span>
-            <h1 className="display display-light mt-6 animate-fade-up text-5xl sm:text-6xl lg:text-7xl">
-              Where Luxury
-              <span className="block font-serif italic text-brand-goldLight">Meets Lifestyle</span>
-            </h1>
-            <p className="mt-7 max-w-xl animate-fade-up font-sans text-lg leading-relaxed text-brand-ivory/80 [animation-delay:150ms]">
-              Premium homes and thoughtfully planned communities designed for elegant living,
-              secure investment, and lasting value.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4 animate-fade-up [animation-delay:300ms]">
-              <Link href="/properties" className="btn-gold">
-                Explore Properties <ArrowUpRight className="h-4 w-4" />
-              </Link>
-              <Link href="/contact" className="btn-outline-light">
-                Speak with an Advisor
-              </Link>
-            </div>
+        <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-5 pb-24 text-center sm:px-8">
+          <span className="kicker kicker-light justify-center animate-fade-in">
+            <span className="rule" />
+            Vinhomes Platinum Living
+            <span className="rule" />
+          </span>
+          <h1 className="display display-light mt-6 animate-fade-up text-5xl sm:text-6xl lg:text-7xl">
+            Where Luxury
+            <span className="block font-serif italic text-brand-goldLight">Meets Lifestyle</span>
+          </h1>
+          <p className="mt-8 max-w-2xl animate-fade-up font-sans text-lg leading-relaxed text-brand-ivory/85 [animation-delay:150ms]">
+            Premium homes and thoughtfully planned communities designed for elegant living,
+            secure investment, and lasting value.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 animate-fade-up [animation-delay:300ms]">
+            <Link href="/properties" className="btn-gold">
+              Explore Properties <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <Link href="/contact" className="btn-outline-light">
+              Speak with an Advisor
+            </Link>
+          </div>
+
+          {/* quick trust chips */}
+          <div className="mt-14 grid w-full max-w-3xl grid-cols-2 gap-px overflow-hidden border border-brand-ivory/15 bg-brand-ivory/10 backdrop-blur-sm animate-fade-in [animation-delay:450ms] sm:grid-cols-4">
+            {["Premium Homes", "Secure Communities", "Flexible Payments", "Long-Term Value"].map((t) => (
+              <div key={t} className="bg-brand-green950/30 px-3 py-3 text-center font-sans text-[0.62rem] uppercase tracking-[0.16em] text-brand-ivory/85">
+                {t}
+              </div>
+            ))}
           </div>
 
           {/* scroll indicator */}
-          <div className="mt-16 flex items-center gap-4 animate-fade-in [animation-delay:700ms]">
+          <div className="mt-14 flex flex-col items-center gap-3 animate-fade-in [animation-delay:700ms]">
             <span className="scroll-line" />
-            <span className="font-sans text-[0.66rem] uppercase tracking-[0.24em] text-brand-ivory/60">
+            <span className="font-sans text-[0.62rem] uppercase tracking-[0.28em] text-brand-ivory/60">
               Scroll to explore
             </span>
           </div>
@@ -100,16 +108,18 @@ export default function HomePage() {
       {/* ====================== FEATURED DEVELOPMENTS ==================== */}
       <section className="bg-brand-paper py-24 lg:py-32">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <Reveal className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <Reveal>
             <SectionHeading
               kicker="Signature Developments"
               title="Featured developments,"
               accent="crafted for modern living"
               lede="Three considered addresses — each with its own character, from elegant fully-detached duplexes to a secure solar-powered community and a future-ready investment terrace."
             />
-            <Link href="/properties" className="btn-outline shrink-0">
-              View all properties
-            </Link>
+            <div className="mt-9 flex justify-center">
+              <Link href="/properties" className="btn-outline">
+                View all properties
+              </Link>
+            </div>
           </Reveal>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -122,51 +132,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ====================== PHILOSOPHY / SPLIT ===================== */}
-      <section className="overflow-hidden bg-brand-ivory">
-        <div className="mx-auto grid max-w-[1440px] lg:grid-cols-2">
-          <div className="relative min-h-[24rem] lg:min-h-[34rem]">
-            <Image
-              src="/media/images/video-interior-1.jpg"
-              alt="A Vinhomes Platinum Living residence"
-              fill
-              sizes="(min-width:1024px) 50vw, 100vw"
-              className="object-cover"
-              loading="lazy"
-            />
+      {/* ====================== PHILOSOPHY (immersive) ================= */}
+      <section className="relative flex min-h-[42rem] items-center overflow-hidden bg-brand-green950 py-28">
+        <div className="absolute inset-0">
+          <Image
+            src="/media/images/video-interior-1.jpg"
+            alt="A refined Vinhomes Platinum Living residence"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/75 via-brand-green950/55 to-brand-green950/80" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
+          <span className="kicker kicker-light justify-center">
+            <span className="rule" /> Our Philosophy <span className="rule" />
+          </span>
+          <h2 className="display display-light mt-6 text-4xl sm:text-5xl">
+            We craft lifestyles,<span className="block font-serif italic text-brand-goldLight">not just structures.</span>
+          </h2>
+          <div className="mx-auto mt-7 h-px w-24 gold-hairline" />
+          <p className="mx-auto mt-7 max-w-2xl font-sans text-lg leading-relaxed text-brand-ivory/85">
+            We are a premium real estate brand redefining modern living with elegance, trust and
+            innovation. Every residence we build is a considered environment for comfort,
+            security and quiet distinction.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-sans text-brand-ivory">
+            {["Elegant & sustainable homes", "Prime land", "Concierge service", "Smart urban living"].map((t) => (
+              <span key={t} className="inline-flex items-center gap-2 text-sm tracking-wide">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-goldLight" /> {t}
+              </span>
+            ))}
           </div>
-          <div className="flex flex-col justify-center px-6 py-16 sm:px-12 lg:px-16 lg:py-24">
-            <span className="kicker">
-              <span className="rule" /> Our Philosophy
-            </span>
-            <h2 className="display mt-5 text-3xl sm:text-4xl lg:text-5xl">
-              We craft lifestyles,<span className="block font-serif italic text-brand-goldDeep">not just structures.</span>
-            </h2>
-            <div className="mt-6 h-px w-16 gold-hairline" />
-            <p className="mt-6 max-w-lg font-sans leading-relaxed text-brand-charcoal/75">
-              Vinhomes Platinum Living is a premium real estate brand redefining modern living with
-              elegance, trust and innovation. We create more than homes — we craft lifestyles.
-              Every residence we build is a considered environment for comfort, security and
-              quiet distinction.
-            </p>
-            <ul className="mt-8 space-y-4">
-              {[
-                "Elegant, secure and sustainable homes",
-                "Prime land and quality building construction",
-                "Unmatched, concierge-level customer service",
-                "Communities shaped by smart urban thinking",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-3 font-sans text-brand-green900">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-gold" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-9">
-              <Link href="/about" className="link-arrow">
-                Discover who we are <ArrowUpRight className="arrow h-4 w-4" />
-              </Link>
-            </div>
+          <div className="mt-10">
+            <Link href="/about" className="btn-light">
+              Discover who we are <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -190,15 +192,15 @@ export default function HomePage() {
             ].map((a, i) => (
               <Reveal key={a.src} delay={i * 120} className="img-frame relative aspect-[4/5]">
                 <Image src={a.src} alt={a.alt} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" loading="lazy" />
-                <figcaption className="absolute bottom-5 left-5 font-serif text-2xl text-brand-ivory drop-shadow">
-                  {a.label}
-                </figcaption>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-green950/85 via-brand-green950/30 to-transparent p-4 pt-16 text-center">
+                  <figcaption className="font-serif text-2xl text-brand-ivory">{a.label}</figcaption>
+                </div>
               </Reveal>
             ))}
           </div>
 
           <Reveal className="mt-12">
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-brand-line pt-8 font-sans sm:grid-cols-3 lg:grid-cols-5">
+            <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-4 border-t border-brand-line pt-8 font-sans text-center sm:grid-cols-3 lg:grid-cols-5">
               {[
                 "24/7 Security",
                 "Clean Water",
@@ -209,7 +211,7 @@ export default function HomePage() {
                 "Private Parking",
                 "Power Backup",
               ].map((a) => (
-                <li key={a} className="flex items-center gap-2.5 text-sm text-brand-charcoal/75">
+                <li key={a} className="inline-flex items-center justify-center gap-2 text-sm text-brand-charcoal/75">
                   <span className="h-1 w-1 rotate-45 bg-brand-gold" />
                   {a}
                 </li>
@@ -222,15 +224,17 @@ export default function HomePage() {
       {/* ==================== FEATURED PROPERTY LISTINGS ================= */}
       <section className="bg-brand-ivory py-24 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <Reveal className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <Reveal>
             <SectionHeading
               kicker="Featured Residences"
               title="Homes available now,"
               accent="ready to be yours"
             />
-            <Link href="/properties" className="btn-ghost-link shrink-0">
-              Browse all properties <ArrowUpRight className="h-4 w-4" />
-            </Link>
+            <div className="mt-9 flex justify-center">
+              <Link href="/properties" className="btn-ghost-link">
+                Browse all properties <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
           </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featured.map((p, i) => (
@@ -243,97 +247,76 @@ export default function HomePage() {
       </section>
 
       {/* ==================== LOCATION SPOTLIGHT ====================== */}
-      <section className="relative overflow-hidden bg-brand-green950 py-24 lg:py-32">
-        <div className="absolute inset-0 opacity-25">
+      <section className="relative flex min-h-[40rem] items-center overflow-hidden bg-brand-green950 py-28 text-center">
+        <div className="absolute inset-0">
           <Image
             src="/media/images/dev-citadel-1.jpg"
             alt=""
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-brand-green950/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/80 via-brand-green950/55 to-brand-green950/85" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <span className="kicker kicker-light">
-                <span className="rule" /> Location — Ajah, Lagos
-              </span>
-              <h2 className="display display-light mt-5 text-4xl sm:text-5xl">
-                Citadel Oasis
-                <span className="block font-serif italic text-brand-goldLight">
-                  opposite CharterHouse School
-                </span>
-              </h2>
-              <p className="mt-6 flex items-center gap-2 font-sans text-brand-ivory/80">
-                <MapPin className="h-5 w-5 text-brand-gold" /> Around Abraham Adesanya Road,
-                Ajah, Lagos
-              </p>
-            </div>
-            <div className="flex flex-col justify-center border-l border-brand-ivory/15 pl-6 sm:pl-10">
-              <p className="font-serif text-2xl italic leading-snug text-brand-ivory sm:text-3xl">
-                “Secure, solar-powered living in one of Lagos&apos; most discussed residential
-                corridors — a community built for family, convenience and enduring appeal.”
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/properties?dev=citadel-oasis" className="btn-light">
-                  Explore Citadel Oasis
-                </Link>
-              </div>
-            </div>
+        <div className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+          <span className="kicker kicker-light justify-center">
+            <span className="rule" /> Location — Ajah, Lagos <span className="rule" />
+          </span>
+          <h2 className="display display-light mt-6 text-4xl sm:text-5xl lg:text-6xl">
+            Citadel Oasis
+            <span className="block font-serif italic text-brand-goldLight">
+              opposite CharterHouse School
+            </span>
+          </h2>
+          <p className="mt-5 inline-flex items-center justify-center gap-2 font-sans text-brand-ivory/85">
+            <MapPin className="h-5 w-5 text-brand-gold" /> Around Abraham Adesanya Road, Ajah, Lagos
+          </p>
+          <p className="mx-auto mt-8 max-w-2xl font-serif text-2xl italic leading-snug text-brand-ivory/90 sm:text-3xl">
+            “Secure, solar-powered living in one of Lagos&apos; most discussed residential
+            corridors — a community built for family, convenience and enduring appeal.”
+          </p>
+          <div className="mt-10 flex justify-center">
+            <Link href="/properties?dev=citadel-oasis" className="btn-light">
+              Explore Citadel Oasis
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ===================== INVESTMENT TEASER ====================== */}
       <section className="bg-brand-paper py-24 lg:py-32">
-        <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
-          <div>
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
             <SectionHeading
               kicker="Investment"
               title="Invest in space."
               accent="Build lasting value."
               lede="Capital Loft is our investment-focused address — a prime, future-ready development of modern terraces with flexible entry, from outright purchase to structured plans."
             />
-            <ul className="mt-8 space-y-4 font-sans">
-              {[
-                ["Prime, accessible location", "Selected for surroundings and everyday convenience."],
-                ["Flexible payment plans", "Outright purchase or a staged, structured option."],
-                ["3 Bedroom Terrace & 2 Bedroom Terrace with BQ", "Contemporary formats with strong demand fundamentals."],
-              ].map(([t, d]) => (
-                <li key={t} className="flex gap-4">
-                  <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-gold/40 font-serif text-brand-goldDeep">
-                    •
-                  </span>
-                  <div>
-                    <p className="font-serif text-lg text-brand-green900">{t}</p>
-                    <p className="mt-1 font-sans text-sm leading-relaxed text-brand-charcoal/70">{d}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link href="/investment" className="btn-dark">
-                Explore Investment
-              </Link>
-              <Link href="/properties?dev=capital-loft" className="btn-outline">
-                Capital Loft homes
-              </Link>
+            <div className="mx-auto mt-9 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-5 text-center font-sans text-brand-charcoal/80">
+              <div><p className="font-serif text-2xl text-brand-green900">Prime</p><p className="text-sm">accessible location</p></div>
+              <span className="hidden h-10 w-px bg-brand-line sm:block" />
+              <div><p className="font-serif text-2xl text-brand-green900">Flexible</p><p className="text-sm">outright or structured</p></div>
+              <span className="hidden h-10 w-px bg-brand-line sm:block" />
+              <div><p className="font-serif text-2xl text-brand-green900">3 &amp; 2 Beds</p><p className="text-sm">terrace formats</p></div>
             </div>
-          </div>
-          <Reveal className="img-frame relative aspect-[4/5]">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link href="/investment" className="btn-dark">Explore Investment</Link>
+              <Link href="/properties?dev=capital-loft" className="btn-outline">Capital Loft homes</Link>
+            </div>
+          </Reveal>
+          <Reveal className="img-frame relative mt-14 aspect-[21/10]">
             <Image
               src="/media/images/dev-capital-1.jpg"
               alt="A Vinhomes Platinum Living investment development"
               fill
-              sizes="(min-width:1024px) 50vw, 100vw"
+              sizes="100vw"
               className="object-cover"
               loading="lazy"
             />
             <span className="absolute left-5 top-5 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-goldLight backdrop-blur-sm">
-              Vinhomes development
+              Capital Loft
             </span>
           </Reveal>
         </div>
@@ -342,11 +325,13 @@ export default function HomePage() {
       {/* ===================== INSIGHTS TEASER ======================== */}
       <section className="bg-brand-ivory py-24 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <Reveal className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <Reveal>
             <SectionHeading kicker="Insights" title="Notes on property," accent="written plainly" />
-            <Link href="/insights" className="btn-ghost-link shrink-0">
-              All insights <ArrowUpRight className="h-4 w-4" />
-            </Link>
+            <div className="mt-9 flex justify-center">
+              <Link href="/insights" className="btn-ghost-link">
+                All insights <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
           </Reveal>
           <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {insights

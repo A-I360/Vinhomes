@@ -93,15 +93,18 @@ export default function PropertiesView() {
           <img src="/media/images/video-hero.jpg" alt="" className="h-full w-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/60 to-brand-green950/30" />
         </div>
-        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-10 sm:px-8 lg:px-12">
-          <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex items-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.16em] text-brand-ivory/60">
+        <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-5 pb-10 text-center sm:px-8">
+          <nav aria-label="Breadcrumb" className="mb-5 flex justify-center">
+            <ol className="flex items-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-brand-ivory/60">
               <li><Link href="/" className="hover:text-brand-goldLight">Home</Link></li>
               <li className="text-brand-gold">/</li>
               <li aria-current="page" className="text-brand-ivory">Properties</li>
             </ol>
           </nav>
           <h1 className="display display-light text-4xl sm:text-6xl">Discover your property</h1>
+          <p className="mt-4 max-w-xl font-sans text-brand-ivory/75">
+            Explore premium homes, secure communities and considered investments across Lagos.
+          </p>
           {dev ? (
             <p className="mt-4 font-serif text-xl italic text-brand-goldLight">{devNames[dev]}</p>
           ) : null}
@@ -203,7 +206,7 @@ export default function PropertiesView() {
       {/* note + consultancy */}
       <div className="mx-auto mt-20 max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-6 border-t border-brand-line pt-12 lg:grid-cols-3">
-          <div className="border border-brand-line bg-white p-7">
+          <div className="flex flex-col items-center border border-brand-line bg-white p-8 text-center">
             <h3 className="font-serif text-xl text-brand-green900">Not what you&apos;re looking for?</h3>
             <p className="mt-2 font-sans text-sm leading-relaxed text-brand-charcoal/75">
               Our portfolio evolves regularly. Tell us your ideal property and we&apos;ll let you know
@@ -213,7 +216,7 @@ export default function PropertiesView() {
               Register your interest <ArrowUpRight className="arrow h-4 w-4" />
             </Link>
           </div>
-          <div className="border border-brand-line bg-white p-7">
+          <div className="flex flex-col items-center border border-brand-line bg-white p-8 text-center">
             <h3 className="font-serif text-xl text-brand-green900">Prefer to speak to someone?</h3>
             <p className="mt-2 font-sans text-sm leading-relaxed text-brand-charcoal/75">
               A senior advisor is available by phone, WhatsApp or email for a private conversation.
@@ -227,7 +230,7 @@ export default function PropertiesView() {
               Chat on WhatsApp <ArrowUpRight className="arrow h-4 w-4" />
             </a>
           </div>
-          <div className="border border-brand-line bg-brand-green950 p-7">
+          <div className="flex flex-col items-center border border-brand-line bg-brand-green950 p-8 text-center">
             <h3 className="font-serif text-xl text-brand-ivory">Pricing</h3>
             <p className="mt-2 font-sans text-sm leading-relaxed text-brand-ivory/75">
               Published prices are current for their listing at the time shown. Where a home is

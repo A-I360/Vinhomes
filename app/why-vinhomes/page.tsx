@@ -50,7 +50,7 @@ export default function WhyPage() {
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {advantages.map(({ Icon, t, d }, i) => (
               <Reveal key={t} delay={(i % 3) * 90}>
-                <article className="group h-full border border-brand-line bg-white p-7 transition-all duration-500 ease-luxe hover:border-brand-gold/60 hover:shadow-card">
+                <article className="group flex h-full flex-col items-center border border-brand-line bg-white p-7 text-center transition-all duration-500 ease-luxe hover:border-brand-gold/60 hover:shadow-card">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full border border-brand-gold/40 text-brand-goldDeep transition-colors duration-500 group-hover:bg-brand-green900 group-hover:text-brand-goldLight">
                     <Icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>
@@ -70,8 +70,8 @@ export default function WhyPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid items-center gap-14 lg:grid-cols-2">
-            <div>
-              <span className="kicker kicker-light">
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <span className="kicker kicker-light justify-center lg:justify-start">
                 <span className="rule" /> Built for today
               </span>
               <h2 className="display display-light mt-5 text-4xl sm:text-5xl">
@@ -96,15 +96,15 @@ export default function WhyPage() {
                 ["Tomorrow", "A community and location engineered to hold their relevance and value."],
               ].map(([t, d]) => (
                 <Reveal key={t}>
-                  <div className="border-l-2 border-brand-gold/60 bg-brand-green900/40 p-7 backdrop-blur-sm">
+                  <div className="h-full border-l-2 border-brand-gold/60 bg-brand-green900/40 p-7 text-center backdrop-blur-sm">
                     <h3 className="font-serif text-2xl italic text-brand-goldLight">{t}</h3>
-                    <p className="mt-3 font-sans text-sm leading-relaxed text-brand-ivory/75">{d}</p>
+                    <p className="mx-auto mt-3 max-w-[14rem] font-sans text-sm leading-relaxed text-brand-ivory/75">{d}</p>
                   </div>
                 </Reveal>
               ))}
               <Reveal className="sm:col-span-2" delay={120}>
-                <div className="bg-brand-gold p-7">
-                  <p className="font-serif text-xl leading-snug text-brand-green950">
+                <div className="bg-brand-gold p-7 text-center">
+                  <p className="mx-auto max-w-xl font-serif text-xl leading-snug text-brand-green950">
                     “We don&apos;t simply sell addresses. We steward the decisions that let families
                     live beautifully today and grow into tomorrow.”
                   </p>
@@ -129,7 +129,7 @@ export default function WhyPage() {
                 accent="No inflated claims"
               />
             </div>
-            <div className="space-y-5 lg:col-span-7">
+            <div className="space-y-6 text-center lg:col-span-7">
               {[
                 ["Transparent figures", "Pricing and payment terms are confirmed in writing. We never publish figures we cannot stand behind."],
                 ["Factual positioning", "We distinguish clearly between what a property factually offers and how we position it in the market."],
@@ -137,9 +137,9 @@ export default function WhyPage() {
                 ["Considered, never pushy", "Our advisors inform and guide — the decision is always yours, made with clarity."],
               ].map(([t, d]) => (
                 <Reveal key={t}>
-                  <div className="border-l border-brand-gold/50 pl-5">
-                    <h3 className="font-serif text-lg text-brand-green900">{t}</h3>
-                    <p className="mt-1.5 font-sans text-sm leading-relaxed text-brand-charcoal/75">{d}</p>
+                  <div className="border-t border-brand-gold/40 pt-5">
+                    <h3 className="font-serif text-xl text-brand-green900">{t}</h3>
+                    <p className="mx-auto mt-1.5 max-w-lg font-sans text-sm leading-relaxed text-brand-charcoal/75">{d}</p>
                   </div>
                 </Reveal>
               ))}

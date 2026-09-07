@@ -76,20 +76,20 @@ export default function PropertyCard({
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <div className="flex items-center gap-2 font-sans text-[0.66rem] uppercase tracking-[0.18em] text-brand-goldDeep">
+      <div className="flex flex-1 flex-col items-center p-6 text-center sm:p-7">
+        <div className="flex items-center justify-center gap-2 font-sans text-[0.66rem] uppercase tracking-[0.18em] text-brand-goldDeep">
           <MapPin className="h-3.5 w-3.5" />
           <span className="text-brand-charcoal/70 normal-case tracking-[0.08em]">
             {property.location}
           </span>
         </div>
-        <h3 className="mt-2 font-serif text-xl leading-snug text-brand-green900 sm:text-[1.35rem]">
+        <h3 className="mt-3 font-serif text-xl leading-snug text-brand-green900 sm:text-[1.35rem]">
           <Link href={`/properties/${property.slug}`} className="transition-colors hover:text-brand-goldDeep">
             {property.name}
           </Link>
         </h3>
 
-        <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 font-sans text-[0.8rem] text-brand-charcoal/70">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-sans text-[0.8rem] text-brand-charcoal/70">
           {property.propertyType && <span>{property.propertyType}</span>}
           {property.bedrooms != null && (
             <span className="inline-flex items-center gap-1.5">
@@ -109,7 +109,7 @@ export default function PropertyCard({
         </div>
 
         {keyLabels.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">
             {keyLabels.map((l) => (
               <span
                 key={l}
@@ -121,24 +121,22 @@ export default function PropertyCard({
           </div>
         )}
 
-        <div className="mt-5 flex items-end justify-between border-t border-brand-line pt-4">
-          <div>
-            {showPrice ? (
-              <>
-                <p className="font-sans text-[0.62rem] uppercase tracking-[0.2em] text-brand-charcoal/50">
-                  Starting price
-                </p>
-                <p className="font-serif text-lg text-brand-green900">{property.price}</p>
-              </>
-            ) : (
-              <p className="font-serif text-base text-brand-charcoal/80">
-                {property.paymentPlan?.note ?? "Pricing on request"}
+        <div className="mt-6 w-full border-t border-brand-line pt-5">
+          {showPrice ? (
+            <>
+              <p className="font-sans text-[0.62rem] uppercase tracking-[0.2em] text-brand-charcoal/50">
+                Starting price
               </p>
-            )}
-          </div>
+              <p className="mt-1 font-serif text-xl text-brand-green900">{property.price}</p>
+            </>
+          ) : (
+            <p className="font-serif text-base text-brand-charcoal/80">
+              {property.paymentPlan?.note ?? "Pricing on request"}
+            </p>
+          )}
         </div>
 
-        <div className="mt-5 grid grid-cols-2 gap-3">
+        <div className="mt-6 grid w-full grid-cols-2 gap-3">
           <Link
             href={`/properties/${property.slug}`}
             className="btn-dark w-full px-4 py-3 text-[0.66rem]"

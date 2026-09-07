@@ -37,7 +37,7 @@ export default function ContactPage() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {cards.map(({ Icon, t, line1, line2, href }, i) => (
               <Reveal key={t} delay={i * 80}>
-                <a href={href} className="group flex h-full flex-col border border-brand-line bg-white p-6 transition-all duration-500 ease-luxe hover:border-brand-gold/60 hover:shadow-card">
+                <a href={href} className="group flex h-full flex-col items-center border border-brand-line bg-white p-6 text-center transition-all duration-500 ease-luxe hover:border-brand-gold/60 hover:shadow-card">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-gold/40 text-brand-goldDeep transition-colors group-hover:bg-brand-green900 group-hover:text-brand-goldLight">
                     <Icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>
@@ -55,14 +55,14 @@ export default function ContactPage() {
       <section className="bg-brand-ivory py-20 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <span className="kicker"><span className="rule" /> Enquiry</span>
-              <h2 className="display mt-4 text-3xl sm:text-4xl">Tell us what you&apos;re looking for</h2>
-              <p className="mt-4 max-w-lg font-sans leading-relaxed text-brand-charcoal/75">
+            <div className="flex flex-col items-center text-center">
+              <span className="kicker justify-center"><span className="rule" /> Enquiry <span className="rule" /></span>
+              <h2 className="display mx-auto mt-4 max-w-xl text-3xl sm:text-4xl">Tell us what you&apos;re looking for</h2>
+              <p className="mx-auto mt-4 max-w-lg font-sans leading-relaxed text-brand-charcoal/75">
                 Share a few details and we&apos;ll respond personally with considered guidance —
                 never automated.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a href={whatsappLink("Hi Vinhomes Platinum Living, I'd like to book a viewing.")} target="_blank" rel="noopener noreferrer" className="btn-dark">
                   Request a Viewing <CalendarDays className="h-4 w-4" />
                 </a>
@@ -82,17 +82,17 @@ export default function ContactPage() {
       <section id="visit" className="bg-brand-green950 py-20 texture-dark">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-2">
-            <div>
-              <span className="kicker kicker-light"><span className="rule" /> Our office</span>
+            <div className="flex flex-col items-center text-center">
+              <span className="kicker kicker-light justify-center"><span className="rule" /> Our office <span className="rule" /></span>
               <h2 className="display display-light mt-4 text-3xl sm:text-4xl">Vinhomes Platinum Living</h2>
-              <p className="mt-6 max-w-md font-sans leading-relaxed text-brand-ivory/80">
+              <p className="mx-auto mt-6 max-w-md font-sans leading-relaxed text-brand-ivory/80">
                 A warm welcome awaits at our Akowonjo office. Appointments are encouraged so an
                 advisor is ready for you.
               </p>
-              <div className="mt-7 space-y-3 border-l-2 border-brand-gold/60 pl-5 font-sans text-brand-ivory/90">
-                <p className="flex items-start gap-3"><MapPin className="mt-1 h-5 w-5 shrink-0 text-brand-gold" />No. 41, Shasha Road, Cele B/Stop,<br />Akowonjo Road, 2nd Floor,<br />Same Building with GIG Motors.</p>
-                <a className="flex items-center gap-3 hover:text-brand-goldLight" href={`tel:${siteConfig.phone}`}><Phone className="h-5 w-5 shrink-0 text-brand-gold" />{siteConfig.phoneDisplay}</a>
-                <a className="flex items-center gap-3 hover:text-brand-goldLight" href={`mailto:${siteConfig.email}`}><Mail className="h-5 w-5 shrink-0 text-brand-gold" />{siteConfig.email}</a>
+              <div className="mt-7 max-w-md space-y-4 border-t border-brand-ivory/15 pt-6 text-center font-sans text-brand-ivory/90">
+                <p className="flex items-center justify-center gap-2"><MapPin className="h-5 w-5 shrink-0 text-brand-gold" /><span className="text-left">No. 41, Shasha Road, Cele B/Stop,<br />Akowonjo Road, 2nd Floor,<br />Same Building with GIG Motors.</span></p>
+                <a className="inline-flex items-center justify-center gap-2 hover:text-brand-goldLight" href={`tel:${siteConfig.phone}`}><Phone className="h-5 w-5 shrink-0 text-brand-gold" />{siteConfig.phoneDisplay}</a>
+                <a className="inline-flex items-center justify-center gap-2 hover:text-brand-goldLight" href={`mailto:${siteConfig.email}`}><Mail className="h-5 w-5 shrink-0 text-brand-gold" />{siteConfig.email}</a>
               </div>
             </div>
             <Reveal className="flex flex-col items-center justify-center rounded-none border border-brand-ivory/15 bg-brand-green900/30 p-8 text-center backdrop-blur-sm">

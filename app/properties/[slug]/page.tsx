@@ -100,21 +100,21 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
             <div className="absolute inset-0 bg-gradient-to-r from-brand-green950/70 to-transparent" />
           </div>
         )}
-        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-10 sm:px-8 lg:px-12">
-          <nav aria-label="Breadcrumb" className="mb-5 hidden items-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.16em] text-brand-ivory/60 sm:flex">
+        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 pb-12 text-center sm:px-8">
+          <nav aria-label="Breadcrumb" className="mb-6 hidden items-center justify-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-brand-ivory/60 sm:flex">
             <Link href="/" className="hover:text-brand-goldLight">Home</Link><span className="text-brand-gold">/</span>
             <Link href="/properties" className="hover:text-brand-goldLight">Properties</Link><span className="text-brand-gold">/</span>
             <span aria-current="page" className="text-brand-ivory">{property.name}</span>
           </nav>
           {dev && (
-            <Link href={`/properties?dev=${dev.slug}`} className="kicker kicker-light">
-              <span className="rule" /> {dev.name}
+            <Link href={`/properties?dev=${dev.slug}`} className="kicker kicker-light justify-center">
+              <span className="rule" /> {dev.name} <span className="rule" />
             </Link>
           )}
-          <h1 className="display display-light mt-4 max-w-4xl text-4xl sm:text-5xl lg:text-6xl">
+          <h1 className="display display-light mt-5 text-4xl sm:text-5xl lg:text-6xl">
             {property.name}
           </h1>
-          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-sans text-brand-ivory/85">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-sans text-brand-ivory/85">
             {property.location && (
               <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-brand-gold" /> {property.location}</span>
             )}
@@ -147,13 +147,13 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
           {/* ===== MAIN ===== */}
           <div className="min-w-0 space-y-20">
             {/* Overview */}
-            <section>
+            <section className="text-center">
               <SectionHeading kicker="Overview" title="An elegant place" accent="to call home" />
-              <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-brand-charcoal/80">{property.description}</p>
+              <p className="mx-auto mt-6 max-w-3xl font-sans text-lg leading-relaxed text-brand-charcoal/80">{property.description}</p>
               {property.overview && property.overview.length > 0 && (
-                <ul className="mt-7 grid gap-4 sm:grid-cols-3">
+                <ul className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-3">
                   {property.overview.map((o) => (
-                    <li key={o} className="border-l border-brand-gold/50 pl-4 font-sans text-sm leading-relaxed text-brand-charcoal/75">{o}</li>
+                    <li key={o} className="border-t border-brand-gold/40 pt-4 font-sans text-sm leading-relaxed text-brand-charcoal/75">{o}</li>
                   ))}
                 </ul>
               )}
