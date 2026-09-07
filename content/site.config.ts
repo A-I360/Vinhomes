@@ -17,9 +17,8 @@ export const siteConfig: SiteConfig = {
     ],
   },
   social: {
-    instagram: "https://instagram.com",
-    facebook: "https://facebook.com",
-    tiktok: "https://tiktok.com",
+    // Only channels with a real destination are configured. The remaining
+    // platforms are not set (no fabricated handles / placeholder homepages).
     whatsapp: "https://wa.me/2347036724517",
   },
   navigation: [

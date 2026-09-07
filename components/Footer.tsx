@@ -1,15 +1,12 @@
 import Link from "next/link";
-import { Instagram, Facebook, Music2, MessageCircle, Phone, Mail, MapPin } from "lucide-react";
+import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/content/site.config";
 import Brand from "@/components/Brand";
 import Newsletter from "@/components/Newsletter";
 
-const socials = [
-  { label: "Instagram", href: siteConfig.social.instagram ?? "#", Icon: Instagram },
-  { label: "Facebook", href: siteConfig.social.facebook ?? "#", Icon: Facebook },
-  { label: "TikTok", href: siteConfig.social.tiktok ?? "#", Icon: Music2 },
-  { label: "WhatsApp", href: siteConfig.social.whatsapp ?? "#", Icon: MessageCircle },
-];
+/* Only channels with a verified destination are shown — WhatsApp is the
+   confirmed direct line. */
+const socials = [{ label: "WhatsApp", href: siteConfig.social.whatsapp, Icon: MessageCircle }];
 
 export default function Footer() {
   return (

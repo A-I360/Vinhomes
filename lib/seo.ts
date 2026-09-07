@@ -73,8 +73,8 @@ export function organizationSchema() {
     url: siteConfig.url,
     telephone: siteConfig.phoneDisplay,
     email: siteConfig.email,
-    image: `${siteConfig.url}/media/brand/logo.jpg`,
-    logo: `${siteConfig.url}/media/brand/logo.jpg`,
+    image: `${siteConfig.url}/media/brand/logo.png`,
+    logo: `${siteConfig.url}/media/brand/logo.png`,
     priceRange: "₦₦₦₦",
     address: {
       "@type": "PostalAddress",
