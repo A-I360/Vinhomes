@@ -8,7 +8,7 @@ export default function InsightCard({ post }: { post: Insight }) {
   return (
     <article className="group">
       <Link href={`/insights/${post.slug}`} className="block overflow-hidden">
-        <div className="img-frame aspect-[16/10]">
+        <div className="img-frame shape-archcard aspect-[16/10]">
           <Image
             src={post.coverImage.src}
             alt={post.coverImage.alt || post.title}

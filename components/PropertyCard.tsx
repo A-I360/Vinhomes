@@ -37,7 +37,7 @@ export default function PropertyCard({
         feature && "col-span-full"
       )}
     >
-      <div className="img-frame relative">
+      <div className="img-frame shape-archcard relative">
         <Link href={`/properties/${property.slug}`} className="block">
           {hero ? (
             <Image

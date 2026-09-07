@@ -180,7 +180,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
                 {amenityWithImage.length > 0 && (
                   <div className="mt-7 grid gap-4 sm:grid-cols-3">
                     {amenityWithImage.map((a) => (
-                      <figure key={a.id} className="group relative overflow-hidden">
+                      <figure key={a.id} className="img-frame shape-curve group relative overflow-hidden">
                         <Image src={a.image!.src} alt={a.image!.alt || a.label} width={600} height={400} className="aspect-[3/2] w-full object-cover transition-transform duration-1000 ease-luxe group-hover:scale-105" loading="lazy" />
                         <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-green950/85 to-transparent p-3 pt-8 font-serif text-lg text-brand-ivory">{a.label}</figcaption>
                       </figure>
@@ -242,7 +242,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
                     consultation.
                   </p>
                 </div>
-                <div className="img-frame relative min-h-[16rem] overflow-hidden bg-brand-green800">
+                <div className="img-frame shape-curve-lg relative min-h-[16rem] overflow-hidden bg-brand-green800">
                   <Image src={dev?.heroMedia?.src ?? hero?.src ?? "/media/images/dev-citadel-1.jpg"} alt={`${dev?.name ?? property.name} location`} fill sizes="(min-width:1024px) 45vw,100vw" className="object-cover" loading="lazy" />
                   <div className="absolute inset-0 flex items-center justify-center bg-brand-green950/30">
                     <div className="bg-brand-ivory/95 px-6 py-4 text-center">

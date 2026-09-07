@@ -31,7 +31,7 @@ export default function AboutPage() {
       {/* WHO WE ARE */}
       <section className="bg-brand-paper py-24 lg:py-32">
         <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
-          <Reveal className="img-frame order-2 aspect-[4/5] lg:order-1">
+          <Reveal className="img-frame frame-line shape-arch relative order-2 aspect-[4/5] lg:order-1">
             <Image
               src="/media/images/dev-citadel-1.jpg"
               alt="Vinhomes Platinum Living development"
@@ -40,7 +40,7 @@ export default function AboutPage() {
               className="object-cover"
               loading="lazy"
             />
-            <span className="absolute left-5 top-5 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-goldLight backdrop-blur-sm">
+            <span className="absolute bottom-6 left-6 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-goldLight backdrop-blur-sm">
               Our communities
             </span>
           </Reveal>
@@ -129,7 +129,7 @@ export default function AboutPage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((v, i) => (
               <Reveal key={v.title} delay={(i % 3) * 100} className={i >= 3 ? "sm:col-span-1 lg:col-span-1" : ""}>
-                <article className="group relative flex aspect-[4/5] items-end justify-center overflow-hidden">
+                <article className="img-frame shape-archcard group relative flex aspect-[4/5] items-end justify-center overflow-hidden">
                   <Image
                     src={v.image.src}
                     alt={v.image.alt || v.title}

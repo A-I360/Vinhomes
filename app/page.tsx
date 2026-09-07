@@ -190,9 +190,9 @@ export default function HomePage() {
               { src: "/media/images/video-landscape-1.jpg", alt: "Communal outdoor surroundings at a Vinhomes development", label: "Planned surroundings" },
               { src: "/media/images/dev-emerald-1.jpg", alt: "Residences built to the Vinhomes standard", label: "The Vinhomes standard" },
             ].map((a, i) => (
-              <Reveal key={a.src} delay={i * 120} className="img-frame relative aspect-[4/5]">
+              <Reveal key={a.src} delay={i * 120} className="img-frame shape-arch relative aspect-[4/5]">
                 <Image src={a.src} alt={a.alt} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" loading="lazy" />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-green950/85 via-brand-green950/30 to-transparent p-4 pt-16 text-center">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-green950/85 via-brand-green950/30 to-transparent px-4 pb-6 pt-16 text-center">
                   <figcaption className="font-serif text-2xl text-brand-ivory">{a.label}</figcaption>
                 </div>
               </Reveal>
@@ -306,7 +306,7 @@ export default function HomePage() {
               <Link href="/properties?dev=capital-loft" className="btn-outline">Capital Loft homes</Link>
             </div>
           </Reveal>
-          <Reveal className="img-frame relative mt-14 aspect-[21/10]">
+          <Reveal className="img-frame shape-archcard relative mt-14 aspect-[21/10]">
             <Image
               src="/media/images/dev-capital-1.jpg"
               alt="A Vinhomes Platinum Living investment development"
@@ -315,7 +315,7 @@ export default function HomePage() {
               className="object-cover"
               loading="lazy"
             />
-            <span className="absolute left-5 top-5 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-goldLight backdrop-blur-sm">
+            <span className="absolute bottom-6 left-6 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-goldLight backdrop-blur-sm">
               Capital Loft
             </span>
           </Reveal>

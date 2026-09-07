@@ -109,9 +109,9 @@ export default function InvestmentPage() {
             {formats.map((f, i) => (
               <Reveal key={f.name} delay={i * 100}>
                 <article className="group flex h-full flex-col overflow-hidden bg-white shadow-card transition-all duration-500 ease-luxe hover:-translate-y-1 hover:shadow-lift">
-                  <div className="img-frame relative aspect-[16/10]">
+                  <div className="img-frame shape-archcard relative aspect-[16/10]">
                     <Image src={f.img} alt={`${f.name} investment`} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" loading="lazy" />
-                    <span className="absolute left-4 top-4 bg-brand-green950/70 px-3 py-1 font-sans uppercase tracking-[0.16em] text-[0.6rem] text-brand-goldLight backdrop-blur-sm">
+                    <span className="absolute bottom-4 right-4 bg-brand-green950/70 px-3 py-1 font-sans uppercase tracking-[0.16em] text-[0.6rem] text-brand-goldLight backdrop-blur-sm">
                       {f.role}
                     </span>
                   </div>
@@ -169,7 +169,7 @@ export default function InvestmentPage() {
       <section className="bg-brand-paper py-24">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal className="img-frame relative order-2 aspect-[4/5] lg:order-1">
+            <Reveal className="img-frame shape-arch relative order-2 aspect-[4/5] lg:order-1">
               <Image src="/media/images/video-landscape-2.jpg" alt="Sustainable infrastructure in a Vinhomes community" fill sizes="(min-width:1024px) 50vw,100vw" className="object-cover" loading="lazy" />
             </Reveal>
             <div className="order-1 flex flex-col items-center lg:order-2">

@@ -12,7 +12,7 @@ export default function DevelopmentCard({ d }: { d: Development }) {
   const enquire = `Hi Vinhomes Platinum Living, I'm interested in ${d.name}. Please send me more details.`;
 
   return (
-    <article className="group relative flex min-h-[30rem] flex-col justify-end overflow-hidden bg-brand-green900 lg:min-h-[34rem]">
+    <article className="group shape-archcard relative flex min-h-[30rem] flex-col justify-end overflow-hidden bg-brand-green900 lg:min-h-[34rem]">
       <div className="img-frame absolute inset-0">
         <Image
           src={hero.src}

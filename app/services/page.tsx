@@ -44,7 +44,7 @@ export default function ServicesPage() {
               return (
                 <Reveal key={s.id}>
                   <article className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
-                    <div className={`img-frame relative aspect-[16/11] lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
+                    <div className={`img-frame relative aspect-[16/11] lg:col-span-7 ${flip ? "shape-arc-alt lg:order-2" : "shape-arc"}`}>
                       <Image
                         src={s.image.src}
                         alt={s.image.alt || s.title}
@@ -54,7 +54,7 @@ export default function ServicesPage() {
                         loading="lazy"
                       />
                       {s.image.credit && (
-                        <span className="absolute left-4 top-4 bg-brand-green950/60 px-2.5 py-1 font-sans text-[0.6rem] uppercase tracking-[0.16em] text-brand-ivory backdrop-blur-sm">
+                        <span className="absolute bottom-4 right-4 bg-brand-green950/60 px-2.5 py-1 font-sans text-[0.6rem] uppercase tracking-[0.16em] text-brand-ivory backdrop-blur-sm">
                           {s.image.credit}
                         </span>
                       )}

@@ -22,8 +22,8 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
 
   return (
     <div>
-      <div className="relative overflow-hidden bg-brand-green900">
-        <button type="button" onClick={() => open(active)} aria-label="Open image viewer" className="img-frame block h-full w-full">
+      <div className="shape-archcard relative bg-brand-green900 p-2">
+        <button type="button" onClick={() => open(active)} aria-label="Open image viewer" className="img-frame shape-archcard block h-full w-full">
           <Image
             src={current.src}
             alt={current.alt || title}
@@ -36,7 +36,7 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
         </button>
         <button
           onClick={() => open(active)}
-          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center bg-brand-green950/60 text-brand-ivory backdrop-blur-sm transition-colors hover:bg-brand-green900"
+          className="absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-brand-green950/60 text-brand-ivory backdrop-blur-sm transition-colors hover:bg-brand-green900"
           aria-label="Expand image"
         >
           <Maximize2 className="h-4 w-4" />
@@ -55,7 +55,7 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
               key={i}
               onClick={() => setActive(i)}
               aria-label={`View image ${i + 1} of ${items.length}`}
-              className={`relative h-20 w-28 shrink-0 overflow-hidden transition-opacity ${i === active ? "opacity-100 ring-1 ring-brand-gold" : "opacity-60 hover:opacity-90"}`}
+              className={`shape-curve-sm relative h-20 w-28 shrink-0 overflow-hidden transition-opacity ${i === active ? "opacity-100 ring-1 ring-brand-gold" : "opacity-60 hover:opacity-90"}`}
             >
               <Image src={it.src} alt={it.alt || `${title} ${i + 1}`} fill sizes="112px" className="object-cover" loading="lazy" />
             </button>

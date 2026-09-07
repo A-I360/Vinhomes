@@ -131,6 +131,79 @@ body {
   transform: scale(1.045);
 }
 
+/* ---------------------------------------------------------------- */
+/*  Image shape language — media shown in arches & curves, not plain */
+/*  rectangles. Each shape clips its content (apply to an overflow-  */
+/*  hidden container, or directly to a non-fill img).               */
+/* ---------------------------------------------------------------- */
+/* Signature door / moon arch — tall, editorial portraits */
+.shape-arch {
+  border-radius: 999px 999px 22px 22px;
+}
+/* Generous arch for medium/tall frames */
+.shape-arch-soft {
+  border-radius: 72px 72px 20px 20px;
+}
+/* Arched-top media used at the head of cards (landscape-ish) */
+.shape-archcard {
+  border-radius: 52px 52px 18px 18px;
+}
+/* Soft arch for tall-thin (circle-ish top) */
+.shape-arch-tall {
+  border-radius: 50% 50% 16px 16px;
+}
+/* Organic circle / ellipse */
+.shape-circle {
+  border-radius: 9999px;
+}
+/* Generous rounded corner (reads as curated, not a plain box) */
+.shape-curve {
+  border-radius: 34px;
+}
+.shape-curve-lg {
+  border-radius: 48px;
+}
+.shape-curve-sm {
+  border-radius: 18px;
+}
+/* asymmetric editorial arc for wide feature media */
+.shape-arc {
+  border-radius: 60px 8px 60px 8px;
+}
+.shape-arc-alt {
+  border-radius: 8px 60px 8px 60px;
+}
+
+/* thin inner gold hairline echoing the outer shape */
+.frame-line {
+  position: relative;
+}
+.frame-line::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(198, 163, 106, 0.65);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+}
+.frame-line-light::after {
+  border-color: rgba(229, 207, 158, 0.7);
+}
+/* large offset gold frame behind a media block */
+.frame-offset {
+  position: relative;
+}
+.frame-offset::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(14px, 14px);
+  border: 1px solid rgba(198, 163, 106, 0.55);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* subtle grain/texture for dark surfaces */
 .texture-dark {
   background-image: radial-gradient(rgba(198, 163, 106, 0.05) 1px, transparent 1px);
