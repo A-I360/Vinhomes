@@ -3,17 +3,17 @@ import type { Founder } from "@/lib/types";
 /**
  * FOUNDER / LEADERSHIP
  * The portrait below is a frame taken from Vinhomes' own promo footage and
- * retouched into a clean professional portrait. The founder's full name and
- * title are intentionally left empty here — add them through the CMS / this
- * file when the client confirms how they wish to be presented. Until then the
- * section renders an elegant, factual leadership profile with no invented
- * name, title, credentials or direct quotes attributed to an individual.
+ * retouched into a clean professional portrait. The founder's name
+ * (Vincent Benson) is confirmed; the title field remains for the CMS / this
+ * file should the client wish to present one. The section renders a factual
+ * leadership profile with no invented credentials or direct quotes.
  */
 export const founder: Founder = {
+  name: "Vincent Benson",
   role: "Founder",
   image: {
     src: "/media/brand/founder.jpg",
-    alt: "Portrait of the founder of Vinhomes Platinum Living",
+    alt: "Portrait of Vincent Benson, founder of Vinhomes Platinum Living",
   },
   tagline: "Built on a conviction, not a template.",
   message: [
