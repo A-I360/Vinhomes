@@ -45,7 +45,7 @@ export default function Newsletter() {
           />
           <button
             type="submit"
-            className="shrink-0 border border-brand-gold bg-brand-gold px-6 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-brand-green950 transition-colors duration-300 hover:border-brand-goldLight hover:bg-brand-goldLight"
+            className="shrink-0 rounded-full border border-brand-gold bg-brand-gold px-6 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-brand-green950 transition-colors duration-300 hover:border-brand-goldLight hover:bg-brand-goldLight"
           >
             Join
           </button>

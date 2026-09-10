@@ -133,7 +133,7 @@ textarea:focus-visible {
 /* ---------- Buttons ---------- */
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-3 font-sans uppercase tracking-[0.18em] text-[0.74rem] transition-all duration-500 ease-luxe select-none active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-3 rounded-full font-sans uppercase tracking-[0.18em] text-[0.74rem] transition-all duration-500 ease-luxe select-none active:scale-[0.99];
   }
   .btn-gold {
     @apply btn bg-brand-gold text-brand-green950 px-9 py-4 hover:bg-brand-goldDeep hover:text-brand-ivory hover:shadow-lift hover:-translate-y-0.5;

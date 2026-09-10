@@ -135,7 +135,7 @@ export default function PropertiesView() {
               <button
                 onClick={() => setShowFilters((v) => !v)}
                 className={cn(
-                  "inline-flex items-center gap-2 border px-4 py-2.5 font-sans text-xs uppercase tracking-[0.14em] transition-colors",
+                  "inline-flex items-center gap-2 rounded-full border px-4 py-2.5 font-sans text-xs uppercase tracking-[0.14em] transition-colors",
                   showFilters || hasActive ? "border-brand-green900 bg-brand-green900 text-brand-ivory" : "border-brand-line text-brand-green900 hover:border-brand-gold"
                 )}
               >
