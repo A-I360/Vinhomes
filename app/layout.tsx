@@ -3,6 +3,7 @@ import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import CustomCursor from "@/components/CustomCursor";
 import { constructMetadata, organizationSchema, websiteSchema } from "@/lib/seo";
 
 import "@fontsource/playfair-display/400.css";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <CustomCursor />
 
         <Script
           id="org-schema"
