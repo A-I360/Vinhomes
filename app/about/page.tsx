@@ -6,6 +6,8 @@ import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTABand from "@/components/CTABand";
 import FounderSection from "@/components/FounderSection";
+import FilmPlayer from "@/components/FilmPlayer";
+import { films } from "@/content/films";
 import { values } from "@/content/values";
 import { constructMetadata } from "@/lib/seo";
 
@@ -112,6 +114,33 @@ export default function AboutPage() {
                 ))}
               </ul>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FILMS — our own footage */}
+      <section className="bg-brand-paper py-24 lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            align="center"
+            kicker="Watch our story"
+            title="Vinhomes, on film"
+            accent="every frame our own footage"
+            lede="Press play on any film below — captured across Vinhomes Platinum Living and presented here for you."
+          />
+          <Reveal delay={100} className="mx-auto mt-12 max-w-5xl">
+            <FilmPlayer
+              film={films.feature}
+              shape="frame-line"
+              caption="The Vinhomes story — on film"
+            />
+          </Reveal>
+          <div className="mx-auto mt-8 grid max-w-4xl gap-6 sm:grid-cols-3">
+            {films.moments.map((film, i) => (
+              <Reveal key={film.src} delay={i * 120} className="mx-auto w-full max-w-[16rem] sm:max-w-none">
+                <FilmPlayer film={film} shape="shape-arch" aspect="aspect-[9/16]" caption={film.title} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

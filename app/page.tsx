@@ -9,6 +9,8 @@ import PropertyCard from "@/components/PropertyCard";
 import InsightCard from "@/components/InsightCard";
 import Reveal from "@/components/Reveal";
 import CTABand from "@/components/CTABand";
+import FilmPlayer from "@/components/FilmPlayer";
+import { films } from "@/content/films";
 import { constructMetadata } from "@/lib/seo";
 
 export const metadata = constructMetadata({
@@ -250,6 +252,28 @@ export default function HomePage() {
               Explore Citadel Oasis
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ===================== ON FILM ====================== */}
+      <section className="bg-brand-green950 py-24 texture-dark lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
+            <SectionHeading
+              tone="light"
+              kicker="Vinhomes on film"
+              title="See the standard"
+              accent="in motion"
+              lede="Press play — moments from Vinhomes Platinum Living, captured in our own footage."
+            />
+          </Reveal>
+          <Reveal delay={120} className="mx-auto mt-12 max-w-5xl">
+            <FilmPlayer
+              film={films.homepage}
+              shape="frame-line frame-line-light"
+              caption="Vinhomes Platinum Living — on film"
+            />
+          </Reveal>
         </div>
       </section>
 
