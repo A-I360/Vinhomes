@@ -18,15 +18,15 @@ export default function Newsletter() {
 
   return (
     <div>
-      <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brand-goldDeep">
+      <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-brand-goldLight">
         Subscribe to Vinhomes Insights
       </p>
-      <h3 className="mt-3 font-serif text-xl text-brand-green900">
+      <h3 className="mt-3 font-serif text-xl leading-snug text-brand-ivory">
         Development news, market notes &amp; exclusive previews
       </h3>
 
       {state === "sent" ? (
-        <p className="mt-4 font-sans text-sm text-brand-green700">
+        <p className="mt-4 font-sans text-sm leading-relaxed text-brand-goldLight">
           Thank you — you are subscribed. We will be in touch with considered updates only.
         </p>
       ) : (
@@ -41,18 +41,18 @@ export default function Newsletter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email address"
-            className="w-full border border-brand-line bg-brand-paper px-4 py-3.5 font-sans text-sm text-brand-green950 outline-none transition-colors focus:border-brand-gold"
+            className="w-full border border-brand-ivory/25 bg-white/5 px-4 py-3.5 font-sans text-sm text-brand-ivory outline-none transition-all placeholder:text-brand-ivory/40 focus:border-brand-gold focus:bg-white/10"
           />
           <button
             type="submit"
-            className="shrink-0 border border-brand-green900 bg-brand-green900 px-6 text-[0.7rem] uppercase tracking-[0.18em] text-brand-ivory transition-colors hover:bg-brand-gold hover:text-brand-green950"
+            className="shrink-0 border border-brand-gold bg-brand-gold px-6 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-brand-green950 transition-colors duration-300 hover:border-brand-goldLight hover:bg-brand-goldLight"
           >
             Join
           </button>
         </form>
       )}
       {state === "error" && (
-        <p className="mt-2 font-sans text-xs text-red-700">Please enter a valid email address.</p>
+        <p className="mt-2 font-sans text-xs text-red-300">Please enter a valid email address.</p>
       )}
     </div>
   );

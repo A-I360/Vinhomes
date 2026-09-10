@@ -13,10 +13,39 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  scrollbar-width: thin;
+  scrollbar-color: #0f2d21 #f5efe3;
 }
 
 body {
   @apply bg-brand-paper text-brand-ink font-sans;
+}
+
+/* Slim, on-palette scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5efe3;
+}
+::-webkit-scrollbar-thumb {
+  background: #0f2d21;
+  border-radius: 8px;
+  border: 2px solid #f5efe3;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a5813d;
+}
+
+/* Visible, on-brand keyboard focus */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(198, 163, 106, 0.9);
+  outline-offset: 3px;
 }
 
 /* ---------- Luxury type helpers ---------- */
@@ -25,22 +54,66 @@ body {
     @apply inline-flex items-center gap-3 text-[0.68rem] font-sans tracking-[0.3em] uppercase text-brand-goldDeep;
   }
   .kicker .rule {
-    display: none; /* minimal: quiet label, no flanking rules */
+    display: none; /* legacy spans stay hidden; markers are drawn below */
   }
   .kicker-light {
     @apply text-brand-goldLight;
   }
+  /* Left-aligned kickers earn a short leading tick … */
+  .kicker:not(.kicker-center)::before {
+    content: "";
+    flex: none;
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+  }
+  /* … while centred kickers get flanking hairlines that fade outward. */
+  .kicker-center::before,
+  .kicker-center::after {
+    content: "";
+    flex: none;
+    width: 2.25rem;
+    height: 1px;
+    opacity: 0.6;
+  }
+  .kicker-center::before {
+    background: linear-gradient(to right, transparent, currentColor);
+  }
+  .kicker-center::after {
+    background: linear-gradient(to left, transparent, currentColor);
+  }
 
-  /* Editorial serif display headline */
+  /* Editorial serif display headline — fluid scale so every title
+     (section, hero, CTA) renders at an editorial size by default.
+     Page-level text-* utilities still override (utilities layer wins). */
   .display {
     @apply font-serif font-medium leading-[1.04] tracking-[0.01em] text-brand-green950;
+    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
+    text-wrap: balance;
   }
   .display-light {
     @apply text-brand-ivory;
   }
+  /* Larger cut reserved for page heroes */
+  .display-hero {
+    font-size: clamp(2.6rem, 1.7rem + 4vw, 4.5rem);
+  }
   .eyebrow {
     @apply font-sans uppercase tracking-luxe text-xs;
   }
+}
+
+/* Editorial drop cap for article opening paragraphs */
+.article-dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.82;
+  padding-right: 0.12em;
+  padding-top: 0.06em;
+  color: #a5813d;
 }
 
 /* thin gold divider line */
@@ -51,25 +124,25 @@ body {
 /* ---------- Buttons ---------- */
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-3 font-sans uppercase tracking-[0.18em] text-[0.74rem] transition-all duration-500 ease-luxe select-none;
+    @apply inline-flex items-center justify-center gap-3 font-sans uppercase tracking-[0.18em] text-[0.74rem] transition-all duration-500 ease-luxe select-none active:scale-[0.99];
   }
   .btn-gold {
-    @apply btn bg-brand-gold text-brand-green950 hover:bg-brand-goldLight px-9 py-4;
+    @apply btn bg-brand-gold text-brand-green950 px-9 py-4 hover:bg-brand-goldDeep hover:text-brand-ivory hover:shadow-lift hover:-translate-y-0.5;
   }
   .btn-dark {
-    @apply btn bg-brand-green900 text-brand-ivory hover:bg-brand-green700 px-9 py-4;
+    @apply btn bg-brand-green900 text-brand-ivory px-9 py-4 hover:bg-brand-green700 hover:shadow-lift hover:-translate-y-0.5;
   }
   .btn-outline {
-    @apply btn border border-brand-green950/40 text-brand-green950 hover:border-brand-gold hover:text-brand-goldDeep px-9 py-4;
+    @apply btn border border-brand-green950/40 text-brand-green950 px-9 py-4 hover:bg-brand-green900 hover:border-brand-green900 hover:text-brand-ivory hover:shadow-lift hover:-translate-y-0.5;
   }
   .btn-outline-light {
-    @apply btn border border-brand-ivory/50 text-brand-ivory hover:border-brand-goldLight hover:text-brand-goldLight px-9 py-4;
+    @apply btn border border-brand-ivory/50 text-brand-ivory px-9 py-4 hover:border-brand-goldLight hover:bg-brand-goldLight/10 hover:text-brand-goldLight;
   }
   .btn-ghost-link {
-    @apply inline-flex items-center gap-2 uppercase tracking-[0.16em] text-[0.72rem] text-brand-goldDeep hover:text-brand-gold transition-colors duration-500;
+    @apply inline-flex items-center gap-2 uppercase tracking-[0.16em] text-[0.72rem] text-brand-goldDeep hover:text-brand-gold hover:gap-3 transition-all duration-500;
   }
   .btn-light {
-    @apply btn bg-brand-ivory text-brand-green950 hover:bg-white px-9 py-4;
+    @apply btn bg-brand-ivory text-brand-green950 px-9 py-4 hover:bg-brand-goldLight hover:shadow-lift hover:-translate-y-0.5;
   }
   .link-arrow {
     @apply inline-flex items-center gap-2 group/link font-sans uppercase tracking-[0.16em] text-[0.72rem] text-brand-green800 hover:text-brand-goldDeep transition-colors duration-500;

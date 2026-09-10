@@ -31,13 +31,24 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="animate-kenburns object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-green950/85 via-brand-green950/30 to-brand-green950/55" />
         </div>
 
+        {/* editorial corner details */}
+        <p className="absolute bottom-8 left-8 z-10 hidden animate-fade-in font-sans text-[0.62rem] uppercase tracking-[0.3em] text-brand-ivory/60 [animation-delay:900ms] lg:block">
+          Lagos&thinsp;—&thinsp;NG
+        </p>
+        <div className="absolute bottom-8 right-8 z-10 hidden animate-fade-in flex-col items-center gap-3 [animation-delay:900ms] lg:flex">
+          <span className="font-sans text-[0.6rem] uppercase tracking-[0.3em] text-brand-ivory/60 [writing-mode:vertical-lr]">
+            Scroll
+          </span>
+          <span className="scroll-line h-12" />
+        </div>
+
         <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-20 text-center sm:px-8">
-          <span className="kicker kicker-light justify-center animate-fade-in">
+          <span className="kicker kicker-light kicker-center justify-center animate-fade-in">
             Vinhomes Platinum Living
           </span>
           <h1 className="display display-light mt-6 animate-fade-up text-5xl sm:text-6xl lg:text-7xl">
@@ -104,7 +115,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/75 via-brand-green950/55 to-brand-green950/80" />
         </div>
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <span className="kicker kicker-light justify-center">
+          <span className="kicker kicker-light kicker-center justify-center">
             <span className="rule" /> Our Philosophy <span className="rule" />
           </span>
           <h2 className="display display-light mt-6 text-4xl sm:text-5xl">
@@ -218,7 +229,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/80 via-brand-green950/55 to-brand-green950/85" />
         </div>
         <div className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-          <span className="kicker kicker-light justify-center">
+          <span className="kicker kicker-light kicker-center justify-center">
             <span className="rule" /> Location — Ajah, Lagos <span className="rule" />
           </span>
           <h2 className="display display-light mt-6 text-4xl sm:text-5xl lg:text-6xl">

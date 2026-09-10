@@ -56,7 +56,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col items-center text-center">
-              <span className="kicker justify-center"><span className="rule" /> Enquiry <span className="rule" /></span>
+              <span className="kicker kicker-center justify-center"><span className="rule" /> Enquiry <span className="rule" /></span>
               <h2 className="display mx-auto mt-4 max-w-xl text-3xl sm:text-4xl">Tell us what you&apos;re looking for</h2>
               <p className="mx-auto mt-4 max-w-lg font-sans leading-relaxed text-brand-charcoal/75">
                 Share a few details and we&apos;ll respond personally with considered guidance —
@@ -83,7 +83,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="flex flex-col items-center text-center">
-              <span className="kicker kicker-light justify-center"><span className="rule" /> Our office <span className="rule" /></span>
+              <span className="kicker kicker-light kicker-center justify-center"><span className="rule" /> Our office <span className="rule" /></span>
               <h2 className="display display-light mt-4 text-3xl sm:text-4xl">Vinhomes Platinum Living</h2>
               <p className="mx-auto mt-6 max-w-md font-sans leading-relaxed text-brand-ivory/80">
                 A warm welcome awaits at our Akowonjo office. Appointments are encouraged so an

@@ -107,7 +107,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
             <span aria-current="page" className="text-brand-ivory">{property.name}</span>
           </nav>
           {dev && (
-            <Link href={`/properties?dev=${dev.slug}`} className="kicker kicker-light justify-center">
+            <Link href={`/properties?dev=${dev.slug}`} className="kicker kicker-light kicker-center justify-center">
               <span className="rule" /> {dev.name} <span className="rule" />
             </Link>
           )}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
+import { MessageCircle, Phone, Mail, MapPin, ArrowUp } from "lucide-react";
 import { siteConfig } from "@/content/site.config";
 import Brand from "@/components/Brand";
 import Newsletter from "@/components/Newsletter";
@@ -11,11 +11,12 @@ const socials = [{ label: "WhatsApp", href: siteConfig.social.whatsapp, Icon: Me
 export default function Footer() {
   return (
     <footer className="bg-brand-green950 text-brand-ivory texture-dark">
+      <div aria-hidden className="gold-hairline h-px w-full opacity-70" />
       <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Brand block */}
           <div className="lg:col-span-4">
-            <Brand markWidth={172} />
+            <Brand markWidth={120} tone="light" withWordmark />
             <p className="mt-6 font-serif text-lg italic text-brand-goldLight">
               {siteConfig.tagline}
             </p>
@@ -43,7 +44,10 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="lg:col-span-2">
-            <h3 className="eyebrow text-brand-goldDeep">Explore</h3>
+            <h3 className="eyebrow flex items-center gap-2.5 text-brand-goldLight/90">
+              <span aria-hidden className="h-3 w-px bg-brand-gold" />
+              Explore
+            </h3>
             <ul className="mt-5 space-y-3 font-sans text-sm text-brand-ivory/80">
               {[
                 { label: "Properties", href: "/properties" },
@@ -65,7 +69,10 @@ export default function Footer() {
 
           {/* Legal */}
           <div className="lg:col-span-2">
-            <h3 className="eyebrow text-brand-goldDeep">Company</h3>
+            <h3 className="eyebrow flex items-center gap-2.5 text-brand-goldLight/90">
+              <span aria-hidden className="h-3 w-px bg-brand-gold" />
+              Company
+            </h3>
             <ul className="mt-5 space-y-3 font-sans text-sm text-brand-ivory/80">
               {[
                 { label: "Privacy Policy", href: "/privacy" },
@@ -123,6 +130,12 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Vinhomes Platinum Living. All rights reserved.
           </p>
           <p className="uppercase tracking-[0.2em]">{siteConfig.tagline}</p>
+          <a
+            href="#main"
+            className="inline-flex items-center gap-2 uppercase tracking-[0.2em] transition-colors hover:text-brand-goldLight"
+          >
+            Back to top <ArrowUp className="h-3.5 w-3.5" />
+          </a>
         </div>
       </div>
     </footer>

@@ -33,7 +33,7 @@ export default function PageHero({
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-5 sm:px-8">
         {crumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-7 flex justify-center">
+          <nav aria-label="Breadcrumb" className="mb-7 flex animate-fade-in justify-center">
             <ol className="flex flex-wrap items-center justify-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-brand-ivory/65">
               <li>
                 <Link href="/" className="transition-colors hover:text-brand-goldLight">
@@ -58,15 +58,15 @@ export default function PageHero({
           </nav>
         )}
 
-        <span className="kicker kicker-light justify-center">{kicker}</span>
-        <h1 className="display display-light mt-6">
+        <span className="kicker kicker-light kicker-center animate-fade-in justify-center">{kicker}</span>
+        <h1 className="display display-light display-hero mt-6 animate-fade-up [animation-delay:120ms]">
           {title}
           {titleAccent ? (
             <span className="block font-serif italic text-brand-goldLight">{titleAccent}</span>
           ) : null}
         </h1>
         {lede && (
-          <p className="mx-auto mt-6 max-w-2xl font-sans text-base leading-relaxed text-brand-ivory/80 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl animate-fade-up font-sans text-base leading-relaxed text-brand-ivory/80 [animation-delay:240ms] sm:text-lg">
             {lede}
           </p>
         )}

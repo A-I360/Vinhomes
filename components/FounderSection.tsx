@@ -15,7 +15,7 @@ export default function FounderSection() {
       </div>
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-12">
         <div className="mx-auto mb-14 max-w-2xl text-center">
-          <span className="kicker justify-center">
+          <span className="kicker kicker-center justify-center">
             <span className="rule" /> Leadership <span className="rule" />
           </span>
           <h2 className="display mt-4 text-3xl sm:text-4xl lg:text-5xl">

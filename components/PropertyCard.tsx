@@ -33,7 +33,7 @@ export default function PropertyCard({
   return (
     <article
       className={cn(
-        "group flex flex-col overflow-hidden bg-white shadow-card transition-all duration-700 ease-luxe hover:-translate-y-1.5 hover:shadow-lift",
+        "group flex flex-col overflow-hidden bg-white shadow-card transition-all duration-700 ease-luxe hover:-translate-y-1.5 hover:shadow-lift hover:ring-1 hover:ring-brand-gold/50",
         feature && "col-span-full"
       )}
     >

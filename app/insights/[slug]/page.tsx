@@ -78,7 +78,14 @@ export default function InsightPage({ params }: { params: { slug: string } }) {
         <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8">
           <div className="space-y-6">
             {paragraphs.map((para, i) => (
-              <p key={i} className="font-sans text-[1.02rem] leading-[1.9] text-brand-charcoal/85">
+              <p
+                key={i}
+                className={
+                  i === 0
+                    ? "article-dropcap font-sans text-[1.06rem] leading-[1.9] text-brand-charcoal/90"
+                    : "font-sans text-[1.02rem] leading-[1.9] text-brand-charcoal/85"
+                }
+              >
                 {para}
               </p>
             ))}

@@ -59,7 +59,7 @@ export default function ContactForm() {
   }
 
   const input =
-    "w-full border border-brand-line bg-white px-4 py-3 font-sans text-sm text-brand-green950 outline-none transition-colors focus:border-brand-gold placeholder:text-brand-charcoal/40";
+    "w-full border border-brand-line bg-white px-4 py-3 font-sans text-sm text-brand-green950 outline-none transition-all focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/50 placeholder:text-brand-charcoal/40";
 
   return (
     <form onSubmit={onSubmit} className="grid gap-4" noValidate>

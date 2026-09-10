@@ -134,7 +134,7 @@ export default function InvestmentPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="flex flex-col items-center justify-center text-center lg:col-span-4">
-              <span className="kicker kicker-light justify-center"><span className="rule" /> Read the fine print <span className="rule" /></span>
+              <span className="kicker kicker-light kicker-center justify-center"><span className="rule" /> Read the fine print <span className="rule" /></span>
               <h2 className="display display-light mt-4 text-3xl sm:text-4xl">We separate fact from potential.</h2>
             </div>
             <div className="lg:col-span-8">

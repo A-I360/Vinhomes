@@ -45,7 +45,7 @@ export default function AboutPage() {
             </span>
           </Reveal>
           <div className="order-1 text-center lg:order-2">
-            <span className="kicker justify-center">
+            <span className="kicker kicker-center justify-center">
               <span className="rule" /> Who We Are <span className="rule" />
             </span>
             <h2 className="display mx-auto mt-4 max-w-2xl text-3xl sm:text-4xl">
@@ -80,7 +80,7 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-14 lg:grid-cols-2">
             <Reveal className="text-center">
-              <span className="kicker kicker-light justify-center">
+              <span className="kicker kicker-light kicker-center justify-center">
                 <span className="rule" /> Our Vision <span className="rule" />
               </span>
               <h2 className="display display-light mt-5 text-3xl sm:text-4xl">The name families trust.</h2>
@@ -94,7 +94,7 @@ export default function AboutPage() {
               </p>
             </Reveal>
             <Reveal delay={120} className="text-center">
-              <span className="kicker kicker-light justify-center">
+              <span className="kicker kicker-light kicker-center justify-center">
                 <span className="rule" /> Our Mission <span className="rule" />
               </span>
               <h2 className="display display-light mt-5 text-3xl sm:text-4xl">Delivered in every home.</h2>
@@ -153,7 +153,7 @@ export default function AboutPage() {
             <Reveal delay={200}>
               <div className="flex aspect-[4/5] flex-col items-center justify-between border border-brand-gold/30 bg-brand-green950 p-7 text-center">
                 <div>
-                  <span className="kicker kicker-light justify-center"><span className="rule" /> Our Philosophy <span className="rule" /></span>
+                  <span className="kicker kicker-light kicker-center justify-center"><span className="rule" /> Our Philosophy <span className="rule" /></span>
                   <h3 className="mt-5 font-serif text-3xl leading-snug text-brand-ivory">
                     We craft lifestyles, <span className="italic text-brand-goldLight">not just structures.</span>
                   </h3>

@@ -22,7 +22,7 @@ export default function SectionHeading({
   return (
     <div className={cn("max-w-4xl", align === "center" && "mx-auto text-center", className)}>
       {kicker && (
-        <span className={cn("kicker", align === "center" && "justify-center", tone === "light" && "kicker-light")}>
+        <span className={cn("kicker", align === "center" && "kicker-center justify-center", tone === "light" && "kicker-light")}>
           {kicker}
         </span>
       )}
