@@ -10,7 +10,7 @@ export default function FounderSection() {
 
   return (
     <section className="relative overflow-hidden bg-brand-paper py-24 lg:py-32">
-      <div className="pointer-events-none absolute right-0 top-0 select-none font-serif italic leading-none text-brand-line/60" aria-hidden>
+      <div className="pointer-events-none absolute right-0 top-0 select-none font-serif text-[26vw] italic leading-none text-brand-line/60 lg:text-[12rem]" aria-hidden>
         Leadership
       </div>
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-12">

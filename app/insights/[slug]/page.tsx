@@ -54,9 +54,10 @@ export default function InsightPage({ params }: { params: { slug: string } }) {
 
       <article className="bg-brand-paper">
         {/* Header */}
-        <header className="relative flex min-h-[64vh] items-end overflow-hidden bg-brand-green950 pt-24">
+        <header className="texture-grain relative flex min-h-[64vh] items-end overflow-hidden bg-brand-green950 pt-24">
+          <div aria-hidden className="arch-divider absolute inset-x-0 bottom-0 z-[5] h-8 bg-brand-paper sm:h-10" />
           <div className="absolute inset-0">
-            <Image src={post.coverImage.src} alt={post.coverImage.alt || post.title} fill priority sizes="100vw" className="object-cover opacity-40" />
+            <Image src={post.coverImage.src} alt={post.coverImage.alt || post.title} fill priority sizes="100vw" className="animate-kenburns object-cover opacity-40" />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/55 to-brand-green950/20" />
           </div>
           <div className="relative z-10 mx-auto w-full max-w-4xl px-5 pb-14 sm:px-8">

@@ -42,7 +42,7 @@ export default function Brand({
         <span className="ml-3 flex flex-col leading-none">
           <span
             className={cn(
-              "font-sans text-[0.95rem] font-medium uppercase tracking-[0.32em] transition-colors duration-500",
+              "whitespace-nowrap font-sans text-[0.9rem] font-medium uppercase tracking-[0.28em] transition-colors duration-500",
               light ? "text-brand-ivory" : "text-brand-green950"
             )}
           >
@@ -50,7 +50,7 @@ export default function Brand({
           </span>
           <span
             className={cn(
-              "mt-1.5 font-sans text-[0.55rem] uppercase tracking-[0.42em] transition-colors duration-500",
+              "mt-1.5 whitespace-nowrap font-sans text-[0.55rem] uppercase tracking-[0.3em] transition-colors duration-500",
               light ? "text-brand-goldLight/90" : "text-brand-goldDeep"
             )}
           >

@@ -25,9 +25,9 @@ export default function PageHero({
   compact?: boolean;
 }) {
   return (
-    <section className="relative flex min-h-[54vh] items-center overflow-hidden bg-brand-green950 pt-24 text-center lg:min-h-[60vh]">
+    <section className="texture-grain relative flex min-h-[54vh] items-center overflow-hidden bg-brand-green950 pt-24 text-center lg:min-h-[60vh]">
       <div className="absolute inset-0">
-        <Image src={image} alt="" fill priority sizes="100vw" className="object-cover object-center opacity-45" />
+        <Image src={image} alt="" fill priority sizes="100vw" className="animate-kenburns object-cover object-center opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/60 to-brand-green950/50" />
       </div>
 

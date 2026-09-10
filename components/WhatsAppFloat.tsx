@@ -12,7 +12,7 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label="Chat with Vinhomes Platinum Living on WhatsApp"
       title="Chat with us on WhatsApp"
-      className="group fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center overflow-hidden rounded-full bg-[#1fa855]/90 text-white shadow-soft backdrop-blur-sm transition-all duration-500 ease-luxe hover:w-44 hover:bg-[#1fa855] hover:shadow-lift"
+      className="group fixed bottom-6 right-6 z-30 flex h-12 w-12 items-center overflow-hidden rounded-full bg-[#1fa855]/90 text-white shadow-soft backdrop-blur-sm transition-all duration-500 ease-luxe hover:w-44 hover:bg-[#1fa855] hover:shadow-lift"
     >
       <span className="flex items-center pl-[0.9rem]">
         <MessageCircle className="h-5 w-5 shrink-0" />

@@ -51,7 +51,7 @@ textarea:focus-visible {
 /* ---------- Luxury type helpers ---------- */
 @layer components {
   .kicker {
-    @apply inline-flex items-center gap-3 text-[0.68rem] font-sans tracking-[0.3em] uppercase text-brand-goldDeep;
+    @apply inline-flex items-center gap-3 text-[0.68rem] font-sans tracking-[0.22em] uppercase text-brand-goldDeep sm:tracking-[0.3em];
   }
   .kicker .rule {
     display: none; /* legacy spans stay hidden; markers are drawn below */
@@ -63,7 +63,7 @@ textarea:focus-visible {
   .kicker:not(.kicker-center)::before {
     content: "";
     flex: none;
-    width: 1.75rem;
+    width: 1.25rem;
     height: 1px;
     background: currentColor;
     opacity: 0.55;
@@ -73,7 +73,7 @@ textarea:focus-visible {
   .kicker-center::after {
     content: "";
     flex: none;
-    width: 2.25rem;
+    width: 1.25rem;
     height: 1px;
     opacity: 0.6;
   }
@@ -82,6 +82,15 @@ textarea:focus-visible {
   }
   .kicker-center::after {
     background: linear-gradient(to left, transparent, currentColor);
+  }
+  @media (min-width: 640px) {
+    .kicker:not(.kicker-center)::before {
+      width: 1.75rem;
+    }
+    .kicker-center::before,
+    .kicker-center::after {
+      width: 2.25rem;
+    }
   }
 
   /* Editorial serif display headline — fluid scale so every title
@@ -155,6 +164,30 @@ textarea:focus-visible {
   }
 }
 
+/* Light sweep across gold buttons on hover */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -70%;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+.btn-gold:hover::after {
+  left: 135%;
+}
+.btn-gold:disabled::after {
+  display: none;
+}
+
 /* ---------- Cards & surfaces ---------- */
 @layer components {
   .panel {
@@ -163,6 +196,25 @@ textarea:focus-visible {
   .status-pill {
     @apply inline-flex items-center gap-2 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-ivory;
   }
+}
+
+/* Whisper-quiet film grain for dark cinematic surfaces.
+   Sits above background imagery (z-1) and below content (z-10). */
+.texture-grain {
+  position: relative;
+}
+.texture-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+}
+
+/* Gentle elliptical arch used as a bottom divider out of hero imagery */
+.arch-divider {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
 
 /* ---------- Motion primitives ---------- */
@@ -186,6 +238,9 @@ textarea:focus-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .btn-gold::after {
+    display: none;
   }
   * {
     animation-duration: 0.001ms !important;

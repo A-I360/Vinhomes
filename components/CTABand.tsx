@@ -17,9 +17,9 @@ export default function CTABand({
   image?: string;
 }) {
   return (
-    <section className="frame-line frame-line-light relative overflow-hidden bg-brand-green950">
+    <section className="frame-line frame-line-light texture-grain relative overflow-hidden bg-brand-green950">
       <div className="absolute inset-0">
-        <Image src={image} alt="" fill sizes="100vw" className="object-cover opacity-25" loading="lazy" />
+        <Image src={image} alt="" fill sizes="100vw" className="animate-kenburns object-cover opacity-25" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/80 via-brand-green950/70 to-brand-green950/90" />
       </div>
       <Reveal className="relative z-10 mx-auto max-w-3xl px-5 py-24 text-center sm:px-8 lg:py-32">

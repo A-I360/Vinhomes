@@ -92,10 +92,11 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listingSchema) }} />
 
       {/* ============ HERO ============ */}
-      <section className="relative flex min-h-[72vh] items-end overflow-hidden bg-brand-green950 pt-24">
+      <section className="texture-grain relative flex min-h-[72vh] items-end overflow-hidden bg-brand-green950 pt-24">
+        <div aria-hidden className="arch-divider absolute inset-x-0 bottom-0 z-[5] h-8 bg-brand-ivory sm:h-10" />
         {hero && (
           <div className="absolute inset-0">
-            <Image src={hero.src} alt={hero.alt || property.name} fill priority sizes="100vw" className="object-cover object-center" />
+            <Image src={hero.src} alt={hero.alt || property.name} fill priority sizes="100vw" className="animate-kenburns object-cover object-center" />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/55 to-brand-green950/20" />
             <div className="absolute inset-0 bg-gradient-to-r from-brand-green950/70 to-transparent" />
           </div>

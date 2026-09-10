@@ -25,7 +25,8 @@ export default function HomePage() {
   return (
     <>
       {/* ============================= HERO ============================= */}
-      <section className="relative flex min-h-screen items-end overflow-hidden bg-brand-green950">
+      <section className="texture-grain relative flex min-h-screen items-end overflow-hidden bg-brand-green950">
+        <div aria-hidden className="arch-divider absolute inset-x-0 bottom-0 z-[5] h-8 bg-brand-paper sm:h-12" />
         <div className="absolute inset-0">
           <Image
             src="/media/images/video-hero.jpg"
@@ -256,8 +257,9 @@ export default function HomePage() {
       </section>
 
       {/* ===================== ON FILM ====================== */}
-      <section className="bg-brand-green950 py-24 texture-dark lg:py-32">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <section className="bg-brand-green950 pb-24 texture-dark lg:pb-32">
+        <div aria-hidden className="gold-hairline h-px w-full opacity-60" />
+        <div className="mx-auto max-w-[1440px] px-5 pt-20 sm:px-8 lg:px-12 lg:pt-24">
           <Reveal>
             <SectionHeading
               tone="light"

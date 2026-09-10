@@ -72,7 +72,7 @@ export default function Header() {
           <nav
             aria-label="Primary"
             className={cn(
-              "hidden items-center gap-8 transition-colors duration-500 lg:flex xl:gap-9",
+              "hidden items-center gap-5 transition-colors duration-500 lg:flex xl:gap-9",
               light ? "text-brand-ivory/85" : "text-brand-green900"
             )}
           >
@@ -85,7 +85,7 @@ export default function Header() {
                   href={l.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative font-sans text-[0.7rem] uppercase tracking-[0.18em] transition-all duration-300",
+                    "relative font-sans text-[0.66rem] uppercase tracking-[0.16em] transition-all duration-300 xl:text-[0.7rem] xl:tracking-[0.18em]",
                     "after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-brand-gold after:transition-transform after:duration-500 after:ease-luxe",
                     active
                       ? cn(
@@ -124,7 +124,7 @@ export default function Header() {
             <Link
               href="/contact"
               className={cn(
-                "hidden items-center rounded-full border px-5 py-2.5 font-sans text-[0.68rem] uppercase tracking-[0.18em] transition-all duration-500 ease-luxe lg:inline-flex",
+                "hidden items-center whitespace-nowrap rounded-full border px-5 py-2.5 font-sans text-[0.68rem] uppercase tracking-[0.18em] transition-all duration-500 ease-luxe xl:inline-flex",
                 light
                   ? "border-brand-goldLight/70 text-brand-ivory hover:border-brand-gold hover:bg-brand-gold hover:text-brand-green950"
                   : "border-brand-goldDeep/60 text-brand-green900 hover:border-brand-green900 hover:bg-brand-green900 hover:text-brand-ivory"

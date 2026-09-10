@@ -4,7 +4,7 @@ import { whatsappLink } from "@/lib/site";
 
 export default function NotFound() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-brand-green950 texture-dark px-5 pt-20 text-center">
+    <section className="texture-grain relative flex min-h-screen items-center justify-center overflow-hidden bg-brand-green950 texture-dark px-5 pt-20 text-center">
       <span className="pointer-events-none absolute select-none font-serif text-[34vw] leading-none text-brand-green900/40">404</span>
       <div className="relative z-10 max-w-xl">
         <span className="kicker kicker-light"><span className="rule" /> Page not found</span>
