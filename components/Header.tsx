@@ -11,16 +11,10 @@ import { cn } from "@/lib/utils";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? Math.min(1, Math.max(0, y / max)) : 0);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -42,7 +36,7 @@ export default function Header() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open ]);
+  }, [open]);
 
   const tone = open || !scrolled ? "light" : "dark";
   const light = tone === "light";
@@ -52,27 +46,21 @@ export default function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-luxe",
-          open && "bg-transparent",
-          !open &&
-            (scrolled
-              ? "border-b border-brand-gold/25 bg-brand-paper/85 shadow-soft backdrop-blur-xl"
-              : "border-b border-transparent bg-gradient-to-b from-brand-green950/70 via-brand-green950/25 to-transparent")
+          "fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 rounded-full transition-all duration-500 ease-luxe sm:top-5",
+          condensed ? "h-14" : "h-16",
+          light
+            ? "border border-brand-ivory/15 bg-brand-green950/60 shadow-soft backdrop-blur-xl"
+            : "border border-brand-gold/25 bg-brand-paper/90 shadow-soft backdrop-blur-xl"
         )}
       >
-        <div
-          className={cn(
-            "mx-auto flex max-w-[1440px] items-center justify-between px-5 transition-all duration-500 ease-luxe sm:px-8 lg:px-12",
-            condensed ? "h-16" : "h-[4.4rem]"
-          )}
-        >
-          <Brand markWidth={condensed ? 38 : 44} tone={tone} withWordmark priority />
+        <div className="grid h-full grid-cols-[auto_1fr_auto] items-center gap-4 pl-5 pr-2 sm:pl-6 sm:pr-3">
+          <Brand markWidth={condensed ? 36 : 40} tone={tone} withWordmark priority />
 
-          {/* desktop nav */}
+          {/* desktop nav — centred inside the pill */}
           <nav
             aria-label="Primary"
             className={cn(
-              "hidden items-center gap-5 transition-colors duration-500 lg:flex xl:gap-9",
+              "hidden items-center justify-center gap-5 transition-colors duration-500 lg:flex xl:gap-8",
               light ? "text-brand-ivory/85" : "text-brand-green900"
             )}
           >
@@ -85,14 +73,14 @@ export default function Header() {
                   href={l.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative font-sans text-[0.66rem] uppercase tracking-[0.16em] transition-all duration-300 xl:text-[0.7rem] xl:tracking-[0.18em]",
+                    "relative whitespace-nowrap font-sans text-[0.66rem] uppercase tracking-[0.16em] transition-all duration-300 xl:text-[0.7rem] xl:tracking-[0.18em]",
                     "after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-brand-gold after:transition-transform after:duration-500 after:ease-luxe",
                     active
                       ? cn(
                           "after:scale-x-100",
                           light ? "text-brand-goldLight" : "text-brand-goldDeep"
                         )
-                      : "opacity-80 after:hover:scale-x-100 hover:opacity-100"
+                      : "opacity-85 after:hover:scale-x-100 hover:opacity-100"
                   )}
                 >
                   {l.label}
@@ -101,34 +89,10 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-3 sm:gap-4">
-            <a
-              href={`tel:${siteConfig.phone}`}
-              className={cn(
-                "hidden items-center gap-2 font-sans text-[0.7rem] uppercase tracking-[0.16em] transition-colors duration-300 2xl:inline-flex",
-                light
-                  ? "text-brand-ivory/75 hover:text-brand-goldLight"
-                  : "text-brand-green900/75 hover:text-brand-goldDeep"
-              )}
-            >
-              <Phone className="h-3.5 w-3.5" />
-              {siteConfig.phoneDisplay}
-            </a>
-            <span
-              aria-hidden
-              className={cn(
-                "hidden h-5 w-px 2xl:block",
-                light ? "bg-brand-ivory/25" : "bg-brand-green950/15"
-              )}
-            />
+          <div className="flex items-center justify-end gap-2">
             <Link
               href="/contact"
-              className={cn(
-                "hidden items-center whitespace-nowrap rounded-full border px-5 py-2.5 font-sans text-[0.68rem] uppercase tracking-[0.18em] transition-all duration-500 ease-luxe xl:inline-flex",
-                light
-                  ? "border-brand-goldLight/70 text-brand-ivory hover:border-brand-gold hover:bg-brand-gold hover:text-brand-green950"
-                  : "border-brand-goldDeep/60 text-brand-green900 hover:border-brand-green900 hover:bg-brand-green900 hover:text-brand-ivory"
-              )}
+              className="hidden items-center whitespace-nowrap rounded-full bg-brand-gold px-5 py-2.5 font-sans text-[0.66rem] uppercase tracking-[0.18em] text-brand-green950 transition-all duration-500 ease-luxe hover:bg-brand-goldLight xl:inline-flex"
             >
               Book a consultation
             </Link>
@@ -148,15 +112,6 @@ export default function Header() {
             </button>
           </div>
         </div>
-
-        {/* scroll progress hairline */}
-        {!open && (
-          <span
-            aria-hidden
-            className="absolute inset-x-0 bottom-0 block h-[2px] origin-left bg-gradient-to-r from-brand-goldDeep via-brand-gold to-brand-goldLight"
-            style={{ transform: `scaleX(${progress})` }}
-          />
-        )}
       </header>
 
       {/* mobile menu */}
