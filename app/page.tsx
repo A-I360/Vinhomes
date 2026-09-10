@@ -304,7 +304,7 @@ export default function HomePage() {
           <Reveal className="img-frame shape-archcard relative mt-14 aspect-[21/10]">
             <Image
               src="/media/images/dev-capital-1.jpg"
-              alt="A Vinhomes Platinum Living investment development"
+              alt="Capital Loft — modern terrace residences"
               fill
               sizes="100vw"
               className="object-cover"

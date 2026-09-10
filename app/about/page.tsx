@@ -36,7 +36,7 @@ export default function AboutPage() {
           <Reveal className="img-frame frame-line shape-arch relative order-2 aspect-[4/5] lg:order-1">
             <Image
               src="/media/images/dev-citadel-1.jpg"
-              alt="Vinhomes Platinum Living development"
+              alt="Citadel Oasis — modern residential community on Abraham Adesanya Road, Ajah"
               fill
               sizes="(min-width:1024px) 50vw, 100vw"
               className="object-cover"

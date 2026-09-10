@@ -11,7 +11,7 @@ export const metadata: Metadata = constructMetadata({
 
 const sections: [string, string][] = [
   ["1. About this website", "This website is provided by Vinhomes Platinum Living, a premium real estate company based in Lagos, Nigeria, to help you learn about our developments, services and investment opportunities."],
-  ["2. Information is for general guidance", "Content on this site — including descriptions, images and positioning — is provided for general information only. Renderings and concept imagery are clearly labelled as artist impressions and conceptual renders, and may not exactly reflect the final property."],
+  ["2. Information is for general guidance", "Content on this site — including descriptions, images and positioning — is provided for general information only. Concept imagery is labelled \"Conceptual render\" where shown, and may not exactly reflect the final property."],
   ["3. Pricing, availability & timelines", "Prices, availability and payment structures are managed through our content system and may change without notice. Where figures are not shown, please confirm current details with an advisor in writing before relying on them."],
   ["4. Not financial or legal advice", "Nothing on this website constitutes financial, investment or legal advice. Property values and investment returns are subject to market conditions and individual circumstances. Seek independent professional advice before making decisions."],
   ["5. Intellectual property", "All content, branding and imagery on this site belong to Vinhomes Platinum Living or are used with permission. You may not reproduce them without our written consent."],

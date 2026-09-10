@@ -144,8 +144,6 @@ export default function PropertiesView() {
               <select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} className={selectCls} aria-label="Sort properties">
                 <option value="featured">Featured</option>
                 <option value="newest">Newest</option>
-                <option value="low">Price: Low to High</option>
-                <option value="high">Price: High to Low</option>
               </select>
             </div>
           </div>
@@ -233,8 +231,8 @@ export default function PropertiesView() {
           <div className="flex flex-col items-center border border-brand-line bg-brand-green950 p-8 text-center">
             <h3 className="font-serif text-xl text-brand-ivory">Pricing</h3>
             <p className="mt-2 font-sans text-sm leading-relaxed text-brand-ivory/75">
-              Published prices are current for their listing at the time shown. Where a home is
-              “on request,” figures are confirmed personally and in writing by an advisor.
+              Prices are shown as “on request.” Current figures are confirmed personally and in
+              writing by an advisor — we never publish numbers we cannot stand behind.
             </p>
           </div>
         </div>

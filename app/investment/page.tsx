@@ -170,7 +170,7 @@ export default function InvestmentPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal className="img-frame shape-arch relative order-2 aspect-[4/5] lg:order-1">
-              <Image src="/media/images/video-landscape-2.jpg" alt="Sustainable infrastructure in a Vinhomes community" fill sizes="(min-width:1024px) 50vw,100vw" className="object-cover" loading="lazy" />
+              <Image src="/media/images/video-landscape-2.jpg" alt="Landscaped surroundings at a Vinhomes development" fill sizes="(min-width:1024px) 50vw,100vw" className="object-cover" loading="lazy" />
             </Reveal>
             <div className="order-1 flex flex-col items-center lg:order-2">
               <SectionHeading

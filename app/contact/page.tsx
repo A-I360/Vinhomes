@@ -15,7 +15,7 @@ export const metadata = constructMetadata({
 
 export default function ContactPage() {
   const cards = [
-    { Icon: Phone, t: "Call Us", line1: siteConfig.phoneDisplay, line2: "Mon–Sat, 9am–6pm", href: `tel:${siteConfig.phone}` },
+    { Icon: Phone, t: "Call Us", line1: siteConfig.phoneDisplay, line2: "Private appointments available", href: `tel:${siteConfig.phone}` },
     { Icon: Mail, t: "Email Us", line1: siteConfig.email, line2: "Replies within one working day", href: `mailto:${siteConfig.email}` },
     { Icon: MessageCircle, t: "WhatsApp", line1: "Chat with an advisor", line2: "Fastest response", href: whatsappLink("Hi Vinhomes Platinum Living, I'd like to get in touch.") },
     { Icon: MapPin, t: "Visit Our Office", line1: "Shasha Rd, Akowonjo", line2: "2nd Floor, GIG Motors building", href: "#visit" },
