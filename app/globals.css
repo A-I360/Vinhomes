@@ -1,0 +1,422 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scrollbar-width: thin;
+  scrollbar-color: #0f2d21 #f5efe3;
+}
+
+body {
+  @apply bg-brand-paper text-brand-ink font-sans;
+}
+
+/* Slim, on-palette scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5efe3;
+}
+::-webkit-scrollbar-thumb {
+  background: #0f2d21;
+  border-radius: 8px;
+  border: 2px solid #f5efe3;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a5813d;
+}
+
+/* Visible, on-brand keyboard focus */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(198, 163, 106, 0.9);
+  outline-offset: 3px;
+}
+
+/* ---------- Luxury type helpers ---------- */
+@layer components {
+  .kicker {
+    @apply inline-flex items-center gap-3 text-[0.68rem] font-sans tracking-[0.22em] uppercase text-brand-goldDeep sm:tracking-[0.3em];
+  }
+  .kicker .rule {
+    display: none; /* legacy spans stay hidden; markers are drawn below */
+  }
+  .kicker-light {
+    @apply text-brand-goldLight;
+  }
+  /* Left-aligned kickers earn a short leading tick … */
+  .kicker:not(.kicker-center)::before {
+    content: "";
+    flex: none;
+    width: 1.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+  }
+  /* … while centred kickers get flanking hairlines that fade outward. */
+  .kicker-center::before,
+  .kicker-center::after {
+    content: "";
+    flex: none;
+    width: 1.25rem;
+    height: 1px;
+    opacity: 0.6;
+  }
+  .kicker-center::before {
+    background: linear-gradient(to right, transparent, currentColor);
+  }
+  .kicker-center::after {
+    background: linear-gradient(to left, transparent, currentColor);
+  }
+  @media (min-width: 640px) {
+    .kicker:not(.kicker-center)::before {
+      width: 1.75rem;
+    }
+    .kicker-center::before,
+    .kicker-center::after {
+      width: 2.25rem;
+    }
+  }
+
+  /* Editorial serif display headline — fluid scale so every title
+     (section, hero, CTA) renders at an editorial size by default.
+     Page-level text-* utilities still override (utilities layer wins). */
+  .display {
+    @apply font-serif font-medium leading-[1.04] tracking-[0.01em] text-brand-green950;
+    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
+    text-wrap: balance;
+  }
+  .display-light {
+    @apply text-brand-ivory;
+  }
+  /* Larger cut reserved for page heroes */
+  .display-hero {
+    font-size: clamp(2.6rem, 1.7rem + 4vw, 4.5rem);
+  }
+  .eyebrow {
+    @apply font-sans uppercase tracking-luxe text-xs;
+  }
+}
+
+/* Editorial drop cap for article opening paragraphs */
+.article-dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.82;
+  padding-right: 0.12em;
+  padding-top: 0.06em;
+  color: #a5813d;
+}
+
+/* thin gold divider line */
+.gold-hairline {
+  @apply bg-gradient-to-r from-transparent via-brand-gold to-transparent;
+}
+
+/* ---------- Buttons ---------- */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 rounded-full font-sans uppercase tracking-[0.18em] text-[0.74rem] transition-all duration-500 ease-luxe select-none active:scale-[0.99];
+  }
+  .btn-gold {
+    @apply btn bg-brand-gold text-brand-green950 px-9 py-4 hover:bg-brand-goldDeep hover:text-brand-ivory hover:shadow-lift hover:-translate-y-0.5;
+  }
+  .btn-dark {
+    @apply btn bg-brand-green900 text-brand-ivory px-9 py-4 hover:bg-brand-green700 hover:shadow-lift hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply btn border border-brand-green950/40 text-brand-green950 px-9 py-4 hover:bg-brand-green900 hover:border-brand-green900 hover:text-brand-ivory hover:shadow-lift hover:-translate-y-0.5;
+  }
+  .btn-outline-light {
+    @apply btn border border-brand-ivory/50 text-brand-ivory px-9 py-4 hover:border-brand-goldLight hover:bg-brand-goldLight/10 hover:text-brand-goldLight;
+  }
+  .btn-ghost-link {
+    @apply inline-flex items-center gap-2 uppercase tracking-[0.16em] text-[0.72rem] text-brand-goldDeep hover:text-brand-gold hover:gap-3 transition-all duration-500;
+  }
+  .btn-light {
+    @apply btn bg-brand-ivory text-brand-green950 px-9 py-4 hover:bg-brand-goldLight hover:shadow-lift hover:-translate-y-0.5;
+  }
+  .link-arrow {
+    @apply inline-flex items-center gap-2 group/link font-sans uppercase tracking-[0.16em] text-[0.72rem] text-brand-green800 hover:text-brand-goldDeep transition-colors duration-500;
+  }
+  .link-arrow .arrow {
+    @apply inline-block transition-transform duration-500 ease-luxe;
+  }
+  .group\/link:hover .arrow {
+    transform: translateX(6px);
+  }
+}
+
+/* Light sweep across gold buttons on hover */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -70%;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+.btn-gold:hover::after {
+  left: 135%;
+}
+.btn-gold:disabled::after {
+  display: none;
+}
+
+/* ---------- Cards & surfaces ---------- */
+@layer components {
+  .panel {
+    @apply bg-white border border-brand-line;
+  }
+  .status-pill {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-ivory;
+  }
+}
+
+/* Whisper-quiet film grain for dark cinematic surfaces.
+   Sits above background imagery (z-1) and below content (z-10). */
+.texture-grain {
+  position: relative;
+}
+.texture-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+}
+
+/* Gentle elliptical arch used as a bottom divider out of hero imagery */
+.arch-divider {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+/* ---------- Motion primitives ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .btn-gold::after {
+    display: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* editorial image treatment */
+.img-frame {
+  @apply relative overflow-hidden;
+}
+.img-frame img {
+  @apply transition-transform duration-[1400ms] ease-luxe;
+}
+.img-frame:hover img {
+  transform: scale(1.045);
+}
+
+/* ---------------------------------------------------------------- */
+/*  Image shape language — media shown in arches & curves, not plain */
+/*  rectangles. Each shape clips its content (apply to an overflow-  */
+/*  hidden container, or directly to a non-fill img).               */
+/* ---------------------------------------------------------------- */
+/* Signature door / moon arch — tall, editorial portraits */
+.shape-arch {
+  border-radius: 999px 999px 22px 22px;
+}
+/* Generous arch for medium/tall frames */
+.shape-arch-soft {
+  border-radius: 72px 72px 20px 20px;
+}
+/* Arched-top media used at the head of cards (landscape-ish) */
+.shape-archcard {
+  border-radius: 52px 52px 18px 18px;
+}
+/* Soft arch for tall-thin (circle-ish top) */
+.shape-arch-tall {
+  border-radius: 50% 50% 16px 16px;
+}
+/* Organic circle / ellipse */
+.shape-circle {
+  border-radius: 9999px;
+}
+/* Generous rounded corner (reads as curated, not a plain box) */
+.shape-curve {
+  border-radius: 34px;
+}
+.shape-curve-lg {
+  border-radius: 48px;
+}
+.shape-curve-sm {
+  border-radius: 18px;
+}
+/* asymmetric editorial arc for wide feature media */
+.shape-arc {
+  border-radius: 60px 8px 60px 8px;
+}
+.shape-arc-alt {
+  border-radius: 8px 60px 8px 60px;
+}
+
+/* thin inner gold hairline echoing the outer shape */
+.frame-line {
+  position: relative;
+}
+.frame-line::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(198, 163, 106, 0.65);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+}
+.frame-line-light::after {
+  border-color: rgba(229, 207, 158, 0.7);
+}
+/* large offset gold frame behind a media block */
+.frame-offset {
+  position: relative;
+}
+.frame-offset::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(14px, 14px);
+  border: 1px solid rgba(198, 163, 106, 0.55);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* subtle grain/texture for dark surfaces (kept as plain flat surface for a cleaner look) */
+.texture-dark {
+  background-image: none;
+}
+
+/* scroll indicator line */
+.scroll-line {
+  @apply relative block h-16 w-px overflow-hidden bg-brand-ivory/20;
+}
+.scroll-line::after {
+  content: "";
+  @apply absolute left-0 top-0 h-8 w-px bg-brand-goldLight;
+  animation: scroll-hint 2.2s ease-in-out infinite;
+}
+
+/* Custom slim scrollbar for galleries */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(198, 163, 106, 0.5) transparent;
+}
+
+::selection {
+  background: rgba(198, 163, 106, 0.35);
+  color: #0d241b;
+}
+
+/* ----------------------------------------------------------------
+   Custom contract-pen cursor
+   A fountain pen nib takes the place of the native pointer. Only
+   activated on fine pointers (mouse) and skipped for touch devices and
+   reduced-motion users — the native cursor is left untouched for them.
+   ---------------------------------------------------------------- */
+.cursor-custom-active,
+.cursor-custom-active * {
+  cursor: none !important;
+}
+
+/* The pen is drawn pointing straight down with the nib tip at its
+   bottom-centre; it rests at 45°, the classic writing angle. */
+.cursor-pen {
+  transform-origin: 50% 100%;
+  transform: rotate(45deg);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  filter: drop-shadow(0 5px 9px rgba(10, 26, 19, 0.4));
+}
+/* Hovering something clickable: the pen lifts, ready to sign */
+.cursor-pen.is-hovering {
+  transform: rotate(58deg) scale(1.14);
+  filter: drop-shadow(0 6px 12px rgba(10, 26, 19, 0.5));
+}
+/* Pressing: the nib touches the page */
+.cursor-pen.is-pressing {
+  transform: rotate(50deg) scale(0.9);
+  filter: drop-shadow(0 2px 4px rgba(10, 26, 19, 0.4));
+}
+
+/* Ink bloom left behind on each click, like a signature stamp */
+@keyframes cursor-ink {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.9;
+  }
+  35% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.7);
+    opacity: 0;
+  }
+}
+.cursor-ink {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    #e5cf9e 0%,
+    #c6a36a 45%,
+    rgba(165, 129, 61, 0) 75%
+  );
+  animation: cursor-ink 0.65s ease-out forwards;
+  pointer-events: none;
+}
