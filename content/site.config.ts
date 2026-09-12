@@ -8,7 +8,7 @@ export const siteConfig: SiteConfig = {
   phone: "+2347036724517",
   phoneDisplay: "0703 672 4517",
   whatsapp: "2347036724517",
-  email: "vplatinumliving@gmail.com",
+  email: "info@vinhomesplatinum.com",
   address: {
     lines: [
       "No. 41, Shasha Road, Cele B/Stop,",

@@ -129,7 +129,7 @@ export const faqs: Faq[] = [
   {
     question: "How can I view a property?",
     answer:
-      "We arrange private viewings on-site or by video. Book a viewing through any property page, or contact us directly on 0703 672 4517 or vplatinumliving@gmail.com.",
+      "We arrange private viewings on-site or by video. Book a viewing through any property page, or contact us directly on 0703 672 4517 or info@vinhomesplatinum.com.",
     category: "General",
   },
   {
@@ -141,7 +141,7 @@ export const faqs: Faq[] = [
   {
     question: "How do I contact Vinhomes Platinum Living?",
     answer:
-      "Call or WhatsApp 0703 672 4517, email vplatinumliving@gmail.com, or visit our office at No. 41, Shasha Road, Cele B/Stop, Akowonjo Road, 2nd Floor, Same Building with GIG Motors.",
+      "Call or WhatsApp 0703 672 4517, email info@vinhomesplatinum.com, or visit our office at No. 41, Shasha Road, Cele B/Stop, Akowonjo Road, 2nd Floor, Same Building with GIG Motors.",
     category: "General",
   },
 ];
