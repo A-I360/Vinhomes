@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/seo";
 export const metadata = constructMetadata({
   title: "Contact Us",
   description:
-    "Contact Vinhomes Platinum Living. Call or WhatsApp 0703 672 4517, email vplatinumliving@gmail.com, or visit our office on Shasha Road, Akowonjo, Lagos. Book a private consultation or viewing.",
+    "Contact Vinhomes Platinum Living. Call or WhatsApp 0703 672 4517, email info@vinhomesplatinum.com, or visit our office on Shasha Road, Akowonjo, Lagos. Book a private consultation or viewing.",
   path: "/contact",
 });
 
