@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin, CheckCircle2, ShieldCheck, Landmark, FileText } from "lucide-react";
 import { developments, getFeaturedProperties } from "@/content/developments";
 import { insights } from "@/content/insights";
 import SectionHeading from "@/components/SectionHeading";
@@ -12,6 +12,7 @@ import CTABand from "@/components/CTABand";
 import FilmPlayer from "@/components/FilmPlayer";
 import { films } from "@/content/films";
 import { constructMetadata } from "@/lib/seo";
+import { whatsappLink } from "@/lib/site";
 
 export const metadata = constructMetadata({
   description:
@@ -314,6 +315,117 @@ export default function HomePage() {
               Capital Loft
             </span>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ===================== FMBN MORTGAGE CTA ====================== */}
+      <section className="texture-grain relative overflow-hidden bg-brand-green950 py-24 lg:py-32">
+        <div className="absolute inset-0">
+          <Image
+            src="/media/images/video-interior-2.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="animate-kenburns object-cover object-center opacity-25"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-green950/85 via-brand-green950/70 to-brand-green950/90" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            {/* Copy */}
+            <Reveal className="lg:col-span-7">
+              <span className="kicker kicker-light">
+                <span className="rule" /> FMBN Mortgage Funding <span className="rule" />
+              </span>
+              <h2 className="display display-light mt-6 text-4xl sm:text-5xl lg:text-[3.5rem]">
+                Unlock Up to{" "}
+                <span className="font-serif italic text-brand-goldLight">₦50M</span>{" "}
+                FMBN Mortgage Funding
+                <span className="block font-serif italic text-brand-goldLight">— Hassle-Free</span>
+              </h2>
+              <p className="mt-7 max-w-2xl font-sans text-lg leading-relaxed text-brand-ivory/85">
+                We take the stress out of the MRIEF mortgage process. From registering you with
+                the NHF and pairing you with an accredited Primary Mortgage Bank (PMB) to
+                compiling and processing every required document, our expert team manages your
+                application end-to-end.
+              </p>
+
+              {/* Pillar list */}
+              <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+                {[
+                  { Icon: ShieldCheck, t: "NHF Registration", d: "We handle your National Housing Fund registration." },
+                  { Icon: Landmark, t: "PMB Pairing", d: "Matched to an accredited Primary Mortgage Bank." },
+                  { Icon: FileText, t: "Document Compilation", d: "Every required form, prepared and processed." },
+                  { Icon: CheckCircle2, t: "End-to-End Support", d: "Expert guidance from application to approval." },
+                ].map(({ Icon, t, d }) => (
+                  <li key={t} className="flex items-start gap-3 border-t border-brand-gold/30 pt-4">
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-gold/50 text-brand-goldLight">
+                      <Icon className="h-4 w-4" strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <p className="font-serif text-base text-brand-ivory">{t}</p>
+                      <p className="mt-0.5 font-sans text-sm leading-relaxed text-brand-ivory/70">{d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-10 font-serif text-xl italic text-brand-goldLight sm:text-2xl">
+                Ready to own your dream home?
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/contact?service=mortgage"
+                  className="btn-gold"
+                >
+                  Start Your Application Today <ArrowUpRight className="h-4 w-4" />
+                </Link>
+                <a
+                  href={whatsappLink(
+                    "Hi Vinhomes Platinum Living, I'm interested in the FMBN MRIEF mortgage (up to ₦50M). Please share how to start my application."
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-light"
+                >
+                  WhatsApp a mortgage advisor
+                </a>
+              </div>
+            </Reveal>
+
+            {/* Amount / trust card */}
+            <Reveal delay={150} className="lg:col-span-5">
+              <div className="relative border border-brand-gold/40 bg-brand-green900/40 p-8 backdrop-blur-sm sm:p-10">
+                <div aria-hidden className="gold-hairline absolute inset-x-6 top-0 h-px" />
+                <div aria-hidden className="gold-hairline absolute inset-x-6 bottom-0 h-px" />
+                <p className="font-sans text-[0.7rem] uppercase tracking-[0.3em] text-brand-goldLight">
+                  Up to
+                </p>
+                <p className="mt-3 font-serif text-6xl text-brand-ivory sm:text-7xl">
+                  ₦50<span className="text-brand-goldLight">M</span>
+                </p>
+                <p className="mt-2 font-sans text-sm uppercase tracking-[0.2em] text-brand-ivory/70">
+                  FMBN MRIEF Mortgage
+                </p>
+                <div className="mt-8 h-px w-16 gold-hairline" />
+                <p className="mt-6 font-sans text-sm leading-relaxed text-brand-ivory/80">
+                  Seamless NHF &amp; PMB processing. Maximum funding. Zero stress. Let our team
+                  turn your MRIEF mortgage eligibility into key-in-hand homeownership — with
+                  expert, end-to-end support.
+                </p>
+                <div className="mt-8 flex items-center gap-3 border-t border-brand-ivory/15 pt-6">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-gold text-brand-green950">
+                    <CheckCircle2 className="h-5 w-5" strokeWidth={2} />
+                  </span>
+                  <p className="font-sans text-sm text-brand-ivory/80">
+                    Fast-track your mortgage with a dedicated advisor from day one.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

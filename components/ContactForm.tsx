@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { Loader2, ArrowUpRight, CheckCircle2, XCircle } from "lucide-react";
 import { properties } from "@/content/developments";
 
 const enquiryTypes = [
   "Buying a property",
+  "FMBN Mortgage (up to ₦50M)",
   "Investment enquiry",
   "Book a viewing",
   "Request a brochure",
@@ -13,15 +15,37 @@ const enquiryTypes = [
   "General question",
 ];
 
-export default function ContactForm() {
+/** Map query params into initial form state. */
+function getInitialType(search: string | null) {
+  if (!search) return enquiryTypes[0];
+  const s = search.toLowerCase();
+  if (
+    s.includes("mortgage") ||
+    s.includes("fmbn") ||
+    s.includes("mrief") ||
+    s.includes("nhf")
+  ) {
+    return "FMBN Mortgage (up to ₦50M)";
+  }
+  return enquiryTypes[0];
+}
+
+function ContactFormInner() {
+  const searchParams = useSearchParams();
+  const service = searchParams.get("service") ?? searchParams.get("type");
+  const initialType = getInitialType(service);
+
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [form, setForm] = useState({
     name: "",
     phone: "",
     email: "",
     property: "",
-    type: enquiryTypes[0],
-    message: "",
+    type: initialType,
+    message:
+      initialType === "FMBN Mortgage (up to ₦50M)"
+        ? "Hi Vinhomes, I'd like to start my FMBN MRIEF mortgage application (up to ₦50M). Please guide me through the NHF registration, PMB pairing and document process."
+        : "",
   });
 
   function up(k: keyof typeof form, v: string) {
@@ -110,5 +134,19 @@ export default function ContactForm() {
         Your details are used solely to respond to your enquiry.
       </p>
     </form>
+  );
+}
+
+export default function ContactForm() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex h-40 items-center justify-center font-sans text-sm text-brand-charcoal/60">
+          Loading…
+        </div>
+      }
+    >
+      <ContactFormInner />
+    </Suspense>
   );
 }
