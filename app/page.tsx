@@ -9,7 +9,7 @@ import PropertyCard from "@/components/PropertyCard";
 import InsightCard from "@/components/InsightCard";
 import Reveal from "@/components/Reveal";
 import CTABand from "@/components/CTABand";
-import FilmPlayer from "@/components/FilmPlayer";
+import FilmStrip from "@/components/FilmStrip";
 import { films } from "@/content/films";
 import { constructMetadata } from "@/lib/seo";
 import { whatsappLink } from "@/lib/site";
@@ -265,16 +265,20 @@ export default function HomePage() {
             <SectionHeading
               tone="light"
               kicker="Vinhomes on film"
-              title="See the standard"
-              accent="in motion"
-              lede="Press play — moments from Vinhomes Platinum Living, captured in our own footage."
+              title="Every address,"
+              accent="in its own footage"
+              lede="Pick a film below — each one is the real clip shot at that development, and every home on this site carries the one filmed for it."
             />
           </Reveal>
           <Reveal delay={120} className="mx-auto mt-12 max-w-5xl">
-            <FilmPlayer
-              film={films.homepage}
+            <FilmStrip
+              tone="light"
               shape="frame-line frame-line-light"
-              caption="Vinhomes Platinum Living — on film"
+              items={films.map((f) => ({
+                film: f,
+                href: f.subjectHref,
+                linkLabel: "Browse the homes it shows",
+              }))}
             />
           </Reveal>
         </div>

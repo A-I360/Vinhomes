@@ -5,7 +5,9 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import EnquiryForm from "@/components/EnquiryForm";
-import { developments } from "@/content/developments";
+import { developments, getFilmsForDevelopment } from "@/content/developments";
+import FilmStage from "@/components/FilmStage";
+import FilmChip from "@/components/FilmChip";
 import { whatsappLink } from "@/lib/site";
 import { constructMetadata } from "@/lib/seo";
 
@@ -106,25 +108,40 @@ export default function InvestmentPage() {
             title="Where you could invest today"
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {formats.map((f, i) => (
+            {formats.map((f, i) => {
+              const devSlug = f.name.toLowerCase().replaceAll(" ", "-");
+              const [film] = getFilmsForDevelopment(devSlug);
+              return (
               <Reveal key={f.name} delay={i * 100}>
                 <article className="group flex h-full flex-col overflow-hidden bg-white shadow-card transition-all duration-500 ease-luxe hover:-translate-y-1 hover:shadow-lift">
-                  <div className="img-frame shape-archcard relative aspect-[16/10]">
-                    <Image src={f.img} alt={`${f.name} investment`} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" loading="lazy" />
-                    <span className="absolute bottom-4 right-4 bg-brand-green950/70 px-3 py-1 font-sans uppercase tracking-[0.16em] text-[0.6rem] text-brand-goldLight backdrop-blur-sm">
+                  {/* the film shot at this address, previewing over the render */}
+                  <FilmStage
+                    film={film}
+                    poster={f.img}
+                    posterAlt={`${f.name} investment`}
+                    label={f.name}
+                    className="shape-archcard"
+                    imageClassName="group-hover:scale-[1.045]"
+                    aspect="aspect-[16/10]"
+                    sizes="(min-width:1024px) 33vw, 100vw"
+                    chipAt="none"
+                  >
+                    <span className="absolute bottom-4 right-4 z-20 bg-brand-green950/70 px-3 py-1 font-sans uppercase tracking-[0.16em] text-[0.6rem] text-brand-goldLight backdrop-blur-sm">
                       {f.role}
                     </span>
-                  </div>
+                  </FilmStage>
                   <div className="flex flex-1 flex-col items-center p-6 text-center">
                     <h3 className="font-serif text-2xl text-brand-green900">{f.name}</h3>
                     <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-brand-charcoal/75">{f.note}</p>
-                    <Link href={`/properties?dev=${f.name.toLowerCase().replaceAll(" ", "-")}`} className="link-arrow mt-6">
+                    <Link href={`/properties?dev=${devSlug}`} className="link-arrow mt-6">
                       Explore {f.name} <ArrowUpRight className="arrow h-4 w-4" />
                     </Link>
+                    {film && <FilmChip film={film} label={f.name} variant="inline" className="mt-5" />}
                   </div>
                 </article>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

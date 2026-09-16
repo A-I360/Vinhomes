@@ -9,6 +9,8 @@ export interface Seo {
   path?: string;
   image?: string;
   type?: string;
+  /** self-hosted clip to expose as og:video / twitter:player */
+  video?: { url: string; width?: number; height?: number };
 }
 
 /** Centralised per-page metadata so titles/descriptions are unique. */
@@ -17,10 +19,12 @@ export function constructMetadata({
   description,
   path = "",
   image = "/media/images/video-hero.jpg",
+  video,
 }: Seo): Metadata {
   const cleanPath = path === "/" ? "" : path;
   const canonical = `${baseUrl}${cleanPath}`;
   const ogImage = image.startsWith("http") ? image : `${baseUrl}${image}`;
+  const ogVideo = video ? (video.url.startsWith("http") ? video.url : `${baseUrl}${video.url}`) : undefined;
 
   const defaultDescription =
     "Vinhomes Platinum Living is a premium Lagos real estate brand crafting elegant homes, secure communities and considered investment opportunities. Where Luxury Meets Lifestyle.";
@@ -37,12 +41,26 @@ export function constructMetadata({
       type: "website",
       locale: "en_NG",
       images: [{ url: ogImage, width: 1536, height: 1024, alt: siteConfig.brandName }],
+      ...(ogVideo
+        ? {
+            videos: [
+              {
+                url: ogVideo,
+                width: video?.width,
+                height: video?.height,
+                type: "video/mp4",
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
-      card: "summary_large_image",
+      // a hosted clip earns a player card; otherwise keep the large image card
+      card: video ? "player" : "summary_large_image",
       title: title ? `${title} | ${siteConfig.brandName}` : siteDefaults.defaultTitle,
       description: description ?? defaultDescription,
       images: [ogImage],
+      ...(ogVideo ? { player: ogVideo, playerWidth: video?.width, playerHeight: video?.height } : {}),
     },
     robots: {
       index: true,
@@ -147,5 +165,38 @@ export function productSchema(o: {
     },
     contentLocation: { "@type": "Place", name: o.location, address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" } },
     ...(o.bedrooms ? { numberOfBedrooms: o.bedrooms } : {}),
+  };
+}
+
+/**
+ * VideoObject for the supplied walkthrough films, so a property's own footage is
+ * eligible for rich results. Only ever points at files in /public/media.
+ */
+export function videoObjectSchema(o: {
+  name: string;
+  description: string;
+  url: string;
+  thumbnailUrl: string;
+  durationSeconds: number;
+  width?: number;
+  height?: number;
+  uploadDate?: string;
+}) {
+  const abs = (p: string) => (p.startsWith("http") ? p : `${siteConfig.url}${p}`);
+  const pad = (n: number) => String(Math.floor(n)).padStart(2, "0");
+  const secs = Math.max(1, Math.round(o.durationSeconds));
+  const iso = `PT${pad(Math.floor(secs / 60))}M${pad(secs % 60)}S`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: o.name,
+    description: o.description,
+    thumbnailUrl: abs(o.thumbnailUrl),
+    contentUrl: abs(o.url),
+    uploadUrl: abs(o.url),
+    duration: iso,
+    ...(o.width && o.height ? { width: o.width, height: o.height } : {}),
+    ...(o.uploadDate ? { uploadDate: o.uploadDate } : {}),
+    publisher: { "@type": "Organization", name: siteConfig.brandName, url: siteConfig.url },
   };
 }

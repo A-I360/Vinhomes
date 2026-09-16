@@ -2,30 +2,41 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { Play, Volume2 } from "lucide-react";
 import type { Film } from "@/content/films";
 import { filmPoster } from "@/content/films";
 import { cn } from "@/lib/utils";
 
 /**
- * Elegant video player with a branded facade: poster, gold play button and
- * duration badge. The video file only loads when the visitor presses play,
- * so film-heavy pages stay fast and never show a black rectangle.
+ * Inline player for the supplied films: the film's own poster frame and a gold
+ * play button until pressed, the video file only afterwards. Keeps film-heavy
+ * pages fast and means no visitor ever sees an empty black rectangle.
  */
 export default function FilmPlayer({
   film,
   shape = "shape-curve",
-  aspect = "aspect-video",
+  aspect,
   caption,
   className,
+  sizes = "(min-width:1024px) 60vw, 100vw",
+  eager = false,
+  showSoundHint = false,
 }: {
   film: Film;
   shape?: string;
+  /** override the box; defaults to the film's own orientation */
   aspect?: string;
   caption?: string;
   className?: string;
+  sizes?: string;
+  /** use for the first film above the fold */
+  eager?: boolean;
+  showSoundHint?: boolean;
 }) {
   const [playing, setPlaying] = useState(false);
+  const portrait = film.orientation === "portrait";
+  const box = aspect ?? (portrait ? "aspect-[9/16]" : "aspect-video");
+  const poster = film.poster || filmPoster;
 
   return (
     <figure className={cn("group relative overflow-hidden bg-brand-green950", shape, className)}>
@@ -33,20 +44,21 @@ export default function FilmPlayer({
         <button
           type="button"
           onClick={() => setPlaying(true)}
-          aria-label={`Play ${film.title} (${film.duration})`}
-          className={cn("relative block h-full w-full cursor-pointer", aspect)}
+          aria-label={`Play ${film.title} (${film.duration})${showSoundHint ? " — sound on" : ""}`}
+          className={cn("relative block h-full w-full cursor-pointer", box)}
         >
           <Image
-            src={filmPoster}
+            src={poster}
             alt=""
             fill
-            sizes="(min-width:1024px) 60vw, 100vw"
-            className="scale-105 object-cover opacity-80 transition-all duration-[1400ms] ease-luxe group-hover:scale-110 group-hover:opacity-90"
-            loading="lazy"
+            sizes={sizes}
+            className="scale-105 object-cover transition-all duration-[1400ms] ease-luxe group-hover:scale-110"
+            loading={eager ? "eager" : "lazy"}
+            priority={eager}
           />
           <span
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-brand-green950/85 via-brand-green950/20 to-brand-green950/40"
+            className="absolute inset-0 bg-gradient-to-t from-brand-green950/85 via-brand-green950/15 to-brand-green950/35"
           />
           {/* play button */}
           <span className="absolute inset-0 flex items-center justify-center">
@@ -55,24 +67,31 @@ export default function FilmPlayer({
             </span>
           </span>
           {/* duration */}
-          <span className="absolute bottom-4 right-4 bg-brand-green950/70 px-2.5 py-1 font-sans text-[0.65rem] tracking-[0.14em] text-brand-goldLight backdrop-blur-sm">
+          <span className="absolute bottom-4 right-4 flex items-center gap-2 bg-brand-green950/70 px-2.5 py-1 font-sans text-[0.65rem] tracking-[0.14em] text-brand-goldLight backdrop-blur-sm">
+            {showSoundHint && <Volume2 className="h-3 w-3" />}
             {film.duration}
           </span>
-          {caption && (
-            <figcaption className="absolute inset-x-0 bottom-4 left-4 right-20 text-left font-serif text-lg italic text-brand-ivory sm:text-xl">
-              {caption}
-            </figcaption>
-          )}
+          <span className={cn("absolute left-4 right-20 text-left", portrait ? "bottom-14" : "bottom-4")}>
+            <span className={cn("block truncate font-serif italic text-brand-ivory", portrait ? "text-base" : "text-lg sm:text-xl")}>
+              {caption ?? film.title}
+            </span>
+            {film.subject && (
+              <span className="mt-1 block font-sans text-[0.6rem] uppercase tracking-[0.2em] text-brand-goldLight">
+                {film.subject}
+              </span>
+            )}
+          </span>
         </button>
       ) : (
         <video
           src={film.src}
+          poster={poster}
           controls
           autoPlay
           playsInline
           preload="metadata"
           aria-label={film.title}
-          className={cn("h-full w-full bg-black object-contain", aspect)}
+          className={cn("h-full w-full bg-brand-night object-contain", box)}
         />
       )}
     </figure>

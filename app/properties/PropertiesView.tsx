@@ -4,8 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, RotateCcw, X, ArrowUpRight } from "lucide-react";
-import { properties, developments } from "@/content/developments";
+import { properties, developments, getFilmsForProperty } from "@/content/developments";
 import PropertyCard from "@/components/PropertyCard";
+import FilmStrip, { type FilmStripItem } from "@/components/FilmStrip";
 import EnquiryForm from "@/components/EnquiryForm";
 import { whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -67,6 +68,25 @@ export default function PropertiesView() {
     });
     return list;
   }, [q, dev, type, beds, avail, cat, sort]);
+
+  /** every film that belongs to a residence in the current result set */
+  const reel = useMemo<FilmStripItem[]>(() => {
+    const seen = new Set<string>();
+    const items: FilmStripItem[] = [];
+    for (const p of results) {
+      for (const film of getFilmsForProperty(p)) {
+        if (seen.has(film.id)) continue;
+        seen.add(film.id);
+        items.push({
+          film,
+          label: `${devNames[p.development] ?? ""} — ${p.name}`,
+          href: `/properties/${p.slug}`,
+          linkLabel: "Open this home",
+        });
+      }
+    }
+    return items;
+  }, [results]);
 
   function reset() {
     setQ("");
@@ -200,6 +220,56 @@ export default function PropertiesView() {
           )}
         </div>
       </div>
+
+      {/* the footage belonging to whatever the filters left on screen */}
+      {reel.length > 0 && (
+        <section className="mt-16 border-t border-brand-line pt-12" aria-labelledby="reel-heading">
+          <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="flex flex-col items-start justify-between gap-5 lg:flex-row lg:items-end">
+            <div>
+              <span className="kicker">On film</span>
+              <h2 id="reel-heading" className="display mt-3 text-3xl sm:text-[2.4rem]">
+                Footage for the homes
+                <span className="font-serif italic text-brand-goldDeep"> you are viewing</span>
+              </h2>
+            </div>
+            <p className="max-w-md font-sans text-sm leading-relaxed text-brand-charcoal/70">
+              {reel.length} {reel.length === 1 ? "film" : "films"} cover{reel.length === 1 ? "s" : ""} what is left
+              after your filters. Each card above carries its own clip too — hover to preview it, press the gold
+              chip to play it with sound.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-14">
+            <FilmStrip items={reel} shape="shape-archcard" />
+            <ul className="grid gap-3 self-start sm:grid-cols-2 lg:grid-cols-1">
+              {reel.map((it) => (
+                <li key={it.film.id}>
+                  <Link
+                    href={it.href ?? "#"}
+                    className="group/film flex items-center gap-4 border border-brand-line bg-white p-3 transition-colors hover:border-brand-gold/60"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={it.film.poster}
+                      alt=""
+                      className="shape-curve-sm h-14 w-20 shrink-0 object-cover"
+                      loading="lazy"
+                    />
+                    <span className="min-w-0">
+                      <span className="block truncate font-serif text-base text-brand-green900">{it.film.title}</span>
+                      <span className="mt-0.5 block truncate font-sans text-[0.62rem] uppercase tracking-[0.16em] text-brand-goldDeep">
+                        {it.film.duration} · {it.label}
+                      </span>
+                    </span>
+                    <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-brand-goldDeep transition-transform duration-500 group-hover/film:-translate-y-0.5 group-hover/film:translate-x-0.5" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          </div>
+        </section>
+      )}
 
       {/* note + consultancy */}
       <div className="mx-auto mt-20 max-w-[1440px] px-5 sm:px-8 lg:px-12">

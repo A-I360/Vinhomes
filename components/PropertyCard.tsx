@@ -1,8 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { MapPin, BedDouble, Bath, Ruler, ArrowUpRight } from "lucide-react";
 import type { Property } from "@/lib/types";
 import { amenities } from "@/content/amenities";
+import { getFilmsForProperty } from "@/content/developments";
+import FilmStage from "@/components/FilmStage";
 import { whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,7 @@ export default function PropertyCard({
 }) {
   const devSlug = property.development;
   const hero = property.gallery?.[0];
+  const [film] = getFilmsForProperty(property);
   const keys = (property.amenityIds ?? []).slice(0, 4);
   const keyLabels = keys.map((id) => amenities.find((a) => a.id === id)?.label).filter(Boolean);
   const showPrice = !!property.price;
@@ -37,44 +39,40 @@ export default function PropertyCard({
         feature && "col-span-full"
       )}
     >
-      <div className="img-frame shape-archcard relative">
-        <Link href={`/properties/${property.slug}`} className="block">
-          {hero ? (
-            <Image
-              src={hero.src}
-              alt={hero.alt || `${property.name} image`}
-              width={1200}
-              height={feature ? 675 : 800}
-              sizes={feature ? "(min-width:1024px) 1100px, 100vw" : "(min-width:1024px) 600px, 100vw"}
-              className="aspect-[3/2] w-full object-cover"
-              fetchPriority={index === 0 ? "high" : undefined}
-              loading={index === 0 ? "eager" : "lazy"}
-            />
-          ) : (
-            <div className="aspect-[3/2] w-full bg-brand-green800" />
-          )}
-        </Link>
+      {/* footage: the film supplied for this exact home previews on hover,
+          the chip plays it with sound without leaving the listing */}
+      <FilmStage
+        film={film}
+        poster={hero?.src}
+        posterAlt={hero?.alt || `${property.name} — residence`}
+        label={property.name}
+        className="shape-archcard"
+        imageClassName="group-hover:scale-[1.045]"
+        sizes={feature ? "(min-width:1024px) 1100px, 100vw" : "(min-width:1024px) 600px, 100vw"}
+        priority={index === 0}
+        chipAt={film ? "bottom-left" : "none"}
+      >
+        <Link
+          href={`/properties/${property.slug}`}
+          aria-label={`View ${property.name}`}
+          className="absolute inset-0 z-10"
+        />
         {/* status */}
-        <span
-          className={cn(
-            "absolute left-4 top-4 status-pill",
-            statusTone(property.status)
-          )}
-        >
+        <span className={cn("status-pill absolute left-4 top-4 z-20", statusTone(property.status))}>
           <span className="h-1.5 w-1.5 rounded-full bg-current" />
           {property.status}
         </span>
         {/* dev type */}
         {property.category && (
-          <span className="absolute right-4 top-4 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-ivory backdrop-blur-sm">
+          <span className="absolute right-4 top-4 z-20 bg-brand-green950/70 px-3 py-1.5 font-sans uppercase tracking-[0.16em] text-[0.62rem] text-brand-ivory backdrop-blur-sm">
             {property.category}
           </span>
         )}
         {/* hover arrow */}
-        <span className="absolute bottom-4 right-4 flex h-12 w-12 translate-y-3 items-center justify-center rounded-full bg-brand-gold text-brand-green950 opacity-0 transition-all duration-500 ease-luxe group-hover:translate-y-0 group-hover:opacity-100">
+        <span className="absolute bottom-4 right-4 z-20 flex h-12 w-12 translate-y-3 items-center justify-center rounded-full bg-brand-gold text-brand-green950 opacity-0 transition-all duration-500 ease-luxe group-hover:translate-y-0 group-hover:opacity-100">
           <ArrowUpRight className="h-5 w-5" />
         </span>
-      </div>
+      </FilmStage>
 
       <div className="flex flex-1 flex-col items-center p-6 text-center sm:p-7">
         <div className="flex items-center justify-center gap-2 font-sans text-[0.66rem] uppercase tracking-[0.18em] text-brand-goldDeep">

@@ -1,29 +1,35 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Development } from "@/lib/types";
-import { getPropertiesByDevelopment } from "@/content/developments";
+import { getPropertiesByDevelopment, getFilmsForDevelopment } from "@/content/developments";
 import { whatsappLink } from "@/lib/site";
+import FilmStage from "@/components/FilmStage";
+import FilmChip from "@/components/FilmChip";
 
 export default function DevelopmentCard({ d }: { d: Development }) {
   const props = getPropertiesByDevelopment(d.slug);
   const hero = d.heroMedia;
+  const filmsForDev = getFilmsForDevelopment(d.slug);
+  const [film] = filmsForDev;
 
   const enquire = `Hi Vinhomes Platinum Living, I'm interested in ${d.name}. Please send me more details.`;
 
   return (
     <article className="group shape-archcard frame-line frame-line-light relative flex min-h-[30rem] flex-col justify-end overflow-hidden bg-brand-green900 transition-all duration-700 ease-luxe hover:-translate-y-1.5 hover:shadow-lift lg:min-h-[34rem]">
-      <div className="img-frame absolute inset-0">
-        <Image
-          src={hero.src}
-          alt={hero.alt || d.name}
-          fill
-          sizes="(min-width:1024px) 620px, 100vw"
-          className="object-cover opacity-85"
-          loading="lazy"
-        />
+      {/* the film shot at this address previews over the render on hover */}
+      <FilmStage
+        film={film}
+        poster={hero.src}
+        posterAlt={hero.alt || d.name}
+        label={d.name}
+        fill
+        sizes="(min-width:1024px) 620px, 100vw"
+        imageClassName="opacity-85"
+        videoClassName="opacity-90"
+        chipAt="none"
+      >
         <div className="absolute inset-0 bg-gradient-to-t from-brand-green950 via-brand-green950/35 to-transparent" />
-      </div>
+      </FilmStage>
 
       <div className="relative z-10 flex flex-col items-center p-7 text-center sm:p-9">
         <span className="status-pill bg-brand-gold/90 text-brand-green950">
@@ -67,6 +73,13 @@ export default function DevelopmentCard({ d }: { d: Development }) {
             Enquire
           </a>
         </div>
+
+        {film && (
+          <p className="mt-4 flex flex-wrap items-center justify-center gap-2 font-sans text-[0.6rem] uppercase tracking-[0.16em] text-brand-ivory/60">
+            <FilmChip film={film} label={d.name} variant="inlineLight" />
+            {filmsForDev.length > 1 ? `${filmsForDev.length} films of ${d.name}` : `Filmed at ${d.name}`}
+          </p>
+        )}
       </div>
     </article>
   );

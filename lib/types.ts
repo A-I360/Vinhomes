@@ -28,6 +28,33 @@ export interface MediaItem {
   credit?: string; // e.g. "Conceptual render" / "Artist impression"
 }
 
+/**
+ * A supplied video, registered once and referenced from Developments and
+ * Properties by `filmIds` (mirrors a CMS video/asset collection).
+ */
+export interface FilmAsset {
+  id: string;
+  /** mp4 served from /public */
+  src: string;
+  /** still frame extracted from this exact film */
+  poster: string;
+  title: string;
+  /** short on-screen label, e.g. "0:24" */
+  duration: string;
+  /** exact length in seconds (used for VideoObject JSON-LD) */
+  seconds: number;
+  orientation: "landscape" | "portrait";
+  width: number;
+  height: number;
+  /** what the footage actually contains — describe only what is on screen */
+  shows: string;
+  /** short label for the film's subject, e.g. "The Emerald" */
+  subject?: string;
+  /** where the "view this property" link in a film strip points to */
+  subjectHref?: string;
+  credit?: string;
+}
+
 export interface PaymentPlan {
   label?: string;
   initialDeposit?: string; // % or currency note, CMS editable
@@ -54,6 +81,8 @@ export interface Property {
   description: string;
   features: string[];
   gallery: MediaItem[];
+  /** keys into the film registry (content/films.ts) — the video for this home */
+  filmIds?: string[];
   floorPlans?: MediaItem[];
   brochure?: string | null;
   mapCoordinates?: { lat?: number; lng?: number; label?: string } | null;
@@ -75,6 +104,8 @@ export interface Development {
   status: AvailabilityStatus;
   heroMedia: MediaItem;
   gallery?: MediaItem[];
+  /** keys into the film registry (content/films.ts) — films for this address */
+  filmIds?: string[];
   amenityIds?: string[];
   propertyTypes: string[];
   paymentPlans?: PaymentPlan[];
