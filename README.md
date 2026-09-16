@@ -59,7 +59,7 @@ rather than flashy.
 | ------------------------------ | ---------------------------------------------------------------- |
 | `/`                            | Home: hero, trust strip, featured developments & residences, philosophy, amenities, location & investment teasers, insights |
 | `/properties`                  | Discovery: filters (location, development, type, bedrooms, availability, category), sort, search, empty/loading states |
-| `/properties/[slug]`           | Reusable property detail with sticky enquiry panel               |
+| `/properties/[slug]`           | Reusable property detail with the home's own film, sticky enquiry panel |
 | `/about`                       | Who we are, vision, mission, core values, philosophy             |
 | `/services`                    | Development, land & property investment, sales, consultation, advisory, viewings |
 | `/why-vinhomes`                | Trust page + *Built for Today. Positioned for Tomorrow.*         |
@@ -69,6 +69,41 @@ rather than flashy.
 | `/contact`                     | Enquiry form, phone/email/office/WhatsApp actions                |
 | `/privacy`, `/terms`           | Legal pages                                                      |
 | `/_not-found`                  | Elegant 404                                                      |
+
+---
+
+## Video showcase (the supplied films)
+
+All five clips supplied by the client live in `public/media/videos/` and are registered once in
+`content/films.ts` (type `FilmAsset` in `lib/types.ts`). Each record is verified from the file:
+duration and pixel size read from the MP4, poster extracted from that same clip, and `shows`
+describing only what is actually on screen — the copy never claims more than the footage shows.
+
+| Film id | File | Cut | Shows |
+| ------- | ---- | --- | ----- |
+| `emerald-tour` | `vinhomes-film-01.mp4` | 0:24 portrait | The Emerald duplex interiors; on-screen titles list the 2/3/4-bed fully-detached options |
+| `citadel-tour` | `vinhomes-film-02.mp4` | 0:39 landscape | Aerial pass over the Citadel Oasis terraces, location and stated payment structure |
+| `emerald-investment` | `vinhomes-film-03.mp4` | 0:33 portrait | The Emerald "5 reasons" presentation deck, cut to film |
+| `site-walk` | `vinhomes-film-04.mp4` | 1:12 portrait | Presenter walking the community on the ground, ending on the marketed-by card |
+| `capital-loft-tour` | `vinhomes-film-05.mp4` | 1:31 landscape | Capital Loft interiors, surroundings, house types, amenities and payment structure |
+
+Where each film appears — every property carries the footage filmed for it, via `filmIds` on the
+Development and Property records (`content/developments.ts`):
+
+- **Property page** — an "On Film" section under the hero (`FilmStrip`), a "Watch the film" jump
+  button in the hero, a film chip in the sticky enquiry rail, and `VideoObject` JSON-LD +
+  `og:video` / `twitter:player` metadata per clip.
+- **Listing sections** — `PropertyCard` (used on `/properties` and in the home "Featured
+  Residences" band) previews its film on hover and opens the lightbox player from the gold
+  `Film · 0:24` chip; `DevelopmentCard` does the same on the home developments band.
+- **`/properties` reel** — a "Footage for the homes you are viewing" band that follows the active
+  filters, with a thumbnail index linking to each home.
+- **`/about` and the home "On film" band** — the whole registry, each film labelled with the
+  address it was shot at.
+- **`/investment`** — the film for each development on its format card.
+
+A development-level record with no `filmIds` of its own falls back to its development's films
+(`getFilmsForProperty`), so a new home added in the CMS inherits the right footage automatically.
 
 ---
 

@@ -8,6 +8,9 @@ import CTABand from "@/components/CTABand";
 import FounderSection from "@/components/FounderSection";
 import FilmPlayer from "@/components/FilmPlayer";
 import { films } from "@/content/films";
+
+const landscapeFilms = films.filter((f) => f.orientation === "landscape");
+const portraitFilms = films.filter((f) => f.orientation === "portrait");
 import { values } from "@/content/values";
 import { constructMetadata } from "@/lib/seo";
 
@@ -126,19 +129,27 @@ export default function AboutPage() {
             kicker="Watch our story"
             title="Vinhomes, on film"
             accent="every frame our own footage"
-            lede="Press play on any film below — captured across Vinhomes Platinum Living and presented here for you."
+            lede="Press play on any film below. Each clip is the footage supplied for one of our developments — the same films you will find on that home's own page."
           />
-          <Reveal delay={100} className="mx-auto mt-12 max-w-5xl">
-            <FilmPlayer
-              film={films.feature}
-              shape="frame-line"
-              caption="The Vinhomes story — on film"
-            />
-          </Reveal>
+          <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-2">
+            {landscapeFilms.map((film, i) => (
+              <Reveal key={film.id} delay={i * 120}>
+                <FilmPlayer
+                  film={film}
+                  shape="frame-line"
+                  sizes="(min-width:1024px) 46vw, 100vw"
+                  caption={film.subject ?? film.title}
+                />
+                <FilmFootnote film={film} />
+              </Reveal>
+            ))}
+          </div>
+
           <div className="mx-auto mt-8 grid max-w-4xl gap-6 sm:grid-cols-3">
-            {films.moments.map((film, i) => (
-              <Reveal key={film.src} delay={i * 120} className="mx-auto w-full max-w-[16rem] sm:max-w-none">
+            {portraitFilms.map((film, i) => (
+              <Reveal key={film.id} delay={i * 120} className="mx-auto w-full max-w-[16rem] sm:max-w-none">
                 <FilmPlayer film={film} shape="shape-arch" aspect="aspect-[9/16]" caption={film.title} />
+                <FilmFootnote film={film} />
               </Reveal>
             ))}
           </div>
@@ -212,5 +223,19 @@ export default function AboutPage() {
         image="/media/images/video-interior-2.jpg"
       />
     </>
+  );
+}
+
+/** Says plainly what a film is, and links to the homes it shows. */
+function FilmFootnote({ film }: { film: (typeof films)[number] }) {
+  return (
+    <div className="mt-3 text-center">
+      <p className="mx-auto max-w-md font-sans text-xs leading-relaxed text-brand-charcoal/65">{film.shows}</p>
+      {film.subjectHref && (
+        <Link href={film.subjectHref} className="link-arrow mt-2 justify-center">
+          {film.subject ?? "See the homes"} <ArrowUpRight className="arrow h-3.5 w-3.5" />
+        </Link>
+      )}
+    </div>
   );
 }

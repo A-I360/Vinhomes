@@ -14,16 +14,24 @@ import {
   ShieldCheck,
   Download,
   Check,
+  Play,
 } from "lucide-react";
-import { getPropertyBySlug, properties, getDevelopmentBySlug } from "@/content/developments";
+import {
+  getPropertyBySlug,
+  properties,
+  getDevelopmentBySlug,
+  getFilmsForProperty,
+} from "@/content/developments";
 import { amenities } from "@/content/amenities";
 import { faqs } from "@/content/insights";
 import Gallery from "@/components/Gallery";
+import FilmStrip from "@/components/FilmStrip";
+import FilmChip from "@/components/FilmChip";
 import EnquiryForm from "@/components/EnquiryForm";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTABand from "@/components/CTABand";
-import { breadcrumbSchema, productSchema, constructMetadata } from "@/lib/seo";
+import { breadcrumbSchema, productSchema, videoObjectSchema, constructMetadata } from "@/lib/seo";
 import { siteConfig } from "@/content/site.config";
 import { whatsappLink } from "@/lib/site";
 import type { MediaItem } from "@/lib/types";
@@ -36,11 +44,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const p = getPropertyBySlug(params.slug);
   if (!p) return {};
   const img = p.gallery?.[0]?.src ?? "/media/images/video-hero.jpg";
+  const film = getFilmsForProperty(p)[0];
   const meta = constructMetadata({
     title: `${p.name} — ${p.propertyType} in Lagos`,
     description: `${p.name}. ${p.propertyType}${p.location ? ` in ${p.location}` : ""} by Vinhomes Platinum Living. Status: ${p.status}.`,
     path: `/properties/${p.slug}`,
     image: img,
+    ...(film ? { video: { url: film.src, width: film.width, height: film.height } } : {}),
   });
   return meta;
 }
@@ -50,6 +60,13 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
   if (!property) notFound();
   const dev = getDevelopmentBySlug(property.development);
   const hero = property.gallery?.[0] ?? dev?.heroMedia;
+  /** the footage supplied for this home (falls back to its development's) */
+  const films = getFilmsForProperty(property);
+  const filmItems = films.map((f) => ({
+    film: f,
+    href: `/contact?property=${property.slug}`,
+    linkLabel: "Ask to see it in person",
+  }));
 
   const amenityIds = [...new Set([...(dev?.amenityIds ?? []), ...(property.amenityIds ?? [])])];
   const amenityList = amenityIds.map((id) => amenities.find((a) => a.id === id)).filter(Boolean) as typeof amenities;
@@ -85,11 +102,27 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
     { Icon: Ruler, k: "Size", v: property.size ?? "On request" },
   ];
 
+  const filmSchemas = films.map((f) =>
+    videoObjectSchema({
+      name: `${f.title} — ${property.name}`,
+      description: f.shows,
+      url: f.src,
+      thumbnailUrl: f.poster,
+      durationSeconds: f.seconds,
+      width: f.width,
+      height: f.height,
+      uploadDate: property.dateAdded,
+    })
+  );
+
   return (
     <>
       {/* structured data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listingSchema) }} />
+      {filmSchemas.map((schema) => (
+        <script key={schema.name} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
 
       {/* ============ HERO ============ */}
       <section className="texture-grain relative flex min-h-[72vh] items-end overflow-hidden bg-brand-green950 pt-24">
@@ -122,6 +155,13 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
             <span className="inline-flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-brand-goldLight" /> {property.status}</span>
             {property.category && <span className="inline-flex items-center gap-2"><Building2 className="h-4 w-4 text-brand-gold" /> {property.category}</span>}
           </div>
+          {films.length > 0 && (
+            <a href="#film" className="btn-gold mt-9 animate-fade-up px-7 py-3.5 text-[0.68rem] [animation-delay:450ms]">
+              <Play className="h-3.5 w-3.5 fill-current" />
+              Watch the film — {films[0].duration}
+              {films.length > 1 ? ` · ${films.length} clips` : ""}
+            </a>
+          )}
         </div>
       </section>
 
@@ -147,6 +187,21 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
         <div className="grid gap-12 lg:grid-cols-[1fr_390px] lg:gap-16">
           {/* ===== MAIN ===== */}
           <div className="min-w-0 space-y-20">
+            {/* The film — the footage supplied for this exact home */}
+            {films.length > 0 && (
+              <section id="film" className="scroll-mt-28">
+                <SectionHeading
+                  kicker="On Film"
+                  title="Watch this residence"
+                  accent={dev ? `— filmed at ${dev.name}` : "in motion"}
+                  lede="Press play for the footage supplied for this address. Under each clip you will find plainly what that film contains — tour, aerial or presentation."
+                />
+                <div className="mt-8">
+                  <FilmStrip items={filmItems} shape="shape-archcard" />
+                </div>
+              </section>
+            )}
+
             {/* Overview */}
             <section className="text-center">
               <SectionHeading kicker="Overview" title="An elegant place" accent="to call home" />
@@ -205,6 +260,14 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
               <section>
                 <SectionHeading kicker="Gallery" title="Inside &amp; around" accent="this residence" />
                 <div className="mt-7"><Gallery items={property.gallery} title={property.name} /></div>
+                {films.length > 0 && (
+                  <p className="mt-4 text-center font-sans text-xs uppercase tracking-[0.16em] text-brand-charcoal/55">
+                    Stills are concept renders; the films above are the footage supplied for this address —{" "}
+                    <a href="#film" className="text-brand-goldDeep underline decoration-brand-gold/50 underline-offset-4 hover:text-brand-gold">
+                      the clips are real
+                    </a>
+                  </p>
+                )}
               </section>
             )}
 
@@ -334,6 +397,15 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
                 </div>
               </div>
             </div>
+
+            {films[0] && (
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border border-brand-line bg-white px-5 py-4">
+                <p className="font-sans text-[0.62rem] uppercase tracking-[0.16em] text-brand-charcoal/60">
+                  {films.length > 1 ? `${films.length} clips filmed on site` : "Filmed on site"}
+                </p>
+                <FilmChip film={films[0]} label={property.name} variant="inline" />
+              </div>
+            )}
 
             <a href={whatsappLink(viewingMsg)} target="_blank" rel="noopener noreferrer" className="btn-gold mt-4 w-full">
               WhatsApp about viewing <ArrowUpRight className="h-4 w-4" />

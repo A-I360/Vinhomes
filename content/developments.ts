@@ -1,4 +1,5 @@
-import type { Development, Property } from "@/lib/types";
+import type { Development, FilmAsset, Property } from "@/lib/types";
+import { getFilms } from "@/content/films";
 
 /**
  * NOTE ON POSITIONING & PRICING
@@ -7,6 +8,13 @@ import type { Development, Property } from "@/lib/types";
  * here is either factual from the company materials or clearly framed as
  * conceptual positioning. Availability reflects CMS status only and should be
  * edited through the CMS — never hard-coded in the frontend.
+ *
+ * NOTE ON THE VIDEOS
+ * `filmIds` links each development and each property to the supplied footage
+ * registered in content/films.ts, so every page shows the film that was
+ * actually shot at that address. The footage itself carries on-screen price and
+ * amenity figures; those are deliberately NOT copied into the records below
+ * until the client confirms them through the CMS.
  */
 
 export const developments: Development[] = [
@@ -30,6 +38,8 @@ export const developments: Development[] = [
       { src: "/media/images/dev-emerald-2.jpg", alt: "The Emerald — fully-detached duplex residences", credit: "Conceptual render" },
       { src: "/media/images/dev-emerald-3.jpg", alt: "The Emerald — the residential compound at the development", credit: "Conceptual render" },
     ],
+    // footage: interior tour + the investment deck, both made for The Emerald
+    filmIds: ["emerald-tour", "emerald-investment"],
     amenityIds: ["security", "landscaped", "car-park", "backup-power", "clean-water", "drainage"],
     propertyTypes: [
       "2 Bedroom Fully Detached Duplex",
@@ -72,6 +82,8 @@ export const developments: Development[] = [
       { src: "/media/images/dev-citadel-2.jpg", alt: "Citadel Oasis — solar-powered community residences in Ajah", credit: "Conceptual render" },
       { src: "/media/images/dev-citadel-3.jpg", alt: "Citadel Oasis — secure gated community setting in Ajah", credit: "Conceptual render" },
     ],
+    // footage: the drone pass over the terraces + the walk on the ground
+    filmIds: ["citadel-tour", "site-walk"],
     amenityIds: ["swimming-pool", "gym", "solar-power", "clean-water", "drainage", "security", "landscaped", "football-pitch", "play-area"],
     propertyTypes: ["Modern Residential Homes", "Terraced Residences"],
     paymentPlans: [
@@ -114,6 +126,8 @@ export const developments: Development[] = [
       { src: "/media/images/dev-capital-2.jpg", alt: "Capital Loft — terrace homes in a future-ready community", credit: "Conceptual render" },
       { src: "/media/images/dev-capital-3.jpg", alt: "Capital Loft — investment terrace development", credit: "Conceptual render" },
     ],
+    // footage: the long loft tour — interiors, surroundings and house types
+    filmIds: ["capital-loft-tour"],
     amenityIds: ["security", "landscaped", "car-park", "clean-water", "drainage", "backup-power"],
     propertyTypes: [
       "3 Bedroom Terrace",
@@ -180,6 +194,8 @@ export const properties: Property[] = [
       { src: "/media/images/dev-emerald-1.jpg", alt: "The Emerald — a fully-detached duplex residence", credit: "Conceptual render" },
       { src: "/media/images/dev-emerald-2.jpg", alt: "The Emerald — fully-detached duplex residences", credit: "Conceptual render" },
     ],
+    // the film shot for this home (falls back to the development's)
+    filmIds: ["emerald-tour", "emerald-investment"],
     floorPlans: [],
     brochure: null,
     mapCoordinates: null,
@@ -229,6 +245,8 @@ export const properties: Property[] = [
       { src: "/media/images/dev-emerald-2.jpg", alt: "The Emerald — fully-detached duplex residences", credit: "Conceptual render" },
       { src: "/media/images/dev-emerald-3.jpg", alt: "The Emerald — the residential compound at the development", credit: "Conceptual render" },
     ],
+    // the film shot for this home (falls back to the development's)
+    filmIds: ["emerald-tour", "emerald-investment"],
     floorPlans: [],
     brochure: null,
     mapCoordinates: null,
@@ -278,6 +296,8 @@ export const properties: Property[] = [
       { src: "/media/images/dev-emerald-2.jpg", alt: "The Emerald — fully-detached duplex residences", credit: "Conceptual render" },
       { src: "/media/images/dev-emerald-3.jpg", alt: "The Emerald — the residential compound at the development", credit: "Conceptual render" },
     ],
+    // the film shot for this home (falls back to the development's)
+    filmIds: ["emerald-tour", "emerald-investment"],
     floorPlans: [],
     brochure: null,
     mapCoordinates: null,
@@ -327,6 +347,8 @@ export const properties: Property[] = [
       { src: "/media/images/dev-citadel-2.jpg", alt: "Citadel Oasis — solar-powered community residences in Ajah", credit: "Conceptual render" },
       { src: "/media/images/dev-citadel-3.jpg", alt: "Citadel Oasis — secure gated community setting in Ajah", credit: "Conceptual render" },
     ],
+    // the film shot for this home (falls back to the development's)
+    filmIds: ["citadel-tour", "site-walk"],
     floorPlans: [],
     brochure: null,
     mapCoordinates: null,
@@ -377,6 +399,8 @@ export const properties: Property[] = [
       { src: "/media/images/dev-capital-2.jpg", alt: "Capital Loft — terrace homes in a future-ready community", credit: "Conceptual render" },
       { src: "/media/images/dev-capital-3.jpg", alt: "Capital Loft — investment terrace development", credit: "Conceptual render" },
     ],
+    // the film shot for this home (falls back to the development's)
+    filmIds: ["capital-loft-tour"],
     floorPlans: [],
     brochure: null,
     mapCoordinates: null,
@@ -427,6 +451,8 @@ export const properties: Property[] = [
       { src: "/media/images/dev-capital-2.jpg", alt: "Capital Loft — terrace homes in a future-ready community", credit: "Conceptual render" },
       { src: "/media/images/dev-capital-3.jpg", alt: "Capital Loft — investment terrace development", credit: "Conceptual render" },
     ],
+    // the film shot for this home (falls back to the development's)
+    filmIds: ["capital-loft-tour"],
     floorPlans: [],
     brochure: null,
     mapCoordinates: null,
@@ -452,4 +478,21 @@ export function getPropertyBySlug(slug: string) {
 
 export function getFeaturedProperties() {
   return properties.filter((p) => p.isFeatured);
+}
+
+/** Videos for a development, in the order the CMS put them in. */
+export function getFilmsForDevelopment(slug?: string | null): FilmAsset[] {
+  if (!slug) return [];
+  return getFilms(getDevelopmentBySlug(slug)?.filmIds);
+}
+
+/**
+ * Videos for a property: its own `filmIds` when set, otherwise the films of
+ * the development it belongs to. This is what the property page and the
+ * listing cards play.
+ */
+export function getFilmsForProperty(property: Property): FilmAsset[] {
+  const own = getFilms(property.filmIds);
+  if (own.length) return own;
+  return getFilmsForDevelopment(property.development);
 }
