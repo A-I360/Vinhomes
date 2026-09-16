@@ -7,6 +7,14 @@ const nextConfig = {
   },
   poweredByHeader: false,
   eslint: { ignoreDuringBuilds: true },
+  /**
+   * The preview is proxied on https://<port>-<sandboxId>.e2b.app, so the dev
+   * server sees its own JS/HMR chunks as cross-origin. Listing the proxy
+   * domain here keeps /_next/* (and therefore the film players, whose controls
+   * and posters are client-side) loading in the preview instead of warning.
+   * Only affects `next dev`; ignored by production builds.
+   */
+  allowedDevOrigins: ["*.e2b.app"],
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
