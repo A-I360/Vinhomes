@@ -76,7 +76,7 @@ function ContactFormInner() {
         <h3 className="font-serif text-2xl text-brand-green900">Thank you — your message is on its way.</h3>
         <p className="max-w-md font-sans text-sm leading-relaxed text-brand-charcoal/75">
           A Vinhomes advisor will respond within one working day. For anything urgent, call or
-          WhatsApp us on 0703 672 4517.
+          WhatsApp us on +234 902 340 3702.
         </p>
       </div>
     );
@@ -127,7 +127,7 @@ function ContactFormInner() {
       {state === "error" && (
         <p className="flex items-start gap-2 font-sans text-xs text-red-700">
           <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          We couldn't send your message. Please try again or contact us on 0703 672 4517.
+          We couldn't send your message. Please try again or contact us on +234 902 340 3702.
         </p>
       )}
       <p className="font-sans text-[0.7rem] text-brand-charcoal/50">
