@@ -32,7 +32,7 @@ export default function FounderSection() {
           <Reveal className="lg:col-span-5">
             <div className="relative mx-auto max-w-sm">
               <span className="shape-arch absolute inset-0 translate-x-4 translate-y-4 border border-brand-gold/40" aria-hidden />
-              <div className="img-frame shape-arch relative aspect-[4/5]">
+              <div className="img-frame shape-arch relative aspect-[445/895]">
                 <Image
                   src={img!.src}
                   alt={img!.alt || "Founder of Vinhomes Platinum Living"}
