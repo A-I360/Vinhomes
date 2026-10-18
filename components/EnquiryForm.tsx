@@ -67,7 +67,7 @@ export default function EnquiryForm({
     return (
       <SuccessState
         title="Thank you — request received."
-        body="A Vinhomes advisor will contact you shortly through your preferred channel. For an immediate response, call or WhatsApp us on 0703 672 4517."
+        body="A Vinhomes advisor will contact you shortly through your preferred channel. For an immediate response, call or WhatsApp us on +234 902 340 3702."
       />
     );
   }
@@ -149,7 +149,7 @@ export default function EnquiryForm({
       {state === "error" && (
         <p className="flex items-start gap-2 font-sans text-xs text-red-700">
           <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          Something went wrong sending your enquiry. Please try again, or contact us on 0703 672 4517.
+          Something went wrong sending your enquiry. Please try again, or contact us on +234 902 340 3702.
         </p>
       )}
       <p className="font-sans text-[0.7rem] text-brand-charcoal/50">

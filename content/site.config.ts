@@ -5,9 +5,9 @@ export const siteConfig: SiteConfig = {
   brandShort: "Vinhomes",
   tagline: "Where Luxury Meets Lifestyle",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vinhomesplatinumliving.com",
-  phone: "+2347036724517",
-  phoneDisplay: "0703 672 4517",
-  whatsapp: "2347036724517",
+  phone: "+2349023403702",
+  phoneDisplay: "+234 902 340 3702",
+  whatsapp: "2349023403702",
   email: "info@vinhomesplatinum.com",
   address: {
     lines: [
@@ -19,7 +19,7 @@ export const siteConfig: SiteConfig = {
   social: {
     // Only channels with a real destination are configured. The remaining
     // platforms are not set (no fabricated handles / placeholder homepages).
-    whatsapp: "https://wa.me/2347036724517",
+    whatsapp: "https://wa.me/2349023403702",
   },
   navigation: [
     { label: "Properties", href: "/properties" },
